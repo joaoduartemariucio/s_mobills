@@ -1,0 +1,15 @@
+{
+    "@@locale": "es",
+    "counterAppBarTitle": "Contador",
+    "@counterAppBarTitle": {
+        "description": "Texto mostrado en la AppBar de la página del contador"
+    },
+    "appName": "SMobills",
+    "login": "Login",
+    "email": "E-mail",
+    "password": "Senha",
+    "dontHaveAccount": "Não tem uma conta?",
+    "signUp": "Criar conta",
+    "name": "Nome",
+    "age": "Idade"
+}
