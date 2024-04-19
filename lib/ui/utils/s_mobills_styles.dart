@@ -1,8 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
 
 class SMobillsSpacing {
   /// Spacing 4
@@ -232,20 +230,16 @@ class LetterSpacing {
 }
 
 extension BuildContextExtension on BuildContext {
-  bool get isDarkMode {
-    final brightness =
-        SchedulerBinding.instance.platformDispatcher.platformBrightness;
-    return brightness == Brightness.dark;
-  }
-
   MediaQueryData get mediaQuery {
     return MediaQuery.of(this);
+  }
+
+  ColorScheme get colorScheme {
+    return Theme.of(this).colorScheme;
   }
 }
 
 class SMobillsColors {
-  static const darkBlue = Color.fromARGB(255, 31, 34, 42);
-
   static Color randomColor() {
     const min = 50;
     const max = 200;
@@ -276,7 +270,6 @@ class SMobillsDivider extends StatelessWidget {
             vertical: 8,
             horizontal: isVertical ? 8 : 0,
           ),
-      color: context.isDarkMode ? Colors.grey : Colors.white,
     );
   }
 }

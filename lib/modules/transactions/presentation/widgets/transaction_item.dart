@@ -37,9 +37,7 @@ class TransactionItem extends StatelessWidget {
             children: [
               Text(
                 name,
-                style: SMobillsTextStyles.body1.copyWith(
-                  color: context.isDarkMode ? Colors.white : Colors.black,
-                ),
+                style: SMobillsTextStyles.body1,
               ),
               Text(
                 description,

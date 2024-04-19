@@ -26,7 +26,6 @@ class ProfileMenuItem extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: context.isDarkMode ? Colors.white : Colors.black,
                 size: 36,
               ),
               const SizedBox(
@@ -34,9 +33,7 @@ class ProfileMenuItem extends StatelessWidget {
               ),
               Text(
                 title,
-                style: SMobillsTextStyles.h6.copyWith(
-                  color: context.isDarkMode ? Colors.white : Colors.black,
-                ),
+                style: SMobillsTextStyles.h6,
               ),
             ],
           ),

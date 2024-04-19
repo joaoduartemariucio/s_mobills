@@ -18,7 +18,6 @@ class TransactionSectionTitle extends StatelessWidget {
         textAlign: TextAlign.left,
         style: SMobillsTextStyles.body1.copyWith(
           fontWeight: FontWeight.w500,
-          color: context.isDarkMode ? Colors.white : Colors.black,
         ),
       ),
     );

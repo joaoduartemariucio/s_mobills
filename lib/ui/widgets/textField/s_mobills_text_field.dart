@@ -17,24 +17,10 @@ class SMobillsTextField extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: TextField(
         controller: controller,
-        style: SMobillsTextStyles.body1.copyWith(
-          color: context.isDarkMode ? Colors.white : Colors.black,
-        ),
+        style: SMobillsTextStyles.body1,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: SMobillsTextStyles.subtitle1.copyWith(
-            color: Colors.grey,
-          ),
-          enabledBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.grey,
-            ),
-          ),
-          focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.blue,
-            ),
-          ),
+          hintStyle: SMobillsTextStyles.subtitle1,
         ),
       ),
     );

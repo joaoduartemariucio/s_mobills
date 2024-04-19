@@ -20,18 +20,15 @@ class SMobillsAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: context.isDarkMode ? Colors.black : Colors.blue,
       centerTitle: true,
       title: Text(
         title,
         style: SMobillsTextStyles.h6.copyWith(
-          color: context.isDarkMode ? Colors.blue : Colors.white,
           fontWeight: FontWeight.w700,
         ),
       ),
       bottom: bottom,
       elevation: 8,
-      shadowColor: Colors.black,
     );
   }
 }

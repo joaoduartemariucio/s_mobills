@@ -26,7 +26,6 @@ class ProfileView extends StatelessWidget {
       appBar: SMobillsAppBar(
         title: context.l10n.profile,
       ),
-      backgroundColor: context.isDarkMode ? Colors.black : Colors.white,
       body: Column(
         children: [
           Container(
@@ -41,27 +40,22 @@ class ProfileView extends StatelessWidget {
                     'JM',
                     style: SMobillsTextStyles.h3.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: context.isDarkMode ? Colors.grey : Colors.white,
                     ),
                   ),
                 ),
                 const SizedBox(
                   height: 16,
                 ),
-                Text(
+                const Text(
                   'João Vitor Duarte Mariucio',
-                  style: SMobillsTextStyles.h6.copyWith(
-                    color: context.isDarkMode ? Colors.white : Colors.black,
-                  ),
+                  style: SMobillsTextStyles.h6,
                 ),
                 const SizedBox(
                   height: 4,
                 ),
-                Text(
+                const Text(
                   'joaovitorduartemariucio@gmail.com',
-                  style: SMobillsTextStyles.subtitle1.copyWith(
-                    color: Colors.grey,
-                  ),
+                  style: SMobillsTextStyles.subtitle1,
                 ),
               ],
             ),
@@ -69,12 +63,10 @@ class ProfileView extends StatelessWidget {
           Expanded(
             child: Container(
               padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(
                   Radius.circular(24),
                 ),
-                color:
-                    context.isDarkMode ? SMobillsColors.darkBlue : Colors.white,
               ),
               child: Column(
                 children: [

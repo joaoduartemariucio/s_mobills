@@ -32,7 +32,6 @@ class MonthlySelect extends StatelessWidget {
           Text(
             title,
             style: SMobillsTextStyles.h6.copyWith(
-              color: context.isDarkMode ? Colors.blue : Colors.white,
               fontWeight: FontWeight.w500,
             ),
           ),

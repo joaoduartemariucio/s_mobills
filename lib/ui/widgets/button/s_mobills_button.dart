@@ -15,7 +15,6 @@ class SMobillsButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: context.isDarkMode ? Colors.black : Colors.blue,
         fixedSize: const Size(200, 50),
       ),
       onPressed: onPressed,
@@ -23,7 +22,6 @@ class SMobillsButton extends StatelessWidget {
         title,
         style: SMobillsTextStyles.button.copyWith(
           fontSize: FontSize.subtitle1,
-          color: context.isDarkMode ? Colors.blue : Colors.white,
         ),
       ),
     );

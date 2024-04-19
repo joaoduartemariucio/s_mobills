@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:dio_cache_interceptor_hive_store/dio_cache_interceptor_hive_store.dart';
@@ -6,7 +8,7 @@ import 'package:get_it/get_it.dart';
 import 'package:s_mobills/core/core.dart';
 
 class NetworkingDI {
-  static Future<void> initializeDependencies() async {
+  static FutureOr<void> initializeDependencies() async {
     await KeyValueStorageBase.init();
     await PathProviderService.init();
 

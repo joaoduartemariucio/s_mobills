@@ -23,7 +23,6 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.isDarkMode ? Colors.blue : Colors.black,
       body: Stack(
         children: [
           const AuthHeader(),
@@ -38,7 +37,6 @@ class LoginView extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: SMobillsTextStyles.h4.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: context.isDarkMode ? Colors.blue : Colors.black,
                   ),
                 ),
                 SizedBox(
@@ -66,9 +64,7 @@ class LoginView extends StatelessWidget {
                     Text(
                       context.l10n.dontHaveAccount,
                       textAlign: TextAlign.center,
-                      style: SMobillsTextStyles.body1.copyWith(
-                        color: context.isDarkMode ? Colors.grey : Colors.black,
-                      ),
+                      style: SMobillsTextStyles.body1,
                     ),
                     const SizedBox(
                       width: 8,
@@ -77,9 +73,7 @@ class LoginView extends StatelessWidget {
                       child: Text(
                         context.l10n.signUp,
                         textAlign: TextAlign.center,
-                        style: SMobillsTextStyles.button.copyWith(
-                          color: Colors.blue,
-                        ),
+                        style: SMobillsTextStyles.button,
                       ),
                     ),
                   ],

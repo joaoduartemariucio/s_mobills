@@ -23,7 +23,6 @@ class SignUpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.isDarkMode ? Colors.blue : Colors.black,
       body: Stack(
         children: [
           const AuthHeader(),
@@ -38,7 +37,6 @@ class SignUpView extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: SMobillsTextStyles.h4.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: context.isDarkMode ? Colors.blue : Colors.black,
                   ),
                 ),
                 SizedBox(

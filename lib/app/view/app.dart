@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_flavor/flutter_flavor.dart';
+import 'package:s_mobills/core/navigation/routes/app_router.dart';
 import 'package:s_mobills/l10n/l10n.dart';
-import 'package:s_mobills/modules/transactions/presentation/main/view/transactions_page.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  const App({
+    required this.theme,
+    required this.darkTheme,
+    super.key,
+  });
+
+  final ThemeData theme;
+  final ThemeData darkTheme;
 
   @override
   Widget build(BuildContext context) {
     return FlavorBanner(
-      child: MaterialApp(
-        theme: ThemeData(
-          appBarTheme: AppBarTheme(
-            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          ),
-          useMaterial3: true,
-        ),
+      child: MaterialApp.router(
+        theme: theme,
+        darkTheme: darkTheme,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        home: const TransactionsPage(),
         debugShowCheckedModeBanner: false,
+        routeInformationProvider: AppRouter.router.routeInformationProvider,
+        routeInformationParser: AppRouter.router.routeInformationParser,
+        routerDelegate: AppRouter.router.routerDelegate,
       ),
     );
   }
