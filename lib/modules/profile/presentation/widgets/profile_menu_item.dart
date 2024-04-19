@@ -27,13 +27,16 @@ class ProfileMenuItem extends StatelessWidget {
               Icon(
                 icon,
                 size: 36,
+                color: context.colorScheme.onBackground,
               ),
               const SizedBox(
                 width: 16,
               ),
               Text(
                 title,
-                style: SMobillsTextStyles.h6,
+                style: SMobillsTextStyles.h6.copyWith(
+                  color: context.colorScheme.onBackground,
+                ),
               ),
             ],
           ),

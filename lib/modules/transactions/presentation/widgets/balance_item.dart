@@ -19,7 +19,7 @@ class BalanceItem extends StatelessWidget {
       children: [
         Icon(
           icon,
-          color: Colors.white,
+          color: context.colorScheme.onPrimary,
           size: 32,
         ),
         SMobillsInline.md,
@@ -28,13 +28,13 @@ class BalanceItem extends StatelessWidget {
             Text(
               title,
               style: SMobillsTextStyles.caption.copyWith(
-                color: Colors.white,
+                color: context.colorScheme.onPrimary,
               ),
             ),
             Text(
               value,
               style: SMobillsTextStyles.h6.copyWith(
-                color: Colors.white,
+                color: context.colorScheme.onPrimary,
                 fontWeight: FontWeight.bold,
               ),
             ),

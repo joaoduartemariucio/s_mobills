@@ -22,9 +22,9 @@ class MonthlySelect extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: onTapBack.call,
-            child: const Icon(
+            child: Icon(
               Icons.keyboard_arrow_left_outlined,
-              color: Colors.white,
+              color: context.colorScheme.onPrimary,
               size: 32,
             ),
           ),
@@ -33,14 +33,15 @@ class MonthlySelect extends StatelessWidget {
             title,
             style: SMobillsTextStyles.h6.copyWith(
               fontWeight: FontWeight.w500,
+              color: context.colorScheme.onPrimary,
             ),
           ),
           SMobillsInline.custom(100),
           GestureDetector(
             onTap: onTapNext,
-            child: const Icon(
+            child: Icon(
               Icons.keyboard_arrow_right_outlined,
-              color: Colors.white,
+              color: context.colorScheme.onPrimary,
               size: 32,
             ),
           ),

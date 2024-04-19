@@ -26,6 +26,7 @@ class ProfileView extends StatelessWidget {
       appBar: SMobillsAppBar(
         title: context.l10n.profile,
       ),
+      backgroundColor: context.colorScheme.primary,
       body: Column(
         children: [
           Container(
@@ -46,16 +47,20 @@ class ProfileView extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                const Text(
+                Text(
                   'João Vitor Duarte Mariucio',
-                  style: SMobillsTextStyles.h6,
+                  style: SMobillsTextStyles.h6.copyWith(
+                    color: context.colorScheme.onPrimary,
+                  ),
                 ),
                 const SizedBox(
                   height: 4,
                 ),
-                const Text(
+                Text(
                   'joaovitorduartemariucio@gmail.com',
-                  style: SMobillsTextStyles.subtitle1,
+                  style: SMobillsTextStyles.subtitle1.copyWith(
+                    color: context.colorScheme.onPrimary.withAlpha(150),
+                  ),
                 ),
               ],
             ),
@@ -63,16 +68,28 @@ class ProfileView extends StatelessWidget {
           Expanded(
             child: Container(
               padding: const EdgeInsets.all(16),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(24),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(24),
+                  topLeft: Radius.circular(24),
                 ),
+                color: context.colorScheme.background,
               ),
               child: Column(
                 children: [
                   ProfileMenuItem(
                     title: context.l10n.myRegistration,
                     icon: Icons.person_outlined,
+                    onTap: () {},
+                  ),
+                  ProfileMenuItem(
+                    title: context.l10n.myWallet,
+                    icon: Icons.credit_card_outlined,
+                    onTap: () {},
+                  ),
+                  ProfileMenuItem(
+                    title: context.l10n.bankAccounts,
+                    icon: Icons.wallet_outlined,
                     onTap: () {},
                   ),
                   ProfileMenuItem(

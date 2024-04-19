@@ -1,5 +1,5 @@
 {
-    "@@locale": "es",
+    "@@locale": "pt",
     "appName": "SMobills",
     "login": "Login",
     "email": "E-mail",
@@ -11,6 +11,8 @@
     "profile": "Perfil",
     "cancel": "Cancelar",
     "myRegistration": "Meu cadastro",
+    "myWallet": "Cartões",
+    "bankAccounts": "Contas bancárias",
     "exit": "Sair",
     "transactions": "Transações",
     "currentBalance": "Saldo atual",

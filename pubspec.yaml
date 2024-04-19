@@ -40,9 +40,6 @@ dev_dependencies:
   very_good_analysis: ^5.1.0
 
 flutter:
-  assets:
-    - lib/resources/theme/s_mobills_theme.json
-    - lib/resources/theme/s_mobills_theme_dark.json
   fonts:
     - family: Roboto
       fonts:

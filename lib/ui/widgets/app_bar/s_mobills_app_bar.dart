@@ -6,11 +6,13 @@ class SMobillsAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     required this.title,
     this.bottom,
+    this.elevation,
     this.customPreferredSize,
   });
 
   final String title;
   final PreferredSizeWidget? bottom;
+  final double? elevation;
   final Size? customPreferredSize;
 
   @override
@@ -21,14 +23,17 @@ class SMobillsAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
+      backgroundColor: context.colorScheme.primary,
       title: Text(
         title,
         style: SMobillsTextStyles.h6.copyWith(
           fontWeight: FontWeight.w700,
+          color: context.colorScheme.onPrimary,
         ),
       ),
       bottom: bottom,
-      elevation: 8,
+      elevation: elevation,
+      shadowColor: context.colorScheme.shadow,
     );
   }
 }

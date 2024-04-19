@@ -34,7 +34,9 @@ class TransactionsView extends StatelessWidget {
         customPreferredSize: Size.fromHeight(
           context.mediaQuery.size.height * 0.18,
         ),
+        elevation: 8,
       ),
+      backgroundColor: context.colorScheme.background,
       body: GroupedListView<dynamic, String>(
         elements: transactions,
         groupBy: (element) {

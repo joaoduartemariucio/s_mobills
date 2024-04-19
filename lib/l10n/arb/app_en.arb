@@ -11,6 +11,8 @@
     "profile": "Profile",
     "cancel": "Cancel",
     "myRegistration": "My registration",
+    "myWallet": "Cards",
+    "bankAccounts": "Bank accounts",
     "exit": "Exit",
     "transactions": "Transactions",
     "currentBalance": "Current balance",
