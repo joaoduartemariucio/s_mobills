@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_flavor/flutter_flavor.dart';
 import 'package:s_mobills/l10n/l10n.dart';
-// import 'package:s_mobills/modules/login/view/login_page.dart';
-import 'package:s_mobills/modules/auth/auth.dart';
+import 'package:s_mobills/modules/transactions/presentation/main/view/transactions_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -19,7 +18,7 @@ class App extends StatelessWidget {
         ),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        home: const LoginPage(),
+        home: const TransactionsPage(),
         debugShowCheckedModeBanner: false,
       ),
     );

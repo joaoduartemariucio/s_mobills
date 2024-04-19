@@ -1,6 +1,68 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
+
+class SMobillsSpacing {
+  /// Spacing 4
+  static const xm = SizedBox(
+    height: 4,
+  );
+
+  /// Spacing 8
+  static const sm = SizedBox(
+    height: 8,
+  );
+
+  /// Spacing 16
+  static const md = SizedBox(
+    height: 16,
+  );
+
+  /// Spacing 24
+  static const lg = SizedBox(
+    height: 24,
+  );
+
+  /// Spacing 32
+  static const xlg = SizedBox(
+    height: 32,
+  );
+}
+
+class SMobillsInline {
+  /// Spacing 4
+  static const xm = SizedBox(
+    width: 4,
+  );
+
+  /// Spacing 8
+  static const sm = SizedBox(
+    width: 8,
+  );
+
+  /// Spacing 16
+  static const md = SizedBox(
+    width: 16,
+  );
+
+  /// Spacing 24
+  static const lg = SizedBox(
+    width: 24,
+  );
+
+  /// Spacing 32
+  static const xlg = SizedBox(
+    width: 32,
+  );
+
+  static SizedBox custom(double size) {
+    return SizedBox(
+      width: size,
+    );
+  }
+}
 
 @immutable
 class SMobillsTextStyles {
@@ -183,4 +245,38 @@ extension BuildContextExtension on BuildContext {
 
 class SMobillsColors {
   static const darkBlue = Color.fromARGB(255, 31, 34, 42);
+
+  static Color randomColor() {
+    const min = 50;
+    const max = 200;
+    final red = min + Random().nextInt(max - min);
+    final green = min + Random().nextInt(max - min);
+    final blue = min + Random().nextInt(max - min);
+    return Color.fromARGB(255, red, green, blue);
+  }
+}
+
+class SMobillsDivider extends StatelessWidget {
+  const SMobillsDivider({
+    super.key,
+    required this.isVertical,
+    this.margin,
+  });
+
+  final bool isVertical;
+  final EdgeInsets? margin;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: isVertical ? 50 : 0.50,
+      width: isVertical ? 0.50 : context.mediaQuery.size.width,
+      margin: margin ??
+          EdgeInsets.symmetric(
+            vertical: 8,
+            horizontal: isVertical ? 8 : 0,
+          ),
+      color: context.isDarkMode ? Colors.grey : Colors.white,
+    );
+  }
 }

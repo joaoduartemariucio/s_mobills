@@ -1,9 +1,5 @@
 {
     "@@locale": "es",
-    "counterAppBarTitle": "Contador",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
-    },
     "appName": "SMobills",
     "login": "Login",
     "email": "E-mail",
@@ -11,5 +7,21 @@
     "dontHaveAccount": "Não tem uma conta?",
     "signUp": "Criar conta",
     "name": "Nome",
-    "age": "Idade"
+    "age": "Idade",
+    "profile": "Perfil",
+    "cancel": "Cancelar",
+    "myRegistration": "Meu cadastro",
+    "exit": "Sair",
+    "transactions": "Transações",
+    "currentBalance": "Saldo atual",
+    "monthlyBalance": "Balanço mensal",
+    "today": "Hoje",
+    "yesterday": "Ontem",
+    "sunday": "Segunda-feira",
+    "monday": "Terça-feira",
+    "tuesday": "Quarta-feira",
+    "wednesday": "Quinta-feira",
+    "thursday": "Sexta-feira",
+    "friday": "Sábado",
+    "saturday": "Domingo"
 }

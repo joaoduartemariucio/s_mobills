@@ -1,9 +1,5 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    },
     "appName": "SMobills",
     "login": "Login",
     "email": "E-mail",
@@ -11,5 +7,21 @@
     "dontHaveAccount": "Don't have an account?",
     "signUp": "Sign up",
     "name": "Name",
-    "age": "Age"
+    "age": "Age",
+    "profile": "Profile",
+    "cancel": "Cancel",
+    "myRegistration": "My registration",
+    "exit": "Exit",
+    "transactions": "Transactions",
+    "currentBalance": "Current balance",
+    "monthlyBalance": "Monthly balance",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "sunday": "Sunday",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday"
 }
