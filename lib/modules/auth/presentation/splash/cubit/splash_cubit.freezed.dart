@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'sign_up_cubit.dart';
+part of 'splash_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$SignUpState {
+mixin _$SplashState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -51,16 +51,16 @@ mixin _$SignUpState {
 }
 
 /// @nodoc
-abstract class $SignUpStateCopyWith<$Res> {
-  factory $SignUpStateCopyWith(
-          SignUpState value, $Res Function(SignUpState) then) =
-      _$SignUpStateCopyWithImpl<$Res, SignUpState>;
+abstract class $SplashStateCopyWith<$Res> {
+  factory $SplashStateCopyWith(
+          SplashState value, $Res Function(SplashState) then) =
+      _$SplashStateCopyWithImpl<$Res, SplashState>;
 }
 
 /// @nodoc
-class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
-    implements $SignUpStateCopyWith<$Res> {
-  _$SignUpStateCopyWithImpl(this._value, this._then);
+class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
+    implements $SplashStateCopyWith<$Res> {
+  _$SplashStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -77,7 +77,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$SignUpStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$SplashStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -91,7 +91,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'SignUpState.initial()';
+    return 'SplashState.initial()';
   }
 
   @override
@@ -160,6 +160,6 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements SignUpState {
+abstract class _Initial implements SplashState {
   const factory _Initial() = _$InitialImpl;
 }

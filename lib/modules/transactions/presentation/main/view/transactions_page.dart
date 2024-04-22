@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_dynamic_calls
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grouped_list/grouped_list.dart';
@@ -32,7 +34,9 @@ class TransactionsView extends StatelessWidget {
         title: context.l10n.transactions,
         bottom: const TransactionAppBarBottom(),
         customPreferredSize: Size.fromHeight(
-          context.mediaQuery.size.height * 0.18,
+          Platform.isAndroid
+              ? context.mediaQuery.size.height * 0.25
+              : context.mediaQuery.size.height * 0.225,
         ),
         elevation: 8,
       ),

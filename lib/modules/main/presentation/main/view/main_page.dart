@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:s_mobills/core/navigation/cubit/navigation_cubit.dart';
 import 'package:s_mobills/core/navigation/routes/app_router.dart';
 import 'package:s_mobills/l10n/l10n.dart';
+import 'package:s_mobills/ui/ui.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({required this.screen, super.key});
@@ -24,13 +25,18 @@ class MainPage extends StatelessWidget {
                 context.go(tabs[value].initialLocation);
               }
             },
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
+            selectedLabelStyle: SMobillsTextStyles.button,
+            unselectedLabelStyle: SMobillsTextStyles.button,
+            selectedItemColor: context.colorScheme.onPrimary,
             elevation: 0,
-            backgroundColor: Colors.black,
-            unselectedItemColor: Colors.white,
+            backgroundColor: context.colorScheme.primary,
+            unselectedItemColor:
+                context.colorScheme.onPrimary.withOpacity(0.75),
             selectedIconTheme: IconThemeData(
               size: IconTheme.of(context).size! * 1.3,
+              color: context.colorScheme.onPrimary,
             ),
             items: tabs,
             currentIndex: state.index,

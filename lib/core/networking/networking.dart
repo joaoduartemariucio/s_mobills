@@ -1,5 +1,5 @@
 export 'di/networking_di.dart';
-export 'dio/dio_service.dart';
-export 'http/http.dart';
+export 'endpoints/endpoints.dart';
 export 'interceptors/interceptors.dart';
 export 'model/model.dart';
+export 'network_service.dart';

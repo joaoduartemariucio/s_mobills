@@ -19,10 +19,11 @@ class AuthContainer extends StatelessWidget {
       padding: const EdgeInsets.only(top: 16),
       height: context.mediaQuery.size.height,
       width: context.mediaQuery.size.width,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(
           Radius.circular(24),
         ),
+        color: context.colorScheme.background,
       ),
       child: child,
     );

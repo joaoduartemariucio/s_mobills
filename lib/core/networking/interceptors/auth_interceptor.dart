@@ -31,7 +31,7 @@ class AuthInterceptor extends Interceptor {
     Response response,
     ResponseInterceptorHandler handler,
   ) {
-    final success = response.data['headers']['error'] == 0;
+    final success = response.data != null;
 
     if (success) return handler.next(response);
 

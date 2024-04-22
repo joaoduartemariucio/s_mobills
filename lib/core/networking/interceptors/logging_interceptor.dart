@@ -65,18 +65,17 @@ class LoggingInterceptor extends Interceptor {
     final httpMethod = err.requestOptions.method.toUpperCase();
     final url = err.requestOptions.baseUrl + err.requestOptions.path;
 
-    debugPrint('\tMETHOD: $httpMethod'); // GET
-    debugPrint('\tURL: $url'); // URL
+    debugPrint('\tMETHOD: $httpMethod');
+    debugPrint('\tURL: $url');
     if (err.response != null) {
       debugPrint('\tStatus code: ${err.response!.statusCode}');
       if (err.response!.data != null) {
-        final headers = err.response!.data['headers'] as JSON; //API Dependant
-        final message = headers['message'] as String; //API Dependant
-        final code = headers['code'] as String; //API Dependant
+        final headers = err.response!.data['headers'] as JSON;
+        final message = headers['message'] as String;
+        final code = headers['code'] as String;
         debugPrint('\tException: $code');
         debugPrint('\tMessage: $message');
         if (headers.containsKey('data')) {
-          //API Dependant
           final data = headers['data'] as List<Object?>;
           if (data.isNotEmpty) {
             debugPrint('\tData: $data');

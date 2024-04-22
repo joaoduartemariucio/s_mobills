@@ -12,7 +12,7 @@ class TransactionAppBarBottom extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 14),
       child: Column(
         children: [
           MonthlySelect(

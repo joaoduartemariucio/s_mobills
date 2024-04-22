@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:s_mobills/core/navigation/cubit/navigation_cubit.dart';
+import 'package:s_mobills/modules/auth/auth.dart';
+import 'package:s_mobills/modules/auth/presentation/splash/view/splash_page.dart';
 import 'package:s_mobills/modules/home/presentation/main/view/home_page.dart';
 import 'package:s_mobills/modules/main/presentation/main/view/main_page.dart';
 import 'package:s_mobills/modules/profile/presentation/main/view/profile_page.dart';
 import 'package:s_mobills/modules/transactions/presentation/main/view/transactions_page.dart';
 
 enum Routes {
+  splash,
   sign,
   login,
   home,
@@ -18,6 +21,8 @@ enum Routes {
 extension RoutesExtension on Routes {
   String get name {
     switch (this) {
+      case Routes.splash:
+        return '/splash';
       case Routes.sign:
         return '/sign';
       case Routes.login:
@@ -37,7 +42,7 @@ class AppRouter {
   static final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   static final GoRouter _router = GoRouter(
-    initialLocation: Routes.home.name,
+    initialLocation: Routes.splash.name,
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
     routes: [
@@ -81,6 +86,24 @@ class AppRouter {
             ),
           ),
         ],
+      ),
+      GoRoute(
+        path: Routes.splash.name,
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: SplashPage(),
+        ),
+      ),
+      GoRoute(
+        path: Routes.login.name,
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: LoginPage(),
+        ),
+      ),
+      GoRoute(
+        path: Routes.sign.name,
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: SignUpPage(),
+        ),
       ),
     ],
     errorBuilder: (context, state) => const Text('Not founds'),

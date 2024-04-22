@@ -16,13 +16,14 @@ class SMobillsButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         fixedSize: const Size(200, 50),
+        backgroundColor: context.colorScheme.primaryContainer,
       ),
       onPressed: onPressed,
       child: Text(
         title,
         style: SMobillsTextStyles.button.copyWith(
-          fontSize: FontSize.subtitle1,
-        ),
+            fontSize: FontSize.subtitle1,
+            color: context.colorScheme.onPrimaryContainer),
       ),
     );
   }

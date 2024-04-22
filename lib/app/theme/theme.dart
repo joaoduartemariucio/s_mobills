@@ -52,7 +52,7 @@ const darkColorScheme = ColorScheme(
   errorContainer: Color(0xFF93000A),
   onError: Color(0xFF690005),
   onErrorContainer: Color(0xFFFFDAD6),
-  background: Color(0xFF292929),
+  background: Color.fromARGB(255, 25, 25, 25),
   onBackground: Color(0xFFE0E0E0),
   surface: Color(0xFF1A1C1E),
   onSurface: Color(0xFFE3E2E6),
