@@ -3,8 +3,8 @@ import 'package:s_mobills/ui/ui.dart';
 
 class AuthContainer extends StatelessWidget {
   const AuthContainer({
-    super.key,
     required this.child,
+    super.key,
   });
 
   final Widget child;
@@ -17,7 +17,7 @@ class AuthContainer extends StatelessWidget {
         horizontal: context.mediaQuery.size.width * 0.08,
       ),
       padding: const EdgeInsets.only(top: 16),
-      height: context.mediaQuery.size.height,
+      height: context.mediaQuery.size.height * 0.70,
       width: context.mediaQuery.size.width,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(

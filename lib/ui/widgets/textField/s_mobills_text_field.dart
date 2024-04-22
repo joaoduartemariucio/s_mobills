@@ -9,10 +9,12 @@ class SMobillsTextField extends StatelessWidget {
     super.key,
     this.onChanged,
     this.controller,
+    this.obscureText,
   });
 
   final TextEditingController? controller;
   final String hintText;
+  final bool? obscureText;
   final Function(String)? onChanged;
 
   @override
@@ -22,6 +24,7 @@ class SMobillsTextField extends StatelessWidget {
       child: TextField(
         controller: controller,
         onChanged: onChanged,
+        obscureText: obscureText ?? false,
         style: SMobillsTextStyles.body1,
         decoration: InputDecoration(
           hintText: hintText,

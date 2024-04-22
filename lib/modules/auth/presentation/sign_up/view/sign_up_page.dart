@@ -30,64 +30,63 @@ class SignUpView extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: context.colorScheme.secondary,
-          body: BlocBuilder<SignUpCubit, SignUpState>(
-            builder: (context, state) {
-              return Stack(
-                children: [
-                  const AuthHeader(),
-                  AuthContainer(
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 8,
+          body: SingleChildScrollView(
+            child: Stack(
+              children: [
+                const AuthHeader(),
+                AuthContainer(
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        context.l10n.signUp,
+                        textAlign: TextAlign.center,
+                        style: SMobillsTextStyles.h4.copyWith(
+                          fontWeight: FontWeight.bold,
                         ),
-                        Text(
-                          context.l10n.signUp,
-                          textAlign: TextAlign.center,
-                          style: SMobillsTextStyles.h4.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
-                          height: context.mediaQuery.size.height * 0.025,
-                        ),
-                        SMobillsTextField(
-                          hintText: context.l10n.name,
-                          controller: context
-                              .read<SignUpCubit>()
-                              .nameTextEditingController,
-                        ),
-                        SMobillsTextField(
-                          hintText: context.l10n.age,
-                          controller: context
-                              .read<SignUpCubit>()
-                              .ageTextEditingController,
-                        ),
-                        SMobillsTextField(
-                          hintText: context.l10n.email,
-                          controller: context
-                              .read<SignUpCubit>()
-                              .emailTextEditingController,
-                        ),
-                        SMobillsTextField(
-                          hintText: context.l10n.password,
-                          controller: context
-                              .read<SignUpCubit>()
-                              .passwordTextEditingController,
-                        ),
-                        SizedBox(
-                          height: context.mediaQuery.size.height * 0.075,
-                        ),
-                        SMobillsButton(
-                          title: context.l10n.signUp,
-                          onPressed: context.read<SignUpCubit>().createAccount,
-                        ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                        height: context.mediaQuery.size.height * 0.025,
+                      ),
+                      SMobillsTextField(
+                        hintText: context.l10n.name,
+                        controller: context
+                            .read<SignUpCubit>()
+                            .nameTextEditingController,
+                      ),
+                      SMobillsTextField(
+                        hintText: context.l10n.age,
+                        controller: context
+                            .read<SignUpCubit>()
+                            .ageTextEditingController,
+                      ),
+                      SMobillsTextField(
+                        hintText: context.l10n.email,
+                        controller: context
+                            .read<SignUpCubit>()
+                            .emailTextEditingController,
+                      ),
+                      SMobillsTextField(
+                        hintText: context.l10n.password,
+                        controller: context
+                            .read<SignUpCubit>()
+                            .passwordTextEditingController,
+                        obscureText: true,
+                      ),
+                      SizedBox(
+                        height: context.mediaQuery.size.height * 0.075,
+                      ),
+                      SMobillsButton(
+                        title: context.l10n.signUp,
+                        onPressed: context.read<SignUpCubit>().createAccount,
+                      ),
+                    ],
                   ),
-                ],
-              );
-            },
+                ),
+              ],
+            ),
           ),
         );
       },

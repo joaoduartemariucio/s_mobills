@@ -30,73 +30,77 @@ class LoginView extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: context.colorScheme.secondary,
-          body: Stack(
-            children: [
-              const AuthHeader(),
-              AuthContainer(
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      context.l10n.login,
-                      textAlign: TextAlign.center,
-                      style: SMobillsTextStyles.h4.copyWith(
-                        fontWeight: FontWeight.bold,
+          body: SingleChildScrollView(
+            child: Stack(
+              children: [
+                const AuthHeader(),
+                AuthContainer(
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 8,
                       ),
-                    ),
-                    SizedBox(
-                      height: context.mediaQuery.size.height * 0.075,
-                    ),
-                    SMobillsTextField(
-                      controller:
-                          context.read<LoginCubit>().emailTextEditingController,
-                      hintText: context.l10n.email,
-                    ),
-                    SMobillsTextField(
-                      controller: context
-                          .read<LoginCubit>()
-                          .passwordTextEditingController,
-                      hintText: context.l10n.password,
-                    ),
-                    SizedBox(
-                      height: context.mediaQuery.size.height * 0.075,
-                    ),
-                    SMobillsButton(
-                      title: context.l10n.login,
-                      onPressed: context.read<LoginCubit>().login,
-                    ),
-                    SizedBox(
-                      height: context.mediaQuery.size.height * 0.075,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          context.l10n.dontHaveAccount,
-                          textAlign: TextAlign.center,
-                          style: SMobillsTextStyles.body1,
+                      Text(
+                        context.l10n.login,
+                        textAlign: TextAlign.center,
+                        style: SMobillsTextStyles.h4.copyWith(
+                          fontWeight: FontWeight.bold,
                         ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        GestureDetector(
-                          onTap: context.read<LoginCubit>().signUp,
-                          child: Text(
-                            context.l10n.signUp,
+                      ),
+                      SizedBox(
+                        height: context.mediaQuery.size.height * 0.075,
+                      ),
+                      SMobillsTextField(
+                        controller: context
+                            .read<LoginCubit>()
+                            .emailTextEditingController,
+                        hintText: context.l10n.email,
+                      ),
+                      SMobillsTextField(
+                        controller: context
+                            .read<LoginCubit>()
+                            .passwordTextEditingController,
+                        hintText: context.l10n.password,
+                        obscureText: true,
+                      ),
+                      SizedBox(
+                        height: context.mediaQuery.size.height * 0.075,
+                      ),
+                      SMobillsButton(
+                        title: context.l10n.login,
+                        onPressed: context.read<LoginCubit>().login,
+                      ),
+                      SizedBox(
+                        height: context.mediaQuery.size.height * 0.075,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            context.l10n.dontHaveAccount,
                             textAlign: TextAlign.center,
-                            style: SMobillsTextStyles.button.copyWith(
-                              color: context.colorScheme.inversePrimary,
+                            style: SMobillsTextStyles.body1,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          GestureDetector(
+                            onTap: context.read<LoginCubit>().signUp,
+                            child: Text(
+                              context.l10n.signUp,
+                              textAlign: TextAlign.center,
+                              style: SMobillsTextStyles.button.copyWith(
+                                color: context.colorScheme.inversePrimary,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

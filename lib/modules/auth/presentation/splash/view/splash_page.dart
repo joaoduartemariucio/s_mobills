@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:s_mobills/core/local/key_value_storage_service.dart';
 import 'package:s_mobills/l10n/l10n.dart';
-import 'package:s_mobills/modules/auth/auth.dart';
 import 'package:s_mobills/modules/auth/presentation/splash/cubit/splash_cubit.dart';
 import 'package:s_mobills/ui/ui.dart';
 

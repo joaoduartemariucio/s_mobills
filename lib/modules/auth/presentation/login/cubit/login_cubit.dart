@@ -40,7 +40,7 @@ class LoginCubit extends Cubit<LoginState> {
 
       AppRouter.router.go(Routes.home.name);
     } on SMobillsException catch (e) {
-      print(e);
+      print(e.message);
     } finally {
       emit(state.copyWith(isLoading: false));
     }
