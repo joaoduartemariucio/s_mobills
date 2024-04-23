@@ -8,6 +8,7 @@ import 'package:s_mobills/modules/home/presentation/main/view/home_page.dart';
 import 'package:s_mobills/modules/main/presentation/main/view/main_page.dart';
 import 'package:s_mobills/modules/profile/presentation/main/view/profile_page.dart';
 import 'package:s_mobills/modules/transactions/presentation/main/view/transactions_page.dart';
+import 'package:s_mobills/ui/ui.dart';
 
 enum Routes {
   splash,
@@ -106,8 +107,42 @@ class AppRouter {
         ),
       ),
     ],
-    errorBuilder: (context, state) => const Text('Not founds'),
+    errorBuilder: (context, state) => const Text('Not found'),
   );
 
   static GoRouter get router => _router;
+
+  static void showError({required String message}) {
+    final context = _rootNavigatorKey.currentContext!;
+    final snackBar = SnackBar(
+      backgroundColor: context.colorScheme.errorContainer,
+      content: Text(
+        message,
+        style: SMobillsTextStyles.body1.copyWith(
+          color: context.colorScheme.onErrorContainer,
+        ),
+      ),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      snackBar,
+    );
+  }
+
+  static void showSuccess({required String message}) {
+    final context = _rootNavigatorKey.currentContext!;
+    final snackBar = SnackBar(
+      backgroundColor: Colors.green.shade900,
+      content: Text(
+        message,
+        style: SMobillsTextStyles.body1.copyWith(
+          color: Colors.white70,
+        ),
+      ),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      snackBar,
+    );
+  }
 }

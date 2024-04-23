@@ -81,6 +81,7 @@ class SignUpView extends StatelessWidget {
                       SMobillsButton(
                         title: context.l10n.signUp,
                         onPressed: context.read<SignUpCubit>().createAccount,
+                        isLoading: state.isLoading,
                       ),
                     ],
                   ),

@@ -14,6 +14,8 @@ class SplashCubit extends Cubit<SplashState> {
   final KeyValueStorageService storage;
 
   Future<void> checkIfUserAuthenticated() async {
+    storage.resetKeys();
+
     final token = await storage.getAuthToken();
 
     await Future.delayed(const Duration(seconds: 3));

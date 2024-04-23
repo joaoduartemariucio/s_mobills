@@ -40,14 +40,13 @@ class LoginCubit extends Cubit<LoginState> {
 
       AppRouter.router.go(Routes.home.name);
     } on SMobillsException catch (e) {
-      print(e.message);
+      AppRouter.showError(message: e.message);
     } finally {
       emit(state.copyWith(isLoading: false));
     }
   }
 
-  Future<void> signUp() async {
-    final result = await AppRouter.router.push(Routes.sign.name);
-    print(result);
+  void signUp() {
+    AppRouter.router.push(Routes.sign.name);
   }
 }

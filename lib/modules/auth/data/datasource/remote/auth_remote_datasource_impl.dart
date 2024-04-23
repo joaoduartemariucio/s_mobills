@@ -12,8 +12,9 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   final NetworkService http;
 
   @override
-  Future<Result<UserResponse>> createAccount(
-      {required UserRequest user}) async {
+  Future<Result<UserResponse>> createAccount({
+    required UserRequest user,
+  }) async {
     final data = user.toJson();
 
     return http.performRequest<UserResponse>(

@@ -69,6 +69,7 @@ class LoginView extends StatelessWidget {
                       SMobillsButton(
                         title: context.l10n.login,
                         onPressed: context.read<LoginCubit>().login,
+                        isLoading: state.isLoading,
                       ),
                       SizedBox(
                         height: context.mediaQuery.size.height * 0.075,

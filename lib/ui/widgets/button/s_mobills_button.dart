@@ -1,3 +1,4 @@
+// ignore_for_file: always_put_required_named_parameters_first
 import 'package:flutter/material.dart';
 import 'package:s_mobills/ui/utils/s_mobills_styles.dart';
 
@@ -6,25 +7,36 @@ class SMobillsButton extends StatelessWidget {
     super.key,
     required this.title,
     required this.onPressed,
+    this.isLoading,
   });
 
   final String title;
   final VoidCallback onPressed;
+  final bool? isLoading;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: const Size(200, 50),
+        fixedSize: Size(
+          (isLoading ?? false) ? 85 : 200,
+          (isLoading ?? false) ? 60 : 50,
+        ),
         backgroundColor: context.colorScheme.primaryContainer,
       ),
-      onPressed: onPressed,
-      child: Text(
-        title,
-        style: SMobillsTextStyles.button.copyWith(
-            fontSize: FontSize.subtitle1,
-            color: context.colorScheme.onPrimaryContainer),
-      ),
+      onPressed: (isLoading ?? false) ? null : onPressed,
+      child: (isLoading ?? false)
+          ? CircularProgressIndicator(
+              color: context.colorScheme.primaryContainer,
+              backgroundColor: context.colorScheme.onPrimaryContainer,
+            )
+          : Text(
+              title,
+              style: SMobillsTextStyles.button.copyWith(
+                fontSize: FontSize.subtitle1,
+                color: context.colorScheme.onPrimaryContainer,
+              ),
+            ),
     );
   }
 }

@@ -5,24 +5,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// Base class containing a unified API for key-value pairs' storage.
-/// This class provides low level methods for storing:
-/// - Sensitive keys using [FlutterSecureStorage]
-/// - Insensitive keys using [SharedPreferences]
 class KeyValueStorageBase {
-  /// Get instance of this class
   factory KeyValueStorageBase() => _instance ?? const KeyValueStorageBase._();
 
-  /// Private constructor
   const KeyValueStorageBase._();
 
-  /// Instance of shared preferences
   static SharedPreferences? _sharedPrefs;
-
-  /// Instance of flutter secure storage
   static FlutterSecureStorage? _secureStorage;
-
-  /// Singleton instance of KeyValueStorage Helper
   static KeyValueStorageBase? _instance;
 
   /// Initializer for shared prefs and flutter secure storage

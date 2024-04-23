@@ -3,7 +3,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:s_mobills/core/helpers/typedefs.dart';
 
 class LoggingInterceptor extends Interceptor {
   @override
@@ -69,21 +68,12 @@ class LoggingInterceptor extends Interceptor {
     debugPrint('\tURL: $url');
     if (err.response != null) {
       debugPrint('\tStatus code: ${err.response!.statusCode}');
-      if (err.response!.data != null) {
-        final headers = err.response!.data['headers'] as JSON;
-        final message = headers['message'] as String;
-        final code = headers['code'] as String;
-        debugPrint('\tException: $code');
-        debugPrint('\tMessage: $message');
-        if (headers.containsKey('data')) {
-          final data = headers['data'] as List<Object?>;
-          if (data.isNotEmpty) {
-            debugPrint('\tData: $data');
-          }
-        }
-      } else {
-        debugPrint('${err.response!.data}');
-      }
+      final data = err.response?.data;
+      final message = data['message'] as String;
+      final code = err.response?.statusMessage;
+      debugPrint('\tException: $code');
+      debugPrint('\tMessage: $message');
+      debugPrint('\tData: $data');
     } else if (err.error is SocketException) {
       const message = 'No internet connectivity';
       debugPrint('\tException: FetchDataException');
