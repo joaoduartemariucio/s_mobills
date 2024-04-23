@@ -6,6 +6,8 @@ import 'package:s_mobills/core/core.dart';
 import 'package:s_mobills/modules/wiring/modules_di.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   FlavorConfig(
     name: 'PROD',
     color: Colors.green,
