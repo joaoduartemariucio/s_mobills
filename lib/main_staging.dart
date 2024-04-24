@@ -9,7 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   FlavorConfig(
-    name: 'STG',
+    name: Constants.stg.name,
     color: Colors.yellow,
     location: BannerLocation.bottomStart,
     variables: {

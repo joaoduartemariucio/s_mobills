@@ -1,6 +1,17 @@
 enum Constants { dev, stg, prod }
 
 extension ConstantsExtension on Constants {
+  String get name {
+    switch (this) {
+      case Constants.dev:
+        return 'DEV';
+      case Constants.stg:
+        return 'STG';
+      case Constants.prod:
+        return 'PROD';
+    }
+  }
+
   String get baseUrl {
     switch (this) {
       case Constants.dev:
