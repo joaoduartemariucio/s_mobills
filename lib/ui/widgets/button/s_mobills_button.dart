@@ -8,22 +8,27 @@ class SMobillsButton extends StatelessWidget {
     required this.title,
     required this.onPressed,
     this.isLoading,
+    this.textStyle,
+    this.buttonStyle,
   });
 
   final String title;
   final VoidCallback onPressed;
   final bool? isLoading;
+  final TextStyle? textStyle;
+  final ButtonStyle? buttonStyle;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        fixedSize: Size(
-          (isLoading ?? false) ? 85 : 200,
-          (isLoading ?? false) ? 60 : 50,
-        ),
-        backgroundColor: context.colorScheme.primaryContainer,
-      ),
+      style: buttonStyle ??
+          ElevatedButton.styleFrom(
+            fixedSize: Size(
+              (isLoading ?? false) ? 85 : 200,
+              (isLoading ?? false) ? 60 : 50,
+            ),
+            backgroundColor: context.colorScheme.primaryContainer,
+          ),
       onPressed: (isLoading ?? false) ? null : onPressed,
       child: (isLoading ?? false)
           ? CircularProgressIndicator(
@@ -32,10 +37,11 @@ class SMobillsButton extends StatelessWidget {
             )
           : Text(
               title,
-              style: SMobillsTextStyles.button.copyWith(
-                fontSize: FontSize.subtitle1,
-                color: context.colorScheme.onPrimaryContainer,
-              ),
+              style: textStyle ??
+                  SMobillsTextStyles.button.copyWith(
+                    fontSize: FontSize.subtitle1,
+                    color: context.colorScheme.onPrimaryContainer,
+                  ),
             ),
     );
   }

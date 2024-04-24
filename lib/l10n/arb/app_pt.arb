@@ -27,5 +27,7 @@
     "friday": "Sábado",
     "saturday": "Domingo",
     "home": "Home",
-    "DeleteAccount": "Delete account"
+    "deleteAccount": "Deletar conta",
+    "editProfileDetails": "Edite as informações basicas do seu cadastro",
+    "save": "Salvar"
 }

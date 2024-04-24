@@ -17,7 +17,7 @@ class AuthInterceptor extends Interceptor {
       if (options.extra['requiresAuthToken'] == true) {
         final token = await storage.getAuthToken();
         options.headers.addAll(
-          <String, Object?>{'Authorization': 'Bearer $token'},
+          <String, Object?>{'Authorization': token},
         );
       }
 

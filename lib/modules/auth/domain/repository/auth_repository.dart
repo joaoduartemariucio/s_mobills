@@ -7,7 +7,11 @@ abstract class AuthRepository {
 
   Future<User> info();
 
+  Future<User> update({required UserUpdate user});
+
   Future<void> saveToken({required String value});
+
+  Future<void> delete();
 
   Future<void> removeToken();
 

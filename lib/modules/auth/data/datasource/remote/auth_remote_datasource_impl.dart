@@ -45,6 +45,23 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   }
 
   @override
+  Future<Result<UserResponse>> update({required UserUpdateRequest user}) {
+    return http.performRequest<UserResponse>(
+      request: AuthenticationEndpoint.edit.asRequest(),
+      data: user.toJson(),
+      converter: UserResponse.fromJson,
+    );
+  }
+
+  @override
+  Future<Result<void>> delete() {
+    return http.performRequest<void>(
+      request: AuthenticationEndpoint.deleteAccount.asRequest(),
+      converter: (response) {},
+    );
+  }
+
+  @override
   Future<Result<void>> logout() async {
     return http.performRequest<void>(
       request: AuthenticationEndpoint.logout.asRequest(),

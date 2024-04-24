@@ -45,6 +45,30 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
+  Future<User> update({required UserUpdate user}) async {
+    final data = UserUpdateRequest.toData(user: user);
+
+    final result = await remote.update(user: data);
+
+    if (result is Success) {
+      return User.fromData(data: result.data!);
+    }
+
+    throw result.exception!;
+  }
+
+  @override
+  Future<void> delete() async {
+    final result = await remote.delete();
+
+    if (result is Success) {
+      return;
+    }
+
+    throw result.exception!;
+  }
+
+  @override
   Future<void> saveToken({required String value}) async {
     await local.saveToken(value: value);
   }
@@ -56,6 +80,12 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   Future<void> logout() async {
-    await remote.logout();
+    final result = await remote.logout();
+
+    if (result is Success) {
+      return;
+    }
+
+    throw result.exception!;
   }
 }

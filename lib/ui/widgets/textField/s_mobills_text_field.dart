@@ -8,12 +8,14 @@ class SMobillsTextField extends StatelessWidget {
     this.hintText,
     this.keyboardType,
     this.obscureText,
+    this.readOnly,
   });
 
   final TextEditingController? controller;
   final String? hintText;
   final TextInputType? keyboardType;
   final bool? obscureText;
+  final bool? readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class SMobillsTextField extends StatelessWidget {
         keyboardType: keyboardType,
         obscureText: obscureText ?? false,
         style: SMobillsTextStyles.body1,
+        readOnly: readOnly ?? false,
       ),
     );
   }

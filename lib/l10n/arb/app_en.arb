@@ -27,5 +27,7 @@
     "friday": "Friday",
     "saturday": "Saturday",
     "home": "Home",
-    "deleteAccount": "Delete account"
+    "deleteAccount": "Delete account",
+    "editProfileDetails": "Edit your base infos",
+    "save": "Save"
 }

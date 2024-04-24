@@ -16,22 +16,31 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EditState {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get age => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get startDeleteAccount => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, String age, String email) initial,
+    required TResult Function(int id, String name, String age, String email,
+            bool isLoading, bool startDeleteAccount)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, String age, String email)? initial,
+    TResult? Function(int id, String name, String age, String email,
+            bool isLoading, bool startDeleteAccount)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String age, String email)? initial,
+    TResult Function(int id, String name, String age, String email,
+            bool isLoading, bool startDeleteAccount)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,7 +71,13 @@ abstract class $EditStateCopyWith<$Res> {
   factory $EditStateCopyWith(EditState value, $Res Function(EditState) then) =
       _$EditStateCopyWithImpl<$Res, EditState>;
   @useResult
-  $Res call({String name, String age, String email});
+  $Res call(
+      {int id,
+      String name,
+      String age,
+      String email,
+      bool isLoading,
+      bool startDeleteAccount});
 }
 
 /// @nodoc
@@ -78,11 +93,18 @@ class _$EditStateCopyWithImpl<$Res, $Val extends EditState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? age = null,
     Object? email = null,
+    Object? isLoading = null,
+    Object? startDeleteAccount = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -95,6 +117,14 @@ class _$EditStateCopyWithImpl<$Res, $Val extends EditState>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      startDeleteAccount: null == startDeleteAccount
+          ? _value.startDeleteAccount
+          : startDeleteAccount // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -107,7 +137,13 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String age, String email});
+  $Res call(
+      {int id,
+      String name,
+      String age,
+      String email,
+      bool isLoading,
+      bool startDeleteAccount});
 }
 
 /// @nodoc
@@ -121,11 +157,18 @@ class __$$InitialImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? age = null,
     Object? email = null,
+    Object? isLoading = null,
+    Object? startDeleteAccount = null,
   }) {
     return _then(_$InitialImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -138,6 +181,14 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      startDeleteAccount: null == startDeleteAccount
+          ? _value.startDeleteAccount
+          : startDeleteAccount // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -145,8 +196,17 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({this.name = '', this.age = '', this.email = ''});
+  const _$InitialImpl(
+      {this.id = 0,
+      this.name = '',
+      this.age = '',
+      this.email = '',
+      this.isLoading = false,
+      this.startDeleteAccount = false});
 
+  @override
+  @JsonKey()
+  final int id;
   @override
   @JsonKey()
   final String name;
@@ -156,10 +216,16 @@ class _$InitialImpl implements _Initial {
   @override
   @JsonKey()
   final String email;
+  @override
+  @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final bool startDeleteAccount;
 
   @override
   String toString() {
-    return 'EditState.initial(name: $name, age: $age, email: $email)';
+    return 'EditState.initial(id: $id, name: $name, age: $age, email: $email, isLoading: $isLoading, startDeleteAccount: $startDeleteAccount)';
   }
 
   @override
@@ -167,13 +233,19 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.age, age) || other.age == age) &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.startDeleteAccount, startDeleteAccount) ||
+                other.startDeleteAccount == startDeleteAccount));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, age, email);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, age, email, isLoading, startDeleteAccount);
 
   @JsonKey(ignore: true)
   @override
@@ -184,27 +256,33 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, String age, String email) initial,
+    required TResult Function(int id, String name, String age, String email,
+            bool isLoading, bool startDeleteAccount)
+        initial,
   }) {
-    return initial(name, age, email);
+    return initial(id, name, age, email, isLoading, startDeleteAccount);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, String age, String email)? initial,
+    TResult? Function(int id, String name, String age, String email,
+            bool isLoading, bool startDeleteAccount)?
+        initial,
   }) {
-    return initial?.call(name, age, email);
+    return initial?.call(id, name, age, email, isLoading, startDeleteAccount);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String age, String email)? initial,
+    TResult Function(int id, String name, String age, String email,
+            bool isLoading, bool startDeleteAccount)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(name, age, email);
+      return initial(id, name, age, email, isLoading, startDeleteAccount);
     }
     return orElse();
   }
@@ -240,16 +318,25 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements EditState {
   const factory _Initial(
-      {final String name,
+      {final int id,
+      final String name,
       final String age,
-      final String email}) = _$InitialImpl;
+      final String email,
+      final bool isLoading,
+      final bool startDeleteAccount}) = _$InitialImpl;
 
+  @override
+  int get id;
   @override
   String get name;
   @override
   String get age;
   @override
   String get email;
+  @override
+  bool get isLoading;
+  @override
+  bool get startDeleteAccount;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

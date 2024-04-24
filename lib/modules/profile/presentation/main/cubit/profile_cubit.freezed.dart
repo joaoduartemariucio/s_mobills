@@ -16,20 +16,29 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProfileState {
+  String get name => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get initialLetters => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading) initial,
+    required TResult Function(
+            String name, String email, String initialLetters, bool isLoading)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading)? initial,
+    TResult? Function(
+            String name, String email, String initialLetters, bool isLoading)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading)? initial,
+    TResult Function(
+            String name, String email, String initialLetters, bool isLoading)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +70,7 @@ abstract class $ProfileStateCopyWith<$Res> {
           ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res, ProfileState>;
   @useResult
-  $Res call({bool isLoading});
+  $Res call({String name, String email, String initialLetters, bool isLoading});
 }
 
 /// @nodoc
@@ -77,9 +86,24 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = null,
+    Object? email = null,
+    Object? initialLetters = null,
     Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      initialLetters: null == initialLetters
+          ? _value.initialLetters
+          : initialLetters // ignore: cast_nullable_to_non_nullable
+              as String,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -96,7 +120,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading});
+  $Res call({String name, String email, String initialLetters, bool isLoading});
 }
 
 /// @nodoc
@@ -110,9 +134,24 @@ class __$$InitialImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = null,
+    Object? email = null,
+    Object? initialLetters = null,
     Object? isLoading = null,
   }) {
     return _then(_$InitialImpl(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      initialLetters: null == initialLetters
+          ? _value.initialLetters
+          : initialLetters // ignore: cast_nullable_to_non_nullable
+              as String,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -124,15 +163,28 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({this.isLoading = false});
+  const _$InitialImpl(
+      {this.name = '',
+      this.email = '',
+      this.initialLetters = '',
+      this.isLoading = false});
 
+  @override
+  @JsonKey()
+  final String name;
+  @override
+  @JsonKey()
+  final String email;
+  @override
+  @JsonKey()
+  final String initialLetters;
   @override
   @JsonKey()
   final bool isLoading;
 
   @override
   String toString() {
-    return 'ProfileState.initial(isLoading: $isLoading)';
+    return 'ProfileState.initial(name: $name, email: $email, initialLetters: $initialLetters, isLoading: $isLoading)';
   }
 
   @override
@@ -140,12 +192,17 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.initialLetters, initialLetters) ||
+                other.initialLetters == initialLetters) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading);
+  int get hashCode =>
+      Object.hash(runtimeType, name, email, initialLetters, isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -156,27 +213,33 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading) initial,
+    required TResult Function(
+            String name, String email, String initialLetters, bool isLoading)
+        initial,
   }) {
-    return initial(isLoading);
+    return initial(name, email, initialLetters, isLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading)? initial,
+    TResult? Function(
+            String name, String email, String initialLetters, bool isLoading)?
+        initial,
   }) {
-    return initial?.call(isLoading);
+    return initial?.call(name, email, initialLetters, isLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading)? initial,
+    TResult Function(
+            String name, String email, String initialLetters, bool isLoading)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(isLoading);
+      return initial(name, email, initialLetters, isLoading);
     }
     return orElse();
   }
@@ -211,8 +274,18 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements ProfileState {
-  const factory _Initial({final bool isLoading}) = _$InitialImpl;
+  const factory _Initial(
+      {final String name,
+      final String email,
+      final String initialLetters,
+      final bool isLoading}) = _$InitialImpl;
 
+  @override
+  String get name;
+  @override
+  String get email;
+  @override
+  String get initialLetters;
   @override
   bool get isLoading;
   @override
