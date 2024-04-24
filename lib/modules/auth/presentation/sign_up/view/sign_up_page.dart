@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:s_mobills/l10n/l10n.dart';
-import 'package:s_mobills/modules/auth/domain/usecase/do_create_user_use_case.dart';
-import 'package:s_mobills/modules/auth/presentation/sign_up/cubit/sign_up_cubit.dart';
-import 'package:s_mobills/modules/auth/presentation/widgets/widgets.dart';
+import 'package:s_mobills/modules/auth/module.dart';
 import 'package:s_mobills/ui/ui.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -51,22 +49,25 @@ class SignUpView extends StatelessWidget {
                         height: context.mediaQuery.size.height * 0.025,
                       ),
                       SMobillsTextField(
-                        hintText: context.l10n.name,
                         controller: context
                             .read<SignUpCubit>()
                             .nameTextEditingController,
+                        hintText: context.l10n.name,
+                        keyboardType: TextInputType.name,
                       ),
                       SMobillsTextField(
-                        hintText: context.l10n.age,
                         controller: context
                             .read<SignUpCubit>()
                             .ageTextEditingController,
+                        hintText: context.l10n.age,
+                        keyboardType: TextInputType.number,
                       ),
                       SMobillsTextField(
-                        hintText: context.l10n.email,
                         controller: context
                             .read<SignUpCubit>()
                             .emailTextEditingController,
+                        hintText: context.l10n.email,
+                        keyboardType: TextInputType.emailAddress,
                       ),
                       SMobillsTextField(
                         hintText: context.l10n.password,

@@ -24,9 +24,6 @@ mixin _$UserResponse {
   String get name => throw _privateConstructorUsedError;
   int get age => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
-  String? get token => throw _privateConstructorUsedError;
-  String? get account => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,14 +37,7 @@ abstract class $UserResponseCopyWith<$Res> {
           UserResponse value, $Res Function(UserResponse) then) =
       _$UserResponseCopyWithImpl<$Res, UserResponse>;
   @useResult
-  $Res call(
-      {int id,
-      String name,
-      int age,
-      String email,
-      String password,
-      String? token,
-      String? account});
+  $Res call({int id, String name, int age, String email});
 }
 
 /// @nodoc
@@ -67,9 +57,6 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
     Object? name = null,
     Object? age = null,
     Object? email = null,
-    Object? password = null,
-    Object? token = freezed,
-    Object? account = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -88,18 +75,6 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String?,
-      account: freezed == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
@@ -112,14 +87,7 @@ abstract class _$$UserResponseImplCopyWith<$Res>
       __$$UserResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String name,
-      int age,
-      String email,
-      String password,
-      String? token,
-      String? account});
+  $Res call({int id, String name, int age, String email});
 }
 
 /// @nodoc
@@ -137,9 +105,6 @@ class __$$UserResponseImplCopyWithImpl<$Res>
     Object? name = null,
     Object? age = null,
     Object? email = null,
-    Object? password = null,
-    Object? token = freezed,
-    Object? account = freezed,
   }) {
     return _then(_$UserResponseImpl(
       id: null == id
@@ -158,18 +123,6 @@ class __$$UserResponseImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String?,
-      account: freezed == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -181,10 +134,7 @@ class _$UserResponseImpl extends _UserResponse {
       {required this.id,
       required this.name,
       required this.age,
-      required this.email,
-      required this.password,
-      required this.token,
-      required this.account})
+      required this.email})
       : super._();
 
   factory _$UserResponseImpl.fromJson(Map<String, dynamic> json) =>
@@ -198,16 +148,10 @@ class _$UserResponseImpl extends _UserResponse {
   final int age;
   @override
   final String email;
-  @override
-  final String password;
-  @override
-  final String? token;
-  @override
-  final String? account;
 
   @override
   String toString() {
-    return 'UserResponse(id: $id, name: $name, age: $age, email: $email, password: $password, token: $token, account: $account)';
+    return 'UserResponse(id: $id, name: $name, age: $age, email: $email)';
   }
 
   @override
@@ -218,17 +162,12 @@ class _$UserResponseImpl extends _UserResponse {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.age, age) || other.age == age) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.token, token) || other.token == token) &&
-            (identical(other.account, account) || other.account == account));
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, age, email, password, token, account);
+  int get hashCode => Object.hash(runtimeType, id, name, age, email);
 
   @JsonKey(ignore: true)
   @override
@@ -249,10 +188,7 @@ abstract class _UserResponse extends UserResponse {
       {required final int id,
       required final String name,
       required final int age,
-      required final String email,
-      required final String password,
-      required final String? token,
-      required final String? account}) = _$UserResponseImpl;
+      required final String email}) = _$UserResponseImpl;
   _UserResponse._() : super._();
 
   factory _UserResponse.fromJson(Map<String, dynamic> json) =
@@ -266,12 +202,6 @@ abstract class _UserResponse extends UserResponse {
   int get age;
   @override
   String get email;
-  @override
-  String get password;
-  @override
-  String? get token;
-  @override
-  String? get account;
   @override
   @JsonKey(ignore: true)
   _$$UserResponseImplCopyWith<_$UserResponseImpl> get copyWith =>

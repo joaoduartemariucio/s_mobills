@@ -26,5 +26,6 @@
     "thursday": "Thursday",
     "friday": "Friday",
     "saturday": "Saturday",
-    "home": "Home"
+    "home": "Home",
+    "deleteAccount": "Delete account"
 }

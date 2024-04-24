@@ -11,9 +11,6 @@ class UserResponse with _$UserResponse {
     required String name,
     required int age,
     required String email,
-    required String password,
-    required String? token,
-    required String? account,
   }) = _UserResponse;
 
   UserResponse._();

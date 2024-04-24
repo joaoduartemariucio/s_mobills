@@ -55,6 +55,7 @@ class LoginView extends StatelessWidget {
                             .read<LoginCubit>()
                             .emailTextEditingController,
                         hintText: context.l10n.email,
+                        keyboardType: TextInputType.emailAddress,
                       ),
                       SMobillsTextField(
                         controller: context

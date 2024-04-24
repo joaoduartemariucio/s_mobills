@@ -1,10 +1,7 @@
 // ignore_for_file: constant_pattern_never_matches_value_type, strict_raw_type
 
 import 'package:s_mobills/core/core.dart';
-import 'package:s_mobills/modules/auth/data/datasource/remote/auth_remote_datasource.dart';
-import 'package:s_mobills/modules/auth/data/model/request/user_request.dart';
-import 'package:s_mobills/modules/auth/data/model/response/login_response.dart';
-import 'package:s_mobills/modules/auth/data/model/response/user_response.dart';
+import 'package:s_mobills/modules/auth/module.dart';
 
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   AuthRemoteDataSourceImpl({required this.http});
@@ -36,6 +33,22 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
         'password': password,
       },
       converter: LoginResponse.fromJson,
+    );
+  }
+
+  @override
+  Future<Result<UserResponse>> info() async {
+    return http.performRequest<UserResponse>(
+      request: AuthenticationEndpoint.info.asRequest(),
+      converter: UserResponse.fromJson,
+    );
+  }
+
+  @override
+  Future<Result<void>> logout() async {
+    return http.performRequest<void>(
+      request: AuthenticationEndpoint.logout.asRequest(),
+      converter: (response) {},
     );
   }
 }

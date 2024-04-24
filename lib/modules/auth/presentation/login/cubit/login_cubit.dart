@@ -4,8 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:s_mobills/core/core.dart';
-import 'package:s_mobills/core/navigation/routes/app_router.dart';
-import 'package:s_mobills/modules/auth/domain/usecase/do_login_use_case.dart';
+import 'package:s_mobills/modules/auth/module.dart';
 
 part 'login_state.dart';
 part 'login_cubit.freezed.dart';

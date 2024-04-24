@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:s_mobills/core/navigation/cubit/navigation_cubit.dart';
-import 'package:s_mobills/modules/auth/auth.dart';
-import 'package:s_mobills/modules/auth/presentation/splash/view/splash_page.dart';
-import 'package:s_mobills/modules/home/presentation/main/view/home_page.dart';
-import 'package:s_mobills/modules/main/presentation/main/view/main_page.dart';
-import 'package:s_mobills/modules/profile/presentation/main/view/profile_page.dart';
-import 'package:s_mobills/modules/transactions/presentation/main/view/transactions_page.dart';
+import 'package:s_mobills/core/core.dart';
+import 'package:s_mobills/modules/modules.dart';
 import 'package:s_mobills/ui/ui.dart';
 
 enum Routes {
@@ -16,6 +11,7 @@ enum Routes {
   login,
   home,
   profile,
+  profileEdit,
   transactions,
 }
 
@@ -32,8 +28,19 @@ extension RoutesExtension on Routes {
         return '/home';
       case Routes.profile:
         return '/profile';
+      case Routes.profileEdit:
+        return 'edit';
       case Routes.transactions:
         return '/transactions';
+    }
+  }
+
+  String get fullPath {
+    switch (this) {
+      case Routes.profileEdit:
+        return '/profile/edit';
+      default:
+        return '';
     }
   }
 }
@@ -73,12 +80,12 @@ class AppRouter {
             pageBuilder: (context, state) => const NoTransitionPage(
               child: ProfilePage(),
             ),
-            // routes: [
-            //   GoRoute(
-            //     path: Routes.profileDetailsNamedPage,
-            //     builder: (context, state) => const ProfileDetailsScreen(),
-            //   ),
-            // ],
+            routes: [
+              GoRoute(
+                path: Routes.profileEdit.name,
+                builder: (context, state) => const EditPage(),
+              ),
+            ],
           ),
           GoRoute(
             path: Routes.transactions.name,

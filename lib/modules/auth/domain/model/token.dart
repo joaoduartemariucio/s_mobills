@@ -1,4 +1,4 @@
-import 'package:s_mobills/modules/auth/data/model/response/login_response.dart';
+import 'package:s_mobills/modules/auth/module.dart';
 
 class Token {
   const Token({required this.token});

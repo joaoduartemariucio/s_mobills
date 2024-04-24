@@ -1,10 +1,5 @@
 import 'package:s_mobills/core/core.dart';
-import 'package:s_mobills/modules/auth/data/datasource/local/auth_local_datasource.dart';
-import 'package:s_mobills/modules/auth/data/datasource/remote/auth_remote_datasource.dart';
-import 'package:s_mobills/modules/auth/data/model/request/user_request.dart';
-import 'package:s_mobills/modules/auth/domain/model/token.dart';
-import 'package:s_mobills/modules/auth/domain/model/user.dart';
-import 'package:s_mobills/modules/auth/domain/repository/auth_repository.dart';
+import 'package:s_mobills/modules/auth/module.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
   AuthRepositoryImpl({
@@ -39,13 +34,28 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
+  Future<User> info() async {
+    final result = await remote.info();
+
+    if (result is Success) {
+      return User.fromData(data: result.data!);
+    }
+
+    throw result.exception!;
+  }
+
+  @override
   Future<void> saveToken({required String value}) async {
     await local.saveToken(value: value);
   }
 
   @override
-  Future<void> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
+  Future<void> removeToken() async {
+    await local.removeToken();
+  }
+
+  @override
+  Future<void> logout() async {
+    await remote.logout();
   }
 }

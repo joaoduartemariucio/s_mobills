@@ -1,5 +1,4 @@
-import 'package:s_mobills/modules/auth/data/model/response/user_response.dart';
-import 'package:s_mobills/modules/auth/presentation/sign_up/cubit/sign_up_cubit.dart';
+import 'package:s_mobills/modules/auth/module.dart';
 
 class User {
   const User({
@@ -14,7 +13,7 @@ class User {
     return User(
       name: state.name,
       age: int.parse(state.age),
-      email: state.email,
+      email: state.email.trim(),
       password: state.password,
     );
   }
@@ -25,7 +24,7 @@ class User {
       name: data.name,
       age: data.age,
       email: data.email,
-      password: data.password,
+      password: '',
     );
   }
 

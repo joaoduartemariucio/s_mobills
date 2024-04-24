@@ -2,9 +2,9 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_mobills/core/local/key_value_storage_service.dart';
+import 'package:s_mobills/core/core.dart';
 import 'package:s_mobills/l10n/l10n.dart';
-import 'package:s_mobills/modules/auth/presentation/splash/cubit/splash_cubit.dart';
+import 'package:s_mobills/modules/auth/module.dart';
 import 'package:s_mobills/ui/ui.dart';
 
 class SplashPage extends StatelessWidget {

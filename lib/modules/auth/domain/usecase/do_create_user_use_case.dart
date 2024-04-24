@@ -1,7 +1,5 @@
 import 'package:s_mobills/core/core.dart';
-import 'package:s_mobills/modules/auth/domain/model/user.dart';
-import 'package:s_mobills/modules/auth/domain/repository/auth_repository.dart';
-import 'package:s_mobills/modules/auth/presentation/sign_up/cubit/sign_up_cubit.dart';
+import 'package:s_mobills/modules/auth/module.dart';
 
 class DoCreateUserUseCase {
   const DoCreateUserUseCase({required this.repository});
@@ -16,7 +14,7 @@ class DoCreateUserUseCase {
       throw SMobillsException(message: 'Preencha todos os campos');
     }
 
-    if (!Validator.isValidEmail(state.email)) {
+    if (!Validator.isValidEmail(state.email.trim())) {
       throw SMobillsException(message: 'O E-mail digitado é inválido');
     }
 

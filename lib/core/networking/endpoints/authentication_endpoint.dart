@@ -14,17 +14,17 @@ enum AuthenticationEndpoint implements Endpoint {
   String get path {
     switch (this) {
       case login:
-        return '/api/auth/login';
+        return '/auth/login';
       case logout:
-        return '/api/auth/logout';
+        return '/auth/logout';
       case createAccount:
-        return '/api/user';
+        return '/user';
       case deleteAccount:
-        return '/api/user';
+        return '/user';
       case info:
-        return '/api/user';
+        return '/user';
       case edit:
-        return '/api/user';
+        return '/user';
     }
   }
 
@@ -45,9 +45,9 @@ enum AuthenticationEndpoint implements Endpoint {
   @override
   bool get requiresAuthentication {
     switch (this) {
-      case login || logout || createAccount:
+      case login || createAccount:
         return false;
-      case deleteAccount || info || edit:
+      case deleteAccount || info || edit || logout:
         return true;
     }
   }

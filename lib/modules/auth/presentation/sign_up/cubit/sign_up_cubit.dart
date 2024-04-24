@@ -2,8 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:s_mobills/core/core.dart';
-import 'package:s_mobills/core/navigation/routes/app_router.dart';
-import 'package:s_mobills/modules/auth/domain/usecase/do_create_user_use_case.dart';
+import 'package:s_mobills/modules/auth/module.dart';
 
 part 'sign_up_state.dart';
 part 'sign_up_cubit.freezed.dart';

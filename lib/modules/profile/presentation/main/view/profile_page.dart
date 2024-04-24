@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:s_mobills/l10n/l10n.dart';
+import 'package:s_mobills/modules/profile/domain/usecase/do_logout_user_use_case.dart';
 import 'package:s_mobills/modules/profile/presentation/main/cubit/profile_cubit.dart';
 import 'package:s_mobills/modules/profile/presentation/widgets/widgets.dart';
 import 'package:s_mobills/ui/ui.dart';
@@ -11,7 +13,9 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ProfileCubit(),
+      create: (_) => ProfileCubit(
+        doLogoutUserUseCase: GetIt.I<DoLogoutUserUseCase>(),
+      ),
       child: const ProfileView(),
     );
   }
@@ -80,7 +84,7 @@ class ProfileView extends StatelessWidget {
                   ProfileMenuItem(
                     title: context.l10n.myRegistration,
                     icon: Icons.person_outlined,
-                    onTap: () {},
+                    onTap: context.read<ProfileCubit>().editProfile,
                   ),
                   ProfileMenuItem(
                     title: context.l10n.myWallet,
@@ -93,9 +97,14 @@ class ProfileView extends StatelessWidget {
                     onTap: () {},
                   ),
                   ProfileMenuItem(
+                    title: context.l10n.deleteAccount,
+                    icon: Icons.delete_outlined,
+                    onTap: () {},
+                  ),
+                  ProfileMenuItem(
                     title: context.l10n.exit,
                     icon: Icons.logout_outlined,
-                    onTap: () {},
+                    onTap: context.read<ProfileCubit>().logout,
                   ),
                 ],
               ),

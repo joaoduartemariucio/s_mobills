@@ -1,6 +1,5 @@
 import 'package:s_mobills/core/core.dart';
-import 'package:s_mobills/core/helpers/validator.dart';
-import 'package:s_mobills/modules/auth/domain/repository/auth_repository.dart';
+import 'package:s_mobills/modules/auth/module.dart';
 
 class DoLoginUseCase {
   const DoLoginUseCase({required this.repository});
@@ -12,11 +11,12 @@ class DoLoginUseCase {
       throw SMobillsException(message: 'Por favor preencha todos os campos');
     }
 
-    if (!Validator.isValidEmail(email)) {
+    if (!Validator.isValidEmail(email.trim())) {
       throw SMobillsException(message: 'O E-mail digitado é inválido');
     }
 
-    final result = await repository.login(email: email, password: password);
+    final result =
+        await repository.login(email: email.trim(), password: password);
     await repository.saveToken(value: result.token);
   }
 }
