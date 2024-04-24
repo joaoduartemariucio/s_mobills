@@ -25,7 +25,7 @@ dependencies:
   go_router: ^13.2.4
   grouped_list: ^5.1.2
   intl: ^0.18.1
-  json_annotation: ^4.5.0
+  json_annotation: ^4.9.0
   path_provider: ^2.0.10
   shared_preferences: ^2.2.3
   skeletonizer: ^1.1.1
