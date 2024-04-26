@@ -29,7 +29,7 @@ class SMobillsButton extends StatelessWidget {
             ),
             backgroundColor: context.colorScheme.primaryContainer,
           ),
-      onPressed: (isLoading ?? false) ? null : onPressed,
+      onPressed: (isLoading ?? false) ? null : onPressed.call,
       child: (isLoading ?? false)
           ? CircularProgressIndicator(
               color: context.colorScheme.primaryContainer,

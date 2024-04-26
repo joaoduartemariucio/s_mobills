@@ -16,29 +16,49 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewTransactionState {
-  String get transactionValue => throw _privateConstructorUsedError;
+  double get transactionValue => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get category => throw _privateConstructorUsedError;
   bool get done => throw _privateConstructorUsedError;
+  bool get showAllDateOptions => throw _privateConstructorUsedError;
   TransactionType get transactionType => throw _privateConstructorUsedError;
+  CategoryType get categoryType => throw _privateConstructorUsedError;
+  DateTime? get selectedDate => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String transactionValue, String description,
-            String category, bool done, TransactionType transactionType)
+    required TResult Function(
+            double transactionValue,
+            String description,
+            bool done,
+            bool showAllDateOptions,
+            TransactionType transactionType,
+            CategoryType categoryType,
+            DateTime? selectedDate)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String transactionValue, String description,
-            String category, bool done, TransactionType transactionType)?
+    TResult? Function(
+            double transactionValue,
+            String description,
+            bool done,
+            bool showAllDateOptions,
+            TransactionType transactionType,
+            CategoryType categoryType,
+            DateTime? selectedDate)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String transactionValue, String description,
-            String category, bool done, TransactionType transactionType)?
+    TResult Function(
+            double transactionValue,
+            String description,
+            bool done,
+            bool showAllDateOptions,
+            TransactionType transactionType,
+            CategoryType categoryType,
+            DateTime? selectedDate)?
         initial,
     required TResult orElse(),
   }) =>
@@ -72,11 +92,13 @@ abstract class $NewTransactionStateCopyWith<$Res> {
       _$NewTransactionStateCopyWithImpl<$Res, NewTransactionState>;
   @useResult
   $Res call(
-      {String transactionValue,
+      {double transactionValue,
       String description,
-      String category,
       bool done,
-      TransactionType transactionType});
+      bool showAllDateOptions,
+      TransactionType transactionType,
+      CategoryType categoryType,
+      DateTime? selectedDate});
 }
 
 /// @nodoc
@@ -94,31 +116,41 @@ class _$NewTransactionStateCopyWithImpl<$Res, $Val extends NewTransactionState>
   $Res call({
     Object? transactionValue = null,
     Object? description = null,
-    Object? category = null,
     Object? done = null,
-    Object? transactionType = freezed,
+    Object? showAllDateOptions = null,
+    Object? transactionType = null,
+    Object? categoryType = null,
+    Object? selectedDate = freezed,
   }) {
     return _then(_value.copyWith(
       transactionValue: null == transactionValue
           ? _value.transactionValue
           : transactionValue // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
               as String,
       done: null == done
           ? _value.done
           : done // ignore: cast_nullable_to_non_nullable
               as bool,
-      transactionType: freezed == transactionType
+      showAllDateOptions: null == showAllDateOptions
+          ? _value.showAllDateOptions
+          : showAllDateOptions // ignore: cast_nullable_to_non_nullable
+              as bool,
+      transactionType: null == transactionType
           ? _value.transactionType
           : transactionType // ignore: cast_nullable_to_non_nullable
               as TransactionType,
+      categoryType: null == categoryType
+          ? _value.categoryType
+          : categoryType // ignore: cast_nullable_to_non_nullable
+              as CategoryType,
+      selectedDate: freezed == selectedDate
+          ? _value.selectedDate
+          : selectedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -132,11 +164,13 @@ abstract class _$$InitialImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String transactionValue,
+      {double transactionValue,
       String description,
-      String category,
       bool done,
-      TransactionType transactionType});
+      bool showAllDateOptions,
+      TransactionType transactionType,
+      CategoryType categoryType,
+      DateTime? selectedDate});
 }
 
 /// @nodoc
@@ -152,31 +186,41 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? transactionValue = null,
     Object? description = null,
-    Object? category = null,
     Object? done = null,
-    Object? transactionType = freezed,
+    Object? showAllDateOptions = null,
+    Object? transactionType = null,
+    Object? categoryType = null,
+    Object? selectedDate = freezed,
   }) {
     return _then(_$InitialImpl(
       transactionValue: null == transactionValue
           ? _value.transactionValue
           : transactionValue // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
               as String,
       done: null == done
           ? _value.done
           : done // ignore: cast_nullable_to_non_nullable
               as bool,
-      transactionType: freezed == transactionType
+      showAllDateOptions: null == showAllDateOptions
+          ? _value.showAllDateOptions
+          : showAllDateOptions // ignore: cast_nullable_to_non_nullable
+              as bool,
+      transactionType: null == transactionType
           ? _value.transactionType
           : transactionType // ignore: cast_nullable_to_non_nullable
               as TransactionType,
+      categoryType: null == categoryType
+          ? _value.categoryType
+          : categoryType // ignore: cast_nullable_to_non_nullable
+              as CategoryType,
+      selectedDate: freezed == selectedDate
+          ? _value.selectedDate
+          : selectedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -185,31 +229,38 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 class _$InitialImpl implements _Initial {
   const _$InitialImpl(
-      {this.transactionValue = r'R$ 0,00',
+      {this.transactionValue = 0.0,
       this.description = '',
-      this.category = '',
       this.done = false,
-      this.transactionType = TransactionType.income});
+      this.showAllDateOptions = true,
+      this.transactionType = TransactionType.income,
+      this.categoryType = CategoryType.food,
+      this.selectedDate});
 
   @override
   @JsonKey()
-  final String transactionValue;
+  final double transactionValue;
   @override
   @JsonKey()
   final String description;
   @override
   @JsonKey()
-  final String category;
-  @override
-  @JsonKey()
   final bool done;
   @override
   @JsonKey()
+  final bool showAllDateOptions;
+  @override
+  @JsonKey()
   final TransactionType transactionType;
+  @override
+  @JsonKey()
+  final CategoryType categoryType;
+  @override
+  final DateTime? selectedDate;
 
   @override
   String toString() {
-    return 'NewTransactionState.initial(transactionValue: $transactionValue, description: $description, category: $category, done: $done, transactionType: $transactionType)';
+    return 'NewTransactionState.initial(transactionValue: $transactionValue, description: $description, done: $done, showAllDateOptions: $showAllDateOptions, transactionType: $transactionType, categoryType: $categoryType, selectedDate: $selectedDate)';
   }
 
   @override
@@ -221,16 +272,20 @@ class _$InitialImpl implements _Initial {
                 other.transactionValue == transactionValue) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
             (identical(other.done, done) || other.done == done) &&
-            const DeepCollectionEquality()
-                .equals(other.transactionType, transactionType));
+            (identical(other.showAllDateOptions, showAllDateOptions) ||
+                other.showAllDateOptions == showAllDateOptions) &&
+            (identical(other.transactionType, transactionType) ||
+                other.transactionType == transactionType) &&
+            (identical(other.categoryType, categoryType) ||
+                other.categoryType == categoryType) &&
+            (identical(other.selectedDate, selectedDate) ||
+                other.selectedDate == selectedDate));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, transactionValue, description,
-      category, done, const DeepCollectionEquality().hash(transactionType));
+      done, showAllDateOptions, transactionType, categoryType, selectedDate);
 
   @JsonKey(ignore: true)
   @override
@@ -241,36 +296,54 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String transactionValue, String description,
-            String category, bool done, TransactionType transactionType)
+    required TResult Function(
+            double transactionValue,
+            String description,
+            bool done,
+            bool showAllDateOptions,
+            TransactionType transactionType,
+            CategoryType categoryType,
+            DateTime? selectedDate)
         initial,
   }) {
-    return initial(
-        transactionValue, description, category, done, transactionType);
+    return initial(transactionValue, description, done, showAllDateOptions,
+        transactionType, categoryType, selectedDate);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String transactionValue, String description,
-            String category, bool done, TransactionType transactionType)?
+    TResult? Function(
+            double transactionValue,
+            String description,
+            bool done,
+            bool showAllDateOptions,
+            TransactionType transactionType,
+            CategoryType categoryType,
+            DateTime? selectedDate)?
         initial,
   }) {
-    return initial?.call(
-        transactionValue, description, category, done, transactionType);
+    return initial?.call(transactionValue, description, done,
+        showAllDateOptions, transactionType, categoryType, selectedDate);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String transactionValue, String description,
-            String category, bool done, TransactionType transactionType)?
+    TResult Function(
+            double transactionValue,
+            String description,
+            bool done,
+            bool showAllDateOptions,
+            TransactionType transactionType,
+            CategoryType categoryType,
+            DateTime? selectedDate)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(
-          transactionValue, description, category, done, transactionType);
+      return initial(transactionValue, description, done, showAllDateOptions,
+          transactionType, categoryType, selectedDate);
     }
     return orElse();
   }
@@ -306,22 +379,28 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements NewTransactionState {
   const factory _Initial(
-      {final String transactionValue,
+      {final double transactionValue,
       final String description,
-      final String category,
       final bool done,
-      final TransactionType transactionType}) = _$InitialImpl;
+      final bool showAllDateOptions,
+      final TransactionType transactionType,
+      final CategoryType categoryType,
+      final DateTime? selectedDate}) = _$InitialImpl;
 
   @override
-  String get transactionValue;
+  double get transactionValue;
   @override
   String get description;
   @override
-  String get category;
-  @override
   bool get done;
   @override
+  bool get showAllDateOptions;
+  @override
   TransactionType get transactionType;
+  @override
+  CategoryType get categoryType;
+  @override
+  DateTime? get selectedDate;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

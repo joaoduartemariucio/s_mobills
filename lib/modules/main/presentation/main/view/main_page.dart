@@ -30,7 +30,7 @@ class MainPage extends StatelessWidget {
             selectedLabelStyle: SMobillsTextStyles.button,
             unselectedLabelStyle: SMobillsTextStyles.button,
             selectedItemColor: context.colorScheme.onPrimary,
-            elevation: 0,
+            elevation: 8,
             backgroundColor: context.colorScheme.primary,
             unselectedItemColor:
                 context.colorScheme.onPrimary.withOpacity(0.75),
@@ -40,7 +40,7 @@ class MainPage extends StatelessWidget {
             ),
             items: tabs,
             currentIndex: state.index,
-            type: BottomNavigationBarType.shifting,
+            type: BottomNavigationBarType.fixed,
           );
         },
       );
@@ -48,6 +48,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: screen,
       bottomNavigationBar: _buildBottomNavigation(
         context,

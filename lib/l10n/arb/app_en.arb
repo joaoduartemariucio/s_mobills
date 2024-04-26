@@ -35,5 +35,11 @@
     "transactionValue": "Transaction value",
     "newExpenseTransaction": "New expense",
     "newIncomeTransaction": "New income",
-    "transactionInstructions": "Detail your transaction, fill in all the fields"
+    "transactionInstructions": "Detail your transaction, fill in all the fields",
+    "description": "Description",
+    "paidOut": "Paid out",
+    "received": "Received",
+    "category": "Category",
+    "other": "Other",
+    "date": "Date"
 }

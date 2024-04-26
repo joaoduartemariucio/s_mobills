@@ -252,8 +252,8 @@ class SMobillsColors {
 
 class SMobillsDivider extends StatelessWidget {
   const SMobillsDivider({
-    super.key,
     required this.isVertical,
+    super.key,
     this.margin,
   });
 
@@ -265,11 +265,26 @@ class SMobillsDivider extends StatelessWidget {
     return Container(
       height: isVertical ? 50 : 0.50,
       width: isVertical ? 0.50 : context.mediaQuery.size.width,
+      color: Colors.grey,
       margin: margin ??
           EdgeInsets.symmetric(
             vertical: 8,
             horizontal: isVertical ? 8 : 0,
           ),
     );
+  }
+}
+
+extension DateHelpers on DateTime {
+  bool get isToday {
+    final now = DateTime.now();
+    return now.day == day && now.month == month && now.year == year;
+  }
+
+  bool get isYesterday {
+    final yesterday = DateTime.now().subtract(const Duration(days: 1));
+    return yesterday.day == day &&
+        yesterday.month == month &&
+        yesterday.year == year;
   }
 }

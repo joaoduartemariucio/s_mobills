@@ -35,5 +35,11 @@
     "transactionValue": "Valor da transação",
     "newExpenseTransaction": "Nova despesa",
     "newIncomeTransaction": "Novo rendimento",
-    "transactionInstructions": "Detalhe sua transação, preencha todos os campo"
+    "transactionInstructions": "Detalhe sua transação, preencha todos os campo",
+    "description": "Descrição",
+    "paidOut": "Pago",
+    "received": "Recebido",
+    "category": "Categoria",
+    "other": "Outro",
+    "date": "Data"
 }
