@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:s_mobills/l10n/l10n.dart';
-import 'package:s_mobills/modules/transactions/domain/model/transaction.dart';
 import 'package:s_mobills/modules/transactions/domain/model/transaction_type.dart';
 import 'package:s_mobills/modules/transactions/presentation/main/cubit/transactions_cubit.dart';
 import 'package:s_mobills/modules/transactions/presentation/widgets/widgets.dart';
@@ -18,15 +17,13 @@ class TransactionsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => TransactionsCubit(),
-      child: TransactionsView(),
+      child: const TransactionsView(),
     );
   }
 }
 
 class TransactionsView extends StatelessWidget {
-  TransactionsView({super.key});
-
-  final transactions = Transaction.generateRandomTransactions(5);
+  const TransactionsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +36,7 @@ class TransactionsView extends StatelessWidget {
           ),
           backgroundColor: context.colorScheme.background,
           body: GroupedListView<dynamic, String>(
-            elements: transactions,
+            elements: state.transactions,
             groupBy: (element) {
               return element.dateOfTransaction.toString();
             },
@@ -69,6 +66,7 @@ class TransactionsView extends StatelessWidget {
           ),
           floatingActionButtonLocation: ExpandableFab.location,
           floatingActionButton: ExpandableFab(
+            key: context.read<TransactionsCubit>().floatingButtonKey,
             openButtonBuilder: RotateFloatingActionButtonBuilder(
               child: const Icon(Icons.add),
               shape: const CircleBorder(),
@@ -79,6 +77,7 @@ class TransactionsView extends StatelessWidget {
             ),
             children: [
               FloatingActionButton(
+                heroTag: null,
                 backgroundColor: Colors.green.shade700,
                 onPressed: () => context
                     .read<TransactionsCubit>()
@@ -87,6 +86,7 @@ class TransactionsView extends StatelessWidget {
                 child: const Icon(Icons.north_outlined),
               ),
               FloatingActionButton(
+                heroTag: null,
                 backgroundColor: context.colorScheme.errorContainer,
                 onPressed: () => context
                     .read<TransactionsCubit>()

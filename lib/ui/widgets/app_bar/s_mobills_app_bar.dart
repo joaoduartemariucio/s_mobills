@@ -8,12 +8,14 @@ class SMobillsAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.bottom,
     this.elevation,
     this.customPreferredSize,
+    this.backgroundColor,
   });
 
   final String title;
   final PreferredSizeWidget? bottom;
   final double? elevation;
   final Size? customPreferredSize;
+  final Color? backgroundColor;
 
   @override
   Size get preferredSize =>
@@ -23,7 +25,7 @@ class SMobillsAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      backgroundColor: context.colorScheme.primary,
+      backgroundColor: backgroundColor ?? context.colorScheme.primary,
       title: Text(
         title,
         style: SMobillsTextStyles.h6.copyWith(

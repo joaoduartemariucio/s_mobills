@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:s_mobills/l10n/l10n.dart';
-import 'package:s_mobills/modules/transactions/presentation/widgets/balance_item.dart';
+import 'package:s_mobills/modules/transactions/presentation/widgets/main/balance_item.dart';
 import 'package:s_mobills/ui/ui.dart';
 
 class CurrentBalance extends StatelessWidget {

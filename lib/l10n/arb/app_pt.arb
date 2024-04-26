@@ -30,5 +30,10 @@
     "deleteAccount": "Deletar conta",
     "editProfileDetails": "Edite as informações basicas do seu cadastro",
     "save": "Salvar",
-    "categories": "Categorias"
+    "categories": "Categorias",
+    "newTransaction": "Nova transação",
+    "transactionValue": "Valor da transação",
+    "newExpenseTransaction": "Nova despesa",
+    "newIncomeTransaction": "Novo rendimento",
+    "transactionInstructions": "Detalhe sua transação, preencha todos os campo"
 }

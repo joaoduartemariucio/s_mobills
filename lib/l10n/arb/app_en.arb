@@ -30,5 +30,10 @@
     "deleteAccount": "Delete account",
     "editProfileDetails": "Edit your base infos",
     "save": "Save",
-    "categories": "Categories"
+    "categories": "Categories",
+    "newTransaction": "New transaction",
+    "transactionValue": "Transaction value",
+    "newExpenseTransaction": "New expense",
+    "newIncomeTransaction": "New income",
+    "transactionInstructions": "Detail your transaction, fill in all the fields"
 }
