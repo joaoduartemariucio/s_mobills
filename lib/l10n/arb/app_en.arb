@@ -29,5 +29,6 @@
     "home": "Home",
     "deleteAccount": "Delete account",
     "editProfileDetails": "Edit your base infos",
-    "save": "Save"
+    "save": "Save",
+    "categories": "Categories"
 }

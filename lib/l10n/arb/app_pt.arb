@@ -29,5 +29,6 @@
     "home": "Home",
     "deleteAccount": "Deletar conta",
     "editProfileDetails": "Edite as informações basicas do seu cadastro",
-    "save": "Salvar"
+    "save": "Salvar",
+    "categories": "Categorias"
 }

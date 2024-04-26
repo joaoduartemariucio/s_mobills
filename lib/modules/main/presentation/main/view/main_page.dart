@@ -40,7 +40,7 @@ class MainPage extends StatelessWidget {
             ),
             items: tabs,
             currentIndex: state.index,
-            type: BottomNavigationBarType.fixed,
+            type: BottomNavigationBarType.shifting,
           );
         },
       );

@@ -6,7 +6,7 @@ class StringHelper {
     String lastLetterLastName;
 
     if (nameParts.length > 1 && nameParts.last.isNotEmpty) {
-      lastLetterLastName = nameParts.last.substring(nameParts.last.length - 1);
+      lastLetterLastName = nameParts.last.substring(0, 1);
     } else {
       lastLetterLastName = nameParts[0].substring(nameParts[0].length - 1);
     }

@@ -1,8 +1,11 @@
+// ignore_for_file: no_default_cases
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:s_mobills/core/core.dart';
 import 'package:s_mobills/modules/modules.dart';
+import 'package:s_mobills/modules/transactions/presentation/new_transaction/view/new_transaction_page.dart';
 import 'package:s_mobills/ui/ui.dart';
 
 enum Routes {
@@ -13,6 +16,8 @@ enum Routes {
   profile,
   profileEdit,
   transactions,
+  newTransaction,
+  categories
 }
 
 extension RoutesExtension on Routes {
@@ -32,6 +37,10 @@ extension RoutesExtension on Routes {
         return 'edit';
       case Routes.transactions:
         return '/transactions';
+      case Routes.newTransaction:
+        return 'new_transaction';
+      case Routes.categories:
+        return '/categories';
     }
   }
 
@@ -39,6 +48,10 @@ extension RoutesExtension on Routes {
     switch (this) {
       case Routes.profileEdit:
         return '/profile/edit';
+      case Routes.categories:
+        return '/profile/categories';
+      case Routes.newTransaction:
+        return '/transactions/new_transaction';
       default:
         return '';
     }
@@ -76,6 +89,18 @@ class AppRouter {
             // ],
           ),
           GoRoute(
+            path: Routes.transactions.name,
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: TransactionsPage(),
+            ),
+            routes: [
+              GoRoute(
+                path: Routes.newTransaction.name,
+                builder: (context, state) => const NewTransactionPage(),
+              ),
+            ],
+          ),
+          GoRoute(
             path: Routes.profile.name,
             pageBuilder: (context, state) => const NoTransitionPage(
               child: ProfilePage(),
@@ -86,12 +111,6 @@ class AppRouter {
                 builder: (context, state) => const EditPage(),
               ),
             ],
-          ),
-          GoRoute(
-            path: Routes.transactions.name,
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: TransactionsPage(),
-            ),
           ),
         ],
       ),
@@ -111,6 +130,12 @@ class AppRouter {
         path: Routes.sign.name,
         pageBuilder: (context, state) => const NoTransitionPage(
           child: SignUpPage(),
+        ),
+      ),
+      GoRoute(
+        path: Routes.categories.name,
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: TransactionsPage(),
         ),
       ),
     ],
