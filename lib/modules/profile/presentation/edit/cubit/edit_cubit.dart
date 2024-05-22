@@ -29,7 +29,7 @@ class EditCubit extends Cubit<EditState> {
 
   void _textEditingListeners() {
     nameEditController.addListener(() {
-      emit(state.copyWith(email: nameEditController.text));
+      emit(state.copyWith(name: nameEditController.text));
     });
 
     ageEditController.addListener(() {
@@ -45,7 +45,7 @@ class EditCubit extends Cubit<EditState> {
           id: result.id ?? 0,
           name: result.name,
           age: result.age.toString(),
-          email: state.email,
+          email: result.email,
         ),
       );
 
@@ -73,7 +73,7 @@ class EditCubit extends Cubit<EditState> {
       emit(state.copyWith(startDeleteAccount: true));
       await doDeleteUserUseCase();
       await doLogoutUserUseCase();
-      AppRouter.router.go(Routes.login.name);
+      AppRouter.router.goNamed(Routes.login.name);
     } on SMobillsException catch (e) {
       AppRouter.showError(message: e.message);
     } finally {

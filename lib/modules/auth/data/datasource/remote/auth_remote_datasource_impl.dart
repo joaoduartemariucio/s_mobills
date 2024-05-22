@@ -14,7 +14,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   }) async {
     final data = user.toJson();
 
-    return http.performRequest<UserResponse>(
+    return http.requestJSON<UserResponse>(
       request: AuthenticationEndpoint.createAccount.asRequest(),
       data: data,
       converter: UserResponse.fromJson,
@@ -26,7 +26,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     required String email,
     required String password,
   }) async {
-    return http.performRequest<LoginResponse>(
+    return http.requestJSON<LoginResponse>(
       request: AuthenticationEndpoint.login.asRequest(),
       data: {
         'email': email,
@@ -38,34 +38,31 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
 
   @override
   Future<Result<UserResponse>> info() async {
-    return http.performRequest<UserResponse>(
+    return http.requestJSON<UserResponse>(
       request: AuthenticationEndpoint.info.asRequest(),
       converter: UserResponse.fromJson,
     );
   }
 
   @override
-  Future<Result<UserResponse>> update({required UserUpdateRequest user}) {
-    return http.performRequest<UserResponse>(
+  Future<Result<void>> update({required UserUpdateRequest user}) {
+    return http.requestVoid(
       request: AuthenticationEndpoint.edit.asRequest(),
       data: user.toJson(),
-      converter: UserResponse.fromJson,
     );
   }
 
   @override
   Future<Result<void>> delete() {
-    return http.performRequest<void>(
+    return http.requestVoid(
       request: AuthenticationEndpoint.deleteAccount.asRequest(),
-      converter: (response) {},
     );
   }
 
   @override
   Future<Result<void>> logout() async {
-    return http.performRequest<void>(
+    return http.requestVoid(
       request: AuthenticationEndpoint.logout.asRequest(),
-      converter: (response) {},
     );
   }
 }

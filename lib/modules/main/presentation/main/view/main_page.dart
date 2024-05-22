@@ -54,17 +54,17 @@ class MainPage extends StatelessWidget {
         context,
         [
           NamedNavigationBarItemWidget(
-            initialLocation: Routes.home.name,
+            initialLocation: Routes.home.path,
             icon: const Icon(Icons.home_outlined),
             label: context.l10n.home,
           ),
           NamedNavigationBarItemWidget(
-            initialLocation: Routes.transactions.name,
+            initialLocation: Routes.transactions.path,
             icon: const Icon(Icons.receipt_long_outlined),
             label: context.l10n.transactions,
           ),
           NamedNavigationBarItemWidget(
-            initialLocation: Routes.profile.name,
+            initialLocation: Routes.profile.path,
             icon: const Icon(Icons.person_outline),
             label: context.l10n.profile,
           ),

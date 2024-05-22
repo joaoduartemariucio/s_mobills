@@ -23,8 +23,8 @@ class TransactionsCubit extends Cubit<TransactionsState> {
 
   void addTransaction({required TransactionType type}) {
     _floatingButtonToggle();
-    AppRouter.router.push(
-      Routes.newTransaction.fullPath,
+    AppRouter.router.pushNamed(
+      Routes.newTransaction.name,
       extra: {'type': type},
     );
   }

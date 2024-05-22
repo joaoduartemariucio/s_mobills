@@ -91,15 +91,15 @@ class ProfileView extends StatelessWidget {
                         icon: Icons.person_outlined,
                         onTap: context.read<ProfileCubit>().editProfile,
                       ),
-                      ProfileMenuItem(
-                        title: context.l10n.myWallet,
-                        icon: Icons.credit_card_outlined,
-                        onTap: () {},
-                      ),
+                      // ProfileMenuItem(
+                      //   title: context.l10n.myWallet,
+                      //   icon: Icons.credit_card_outlined,
+                      //   onTap: () {},
+                      // ),
                       ProfileMenuItem(
                         title: context.l10n.bankAccounts,
                         icon: Icons.wallet_outlined,
-                        onTap: () {},
+                        onTap: context.read<ProfileCubit>().accounts,
                       ),
                       ProfileMenuItem(
                         title: context.l10n.exit,

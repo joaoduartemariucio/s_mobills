@@ -10,7 +10,7 @@ class NetworkService {
 
   final Dio _dio;
 
-  Future<Result<R>> performRequest<R>({
+  Future<Result<R>> requestJSON<R>({
     required URLRequest request,
     required R Function(Map<String, dynamic>) converter,
     JSON? data,
@@ -29,11 +29,11 @@ class NetworkService {
         ),
       );
 
-      final responseData = response.data;
+      final result = response.data;
 
-      if (responseData != null) {
-        final result = converter(responseData);
-        return Success(result);
+      if (result != null) {
+        final decoded = converter(result);
+        return Success(decoded);
       }
 
       return Failure(
@@ -41,6 +41,31 @@ class NetworkService {
           statusCode: response.statusCode,
         ),
       );
+    } on DioError catch (e) {
+      final exception = SMobillsException.fromDioException(e);
+      return Failure(exception);
+    }
+  }
+
+  Future<Result<void>> requestVoid({
+    required URLRequest request,
+    JSON? data,
+    QueryParams? queryParams,
+  }) async {
+    try {
+      await _dio.request<void>(
+        request.path,
+        data: data,
+        queryParameters: queryParams,
+        options: Options(
+          method: request.method,
+          extra: <String, Object?>{
+            'requiresAuthToken': request.requiresAuthentication,
+          },
+        ),
+      );
+
+      return Success(());
     } on DioError catch (e) {
       final exception = SMobillsException.fromDioException(e);
       return Failure(exception);

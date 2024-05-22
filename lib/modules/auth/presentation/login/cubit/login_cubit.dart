@@ -37,7 +37,7 @@ class LoginCubit extends Cubit<LoginState> {
 
       await doLoginUseCase(email: state.email, password: state.password);
 
-      AppRouter.router.go(Routes.home.name);
+      AppRouter.router.goNamed(Routes.home.name);
     } on SMobillsException catch (e) {
       AppRouter.showError(message: e.message);
     } finally {
@@ -46,6 +46,6 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void signUp() {
-    AppRouter.router.push(Routes.sign.name);
+    AppRouter.router.pushNamed(Routes.sign.name);
   }
 }

@@ -13,7 +13,7 @@ abstract class AuthRemoteDataSource {
 
   Future<Result<void>> delete();
 
-  Future<Result<UserResponse>> update({required UserUpdateRequest user});
+  Future<Result<void>> update({required UserUpdateRequest user});
 
   Future<Result<void>> logout();
 }

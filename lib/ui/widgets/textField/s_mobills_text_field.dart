@@ -26,11 +26,24 @@ class SMobillsTextField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: SMobillsTextStyles.subtitle1,
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.inversePrimary,
+            ),
+          ),
         ),
+        cursorColor: Theme.of(context).colorScheme.inversePrimary,
         keyboardType: keyboardType,
         obscureText: obscureText ?? false,
         style: SMobillsTextStyles.body1,
         readOnly: readOnly ?? false,
+        onTapOutside: (event) {
+          final currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus &&
+              currentFocus.focusedChild != null) {
+            FocusManager.instance.primaryFocus?.unfocus();
+          }
+        },
       ),
     );
   }

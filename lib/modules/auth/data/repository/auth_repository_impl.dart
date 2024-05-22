@@ -45,13 +45,13 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<User> update({required UserUpdate user}) async {
+  Future<void> update({required UserUpdate user}) async {
     final data = UserUpdateRequest.toData(user: user);
 
     final result = await remote.update(user: data);
 
     if (result is Success) {
-      return User.fromData(data: result.data!);
+      return;
     }
 
     throw result.exception!;

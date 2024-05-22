@@ -16,13 +16,15 @@ enum Routes {
   home,
   profile,
   profileEdit,
+  profileAccounts,
+  profileAccountsCreate,
   transactions,
   newTransaction,
   categories
 }
 
 extension RoutesExtension on Routes {
-  String get name {
+  String get path {
     switch (this) {
       case Routes.splash:
         return '/splash';
@@ -36,6 +38,10 @@ extension RoutesExtension on Routes {
         return '/profile';
       case Routes.profileEdit:
         return 'edit';
+      case Routes.profileAccounts:
+        return 'accounts';
+      case Routes.profileAccountsCreate:
+        return 'create';
       case Routes.transactions:
         return '/transactions';
       case Routes.newTransaction:
@@ -45,16 +51,30 @@ extension RoutesExtension on Routes {
     }
   }
 
-  String get fullPath {
+  String get name {
     switch (this) {
+      case Routes.splash:
+        return 'Splash';
+      case Routes.sign:
+        return 'Sign';
+      case Routes.login:
+        return 'Login';
+      case Routes.home:
+        return 'Home';
+      case Routes.profile:
+        return 'Profile';
       case Routes.profileEdit:
-        return '/profile/edit';
-      case Routes.categories:
-        return '/profile/categories';
+        return 'Edit';
+      case Routes.profileAccounts:
+        return 'Accounts';
+      case Routes.profileAccountsCreate:
+        return 'Create Account';
+      case Routes.transactions:
+        return 'Transactions';
       case Routes.newTransaction:
-        return '/transactions/new_transaction';
-      default:
-        return '';
+        return 'New Transaction';
+      case Routes.categories:
+        return 'Categories';
     }
   }
 }
@@ -64,7 +84,7 @@ class AppRouter {
   static final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   static final GoRouter _router = GoRouter(
-    initialLocation: Routes.splash.name,
+    initialLocation: Routes.splash.path,
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
     routes: [
@@ -78,7 +98,8 @@ class AppRouter {
         },
         routes: [
           GoRoute(
-            path: Routes.home.name,
+            name: Routes.home.name,
+            path: Routes.home.path,
             pageBuilder: (context, state) => const NoTransitionPage(
               child: HomePage(),
             ),
@@ -90,13 +111,15 @@ class AppRouter {
             // ],
           ),
           GoRoute(
-            path: Routes.transactions.name,
+            name: Routes.transactions.name,
+            path: Routes.transactions.path,
             pageBuilder: (context, state) => const NoTransitionPage(
               child: TransactionsPage(),
             ),
             routes: [
               GoRoute(
-                path: Routes.newTransaction.name,
+                name: Routes.newTransaction.name,
+                path: Routes.newTransaction.path,
                 builder: (context, state) {
                   final extras = state.extra! as Map<String, dynamic>;
                   final transactionType = extras['type'] as TransactionType;
@@ -106,39 +129,57 @@ class AppRouter {
             ],
           ),
           GoRoute(
-            path: Routes.profile.name,
+            name: Routes.profile.name,
+            path: Routes.profile.path,
             pageBuilder: (context, state) => const NoTransitionPage(
               child: ProfilePage(),
             ),
             routes: [
               GoRoute(
-                path: Routes.profileEdit.name,
+                name: Routes.profileEdit.name,
+                path: Routes.profileEdit.path,
                 builder: (context, state) => const EditPage(),
+              ),
+              GoRoute(
+                name: Routes.profileAccounts.name,
+                path: Routes.profileAccounts.path,
+                builder: (context, state) => const AccountsPage(),
+                routes: [
+                  GoRoute(
+                    name: Routes.profileAccountsCreate.name,
+                    path: Routes.profileAccountsCreate.path,
+                    builder: (context, state) => const CreateAccountPage(),
+                  ),
+                ],
               ),
             ],
           ),
         ],
       ),
       GoRoute(
-        path: Routes.splash.name,
+        path: Routes.splash.path,
+        name: Routes.splash.name,
         pageBuilder: (context, state) => const NoTransitionPage(
           child: SplashPage(),
         ),
       ),
       GoRoute(
-        path: Routes.login.name,
+        name: Routes.login.name,
+        path: Routes.login.path,
         pageBuilder: (context, state) => const NoTransitionPage(
           child: LoginPage(),
         ),
       ),
       GoRoute(
-        path: Routes.sign.name,
+        name: Routes.sign.name,
+        path: Routes.sign.path,
         pageBuilder: (context, state) => const NoTransitionPage(
           child: SignUpPage(),
         ),
       ),
       GoRoute(
-        path: Routes.categories.name,
+        name: Routes.categories.name,
+        path: Routes.categories.path,
         pageBuilder: (context, state) => const NoTransitionPage(
           child: TransactionsPage(),
         ),

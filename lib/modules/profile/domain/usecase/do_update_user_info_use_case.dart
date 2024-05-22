@@ -6,7 +6,7 @@ class DoUpdateUserInfoUseCase {
 
   final AuthRepository repository;
 
-  Future<User> call({required EditState state}) async {
+  Future<void> call({required EditState state}) async {
     final user = UserUpdate.toDomain(state: state);
     return repository.update(user: user);
   }

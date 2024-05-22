@@ -41,5 +41,9 @@
     "received": "Received",
     "category": "Category",
     "other": "Other",
-    "date": "Date"
+    "date": "Date",
+    "yourAccounts": "Your Accounts",
+    "currentBalance": "Current Balance",
+    "createAccount": "Create Account",
+    "createAccountDetails": "Fill in all fields with your account information"
 }

@@ -18,9 +18,9 @@ class SplashCubit extends Cubit<SplashState> {
     await Future.delayed(const Duration(seconds: 3));
 
     if (token.isEmpty) {
-      AppRouter.router.go(Routes.login.name);
+      AppRouter.router.goNamed(Routes.login.name);
     } else {
-      AppRouter.router.go(Routes.home.name);
+      AppRouter.router.goNamed(Routes.home.name);
     }
   }
 }

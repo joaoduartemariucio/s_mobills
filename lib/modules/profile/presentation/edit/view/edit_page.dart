@@ -33,7 +33,6 @@ class EditView extends StatelessWidget {
           appBar: SMobillsAppBar(
             title: context.l10n.myRegistration,
           ),
-          backgroundColor: context.colorScheme.primary,
           body: SingleChildScrollView(
             child: state.startDeleteAccount
                 ? const Center(
@@ -78,7 +77,7 @@ class EditView extends StatelessWidget {
                               title: context.l10n.deleteAccount,
                               onPressed:
                                   context.read<EditCubit>().deleteAccount,
-                              isLoading: state.isLoading,
+                              isLoading: state.startDeleteAccount,
                               buttonStyle: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.transparent,
                                 elevation: 0,

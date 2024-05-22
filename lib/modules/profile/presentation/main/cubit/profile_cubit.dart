@@ -34,13 +34,17 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   Future<void> editProfile() async {
-    await AppRouter.router.push(Routes.profileEdit.fullPath);
+    await AppRouter.router.pushNamed(Routes.profileEdit.name);
+  }
+
+  Future<void> accounts() async {
+    await AppRouter.router.pushNamed(Routes.profileAccounts.name);
   }
 
   Future<void> logout() async {
     try {
       await doLogoutUserUseCase();
-      AppRouter.router.go(Routes.login.name);
+      AppRouter.router.goNamed(Routes.login.name);
     } on SMobillsException catch (e) {
       AppRouter.showError(message: e.message);
     } finally {}

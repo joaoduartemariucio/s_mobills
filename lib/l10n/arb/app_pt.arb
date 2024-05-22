@@ -41,5 +41,9 @@
     "received": "Recebido",
     "category": "Categoria",
     "other": "Outro",
-    "date": "Data"
+    "date": "Data",
+    "yourAccounts": "Suas contas",
+    "currentBalance": "Saldo atual",
+    "createAccount": "Criar conta",
+    "createAccountDetails": "Preencha todos os campos com as informações da sua conta"
 }

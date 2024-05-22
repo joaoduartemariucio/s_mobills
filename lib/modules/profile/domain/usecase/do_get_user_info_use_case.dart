@@ -1,5 +1,4 @@
-import 'package:s_mobills/modules/auth/domain/model/user.dart';
-import 'package:s_mobills/modules/auth/domain/repository/auth_repository.dart';
+import 'package:s_mobills/modules/auth/module.dart';
 
 class DoGetUserInfoUseCase {
   const DoGetUserInfoUseCase({required this.repository});

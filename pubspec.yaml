@@ -1,6 +1,6 @@
 name: s_mobills
 description: Control your finances
-version: 1.0.2+3
+version: 1.2.0+4
 publish_to: none
 
 environment:

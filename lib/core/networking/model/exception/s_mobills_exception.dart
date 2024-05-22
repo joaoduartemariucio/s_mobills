@@ -20,29 +20,30 @@ class SMobillsException implements Exception {
             return SMobillsException(
               exceptionType: ExceptionType.CancelException,
               statusCode: error.response?.statusCode,
-              message: 'Request cancelled prematurely',
+              message: 'Ops, algo deu errado',
             );
           case DioErrorType.connectTimeout:
             return SMobillsException(
               exceptionType: ExceptionType.ConnectTimeoutException,
               statusCode: error.response?.statusCode,
-              message: 'Connection not established',
+              message: 'Parece que você está sem internet, cheque sua conexão.',
             );
           case DioErrorType.sendTimeout:
             return SMobillsException(
               exceptionType: ExceptionType.SendTimeoutException,
               statusCode: error.response?.statusCode,
-              message: 'Failed to send',
+              message:
+                  'Tente novamente algo deu errado ao enviar as informações',
             );
           case DioErrorType.receiveTimeout:
             return SMobillsException(
               exceptionType: ExceptionType.ReceiveTimeoutException,
               statusCode: error.response?.statusCode,
-              message: 'Failed to receive',
+              message: 'Falha na recepição das informações',
             );
           case DioErrorType.other || DioErrorType.response:
             return SMobillsException(
-              message: 'Error unrecognized',
+              message: 'Ops, algo deu errado',
               code: ExceptionType.UnrecognizedException.name,
               statusCode: error.response?.statusCode,
             );
@@ -50,7 +51,7 @@ class SMobillsException implements Exception {
       } else {
         return SMobillsException(
           exceptionType: ExceptionType.UnrecognizedException,
-          message: 'Error unrecognized',
+          message: 'Ops, algo deu errado',
         );
       }
     } on FormatException catch (e) {
@@ -61,7 +62,7 @@ class SMobillsException implements Exception {
     } on Exception catch (_) {
       return SMobillsException(
         exceptionType: ExceptionType.UnrecognizedException,
-        message: 'Error unrecognized',
+        message: 'Ops, algo deu errado',
       );
     }
   }
@@ -69,7 +70,7 @@ class SMobillsException implements Exception {
   factory SMobillsException.response() {
     return SMobillsException(
       exceptionType: ExceptionType.ResponseDataNullException,
-      message: 'Response data null',
+      message: 'Não foi possível identificar o resultado',
     );
   }
 
