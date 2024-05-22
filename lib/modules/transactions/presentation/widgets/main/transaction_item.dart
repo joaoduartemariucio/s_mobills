@@ -5,15 +5,17 @@ class TransactionItem extends StatelessWidget {
   const TransactionItem({
     super.key,
     required this.isExpense,
+    required this.isDone,
     required this.name,
     required this.description,
     required this.value,
   });
 
   final bool isExpense;
+  final bool isDone;
   final String name;
   final String description;
-  final double value;
+  final String value;
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +47,24 @@ class TransactionItem extends StatelessWidget {
                   color: Colors.grey,
                 ),
               ),
+              Text(
+                isExpense
+                    ? isDone
+                        ? "Pago"
+                        : "Pendente"
+                    : isDone
+                        ? "Recebido"
+                        : "Pendente",
+                style: SMobillsTextStyles.body2.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: isDone ? Colors.green : Colors.yellow,
+                ),
+              ),
             ],
           ),
           const Spacer(),
           Text(
-            SMobillsCurrencyFormatter.formatCurrency(value),
+            value,
             style: SMobillsTextStyles.body2.copyWith(
               fontWeight: FontWeight.w600,
               color: isExpense ? Colors.red : Colors.green,

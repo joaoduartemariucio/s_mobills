@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:s_mobills/modules/transactions/domain/model/category_type.dart';
-import 'package:s_mobills/modules/transactions/domain/model/transaction_type.dart';
+import 'package:s_mobills/core/model/category_type.dart';
+import 'package:s_mobills/core/model/transaction_type.dart';
 import 'package:s_mobills/modules/transactions/presentation/select_category/cubit/select_category_cubit.dart';
 
 class SelectCategoryPage extends StatelessWidget {

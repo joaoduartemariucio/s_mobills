@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:s_mobills/core/core.dart';
 import 'package:s_mobills/modules/modules.dart';
-import 'package:s_mobills/modules/transactions/domain/model/transaction_type.dart';
+import 'package:s_mobills/core/model/transaction_type.dart';
 import 'package:s_mobills/modules/transactions/presentation/new_transaction/view/new_transaction_page.dart';
 import 'package:s_mobills/ui/ui.dart';
 

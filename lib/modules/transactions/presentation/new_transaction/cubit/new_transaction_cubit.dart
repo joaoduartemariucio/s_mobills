@@ -5,10 +5,8 @@ import 'package:currency_textfield/currency_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:s_mobills/core/core.dart';
-import 'package:s_mobills/modules/modules.dart';
-import 'package:s_mobills/modules/transactions/domain/model/category_type.dart';
-import 'package:s_mobills/modules/transactions/domain/model/transaction_type.dart';
-import 'package:s_mobills/modules/transactions/domain/usecase/new_transaction_use_case.dart';
+import 'package:s_mobills/modules/profile/module.dart';
+import 'package:s_mobills/modules/transactions/module.dart';
 import 'package:s_mobills/ui/ui.dart';
 
 part 'new_transaction_state.dart';
@@ -93,6 +91,8 @@ class NewTransactionCubit extends Cubit<NewTransactionState> {
     try {
       emit(state.copyWith(isLoading: true));
       await newTransactionUseCase(state: state);
+      AppRouter.showSuccess(message: 'Nova transação adicionada com sucesso');
+      AppRouter.router.pop();
     } on SMobillsException catch (e) {
       AppRouter.showError(message: e.message);
     } finally {

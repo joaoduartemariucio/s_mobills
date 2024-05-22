@@ -2,31 +2,42 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:s_mobills/core/navigation/routes/app_router.dart';
-import 'package:s_mobills/modules/transactions/domain/model/transaction.dart';
-import 'package:s_mobills/modules/transactions/domain/model/transaction_type.dart';
+import 'package:s_mobills/core/core.dart';
+import 'package:s_mobills/modules/transactions/module.dart';
 
 part 'transactions_state.dart';
 part 'transactions_cubit.freezed.dart';
 
 class TransactionsCubit extends Cubit<TransactionsState> {
-  TransactionsCubit() : super(const TransactionsState.initial()) {
+  TransactionsCubit({required this.getAllUserTransactionsUseCase})
+      : super(const TransactionsState.initial()) {
     _loadTransactions();
   }
 
+  final GetAllUserTransactionsUseCase getAllUserTransactionsUseCase;
+
   final floatingButtonKey = GlobalKey<ExpandableFabState>();
 
-  void _loadTransactions() {
-    final transactions = Transaction.generateRandomTransactions(5);
-    emit(state.copyWith(transactions: transactions));
+  Future<void> _loadTransactions() async {
+    try {
+      emit(state.copyWith(isLoading: true));
+      final result = await getAllUserTransactionsUseCase();
+      emit(state.copyWith(transactions: result));
+    } on SMobillsException catch (e) {
+      AppRouter.showError(message: e.message);
+    } finally {
+      emit(state.copyWith(isLoading: false));
+    }
   }
 
-  void addTransaction({required TransactionType type}) {
+  Future<void> addTransaction({required TransactionType type}) async {
     _floatingButtonToggle();
-    AppRouter.router.pushNamed(
+    await AppRouter.router.pushNamed(
       Routes.newTransaction.name,
       extra: {'type': type},
     );
+
+    await _loadTransactions();
   }
 
   void _floatingButtonToggle() {

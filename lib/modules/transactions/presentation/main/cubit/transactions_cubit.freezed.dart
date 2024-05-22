@@ -16,20 +16,22 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TransactionsState {
+  bool get isLoading => throw _privateConstructorUsedError;
   List<Transaction> get transactions => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Transaction> transactions) initial,
+    required TResult Function(bool isLoading, List<Transaction> transactions)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Transaction> transactions)? initial,
+    TResult? Function(bool isLoading, List<Transaction> transactions)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Transaction> transactions)? initial,
+    TResult Function(bool isLoading, List<Transaction> transactions)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +63,7 @@ abstract class $TransactionsStateCopyWith<$Res> {
           TransactionsState value, $Res Function(TransactionsState) then) =
       _$TransactionsStateCopyWithImpl<$Res, TransactionsState>;
   @useResult
-  $Res call({List<Transaction> transactions});
+  $Res call({bool isLoading, List<Transaction> transactions});
 }
 
 /// @nodoc
@@ -77,9 +79,14 @@ class _$TransactionsStateCopyWithImpl<$Res, $Val extends TransactionsState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoading = null,
     Object? transactions = null,
   }) {
     return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       transactions: null == transactions
           ? _value.transactions
           : transactions // ignore: cast_nullable_to_non_nullable
@@ -96,7 +103,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Transaction> transactions});
+  $Res call({bool isLoading, List<Transaction> transactions});
 }
 
 /// @nodoc
@@ -110,9 +117,14 @@ class __$$InitialImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoading = null,
     Object? transactions = null,
   }) {
     return _then(_$InitialImpl(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       transactions: null == transactions
           ? _value._transactions
           : transactions // ignore: cast_nullable_to_non_nullable
@@ -124,9 +136,13 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({final List<Transaction> transactions = const []})
+  const _$InitialImpl(
+      {this.isLoading = false, final List<Transaction> transactions = const []})
       : _transactions = transactions;
 
+  @override
+  @JsonKey()
+  final bool isLoading;
   final List<Transaction> _transactions;
   @override
   @JsonKey()
@@ -138,7 +154,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'TransactionsState.initial(transactions: $transactions)';
+    return 'TransactionsState.initial(isLoading: $isLoading, transactions: $transactions)';
   }
 
   @override
@@ -146,13 +162,15 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             const DeepCollectionEquality()
                 .equals(other._transactions, _transactions));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_transactions));
+  int get hashCode => Object.hash(runtimeType, isLoading,
+      const DeepCollectionEquality().hash(_transactions));
 
   @JsonKey(ignore: true)
   @override
@@ -163,27 +181,28 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Transaction> transactions) initial,
+    required TResult Function(bool isLoading, List<Transaction> transactions)
+        initial,
   }) {
-    return initial(transactions);
+    return initial(isLoading, transactions);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Transaction> transactions)? initial,
+    TResult? Function(bool isLoading, List<Transaction> transactions)? initial,
   }) {
-    return initial?.call(transactions);
+    return initial?.call(isLoading, transactions);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Transaction> transactions)? initial,
+    TResult Function(bool isLoading, List<Transaction> transactions)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(transactions);
+      return initial(isLoading, transactions);
     }
     return orElse();
   }
@@ -218,9 +237,12 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements TransactionsState {
-  const factory _Initial({final List<Transaction> transactions}) =
-      _$InitialImpl;
+  const factory _Initial(
+      {final bool isLoading,
+      final List<Transaction> transactions}) = _$InitialImpl;
 
+  @override
+  bool get isLoading;
   @override
   List<Transaction> get transactions;
   @override

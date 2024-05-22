@@ -1,13 +1,12 @@
-// ignore_for_file: avoid_dynamic_calls
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
+import 'package:get_it/get_it.dart';
 import 'package:grouped_list/grouped_list.dart';
+import 'package:intl/intl.dart';
+import 'package:s_mobills/core/core.dart';
 import 'package:s_mobills/l10n/l10n.dart';
-import 'package:s_mobills/modules/transactions/domain/model/transaction_type.dart';
-import 'package:s_mobills/modules/transactions/presentation/main/cubit/transactions_cubit.dart';
-import 'package:s_mobills/modules/transactions/presentation/widgets/widgets.dart';
+import 'package:s_mobills/modules/transactions/module.dart';
 import 'package:s_mobills/ui/ui.dart';
 
 class TransactionsPage extends StatelessWidget {
@@ -16,7 +15,9 @@ class TransactionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => TransactionsCubit(),
+      create: (_) => TransactionsCubit(
+        getAllUserTransactionsUseCase: GetIt.I<GetAllUserTransactionsUseCase>(),
+      ),
       child: const TransactionsView(),
     );
   }
@@ -38,11 +39,15 @@ class TransactionsView extends StatelessWidget {
           body: GroupedListView<dynamic, String>(
             elements: state.transactions,
             groupBy: (element) {
-              return element.dateOfTransaction.toString();
+              final date = element.date as DateTime;
+              final inputDateFormat = DateFormat('dd/MM/yyyy');
+              final formattedDate = inputDateFormat.format(date);
+              return formattedDate;
             },
             groupComparator: (value1, value2) => value2.compareTo(value1),
             groupSeparatorBuilder: (String value) {
-              final date = DateTime.parse(value);
+              final inputDateFormat = DateFormat('dd/MM/yyyy');
+              final date = inputDateFormat.parse(value);
               final title = SMobillsDateFormatter.formatDate(
                 context: context,
                 date: date,
@@ -51,16 +56,18 @@ class TransactionsView extends StatelessWidget {
               return TransactionSectionTitle(title: title);
             },
             itemBuilder: (_, element) {
-              final name = element.name as String;
+              final value = element.value as Currency;
+              final isDone = element.done as bool;
               final description = element.description as String;
-              final value = element.value as double;
-              final isExpense = element.isExpense as bool;
+              final category = element.category as CategoryType;
+              final type = element.type as TransactionType;
 
               return TransactionItem(
-                isExpense: isExpense,
-                name: name,
+                isExpense: type == TransactionType.expense,
+                isDone: isDone,
+                name: category.displayName,
                 description: description,
-                value: value,
+                value: value.formatted,
               );
             },
           ),
