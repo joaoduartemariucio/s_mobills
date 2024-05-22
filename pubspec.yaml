@@ -58,5 +58,7 @@ flutter:
         - asset: lib/resources/fonts/Roboto-Regular.ttf
         - asset: lib/resources/fonts/Roboto-Thin.ttf
         - asset: lib/resources/fonts/Roboto-ThinItalic.ttf
+  assets:
+    - lib/resources/icons/empty_bank_accounts.png
   uses-material-design: true
   generate: true

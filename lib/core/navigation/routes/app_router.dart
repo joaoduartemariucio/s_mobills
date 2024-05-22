@@ -18,6 +18,7 @@ enum Routes {
   profileEdit,
   profileAccounts,
   profileAccountsCreate,
+  profileAccountsEdit,
   transactions,
   newTransaction,
   categories
@@ -42,6 +43,8 @@ extension RoutesExtension on Routes {
         return 'accounts';
       case Routes.profileAccountsCreate:
         return 'create';
+      case Routes.profileAccountsEdit:
+        return 'edit';
       case Routes.transactions:
         return '/transactions';
       case Routes.newTransaction:
@@ -69,6 +72,8 @@ extension RoutesExtension on Routes {
         return 'Accounts';
       case Routes.profileAccountsCreate:
         return 'Create Account';
+      case Routes.profileAccountsEdit:
+        return 'Edit Account';
       case Routes.transactions:
         return 'Transactions';
       case Routes.newTransaction:
@@ -150,8 +155,16 @@ class AppRouter {
                     path: Routes.profileAccountsCreate.path,
                     builder: (context, state) => const CreateAccountPage(),
                   ),
+                  GoRoute(
+                    name: Routes.profileAccountsEdit.name,
+                    path: Routes.profileAccountsEdit.path,
+                    builder: (context, state) {
+                      final account = state.extra! as BankAccount;
+                      return EditAccountPage(account: account);
+                    },
+                  ),
                 ],
-              ),
+              )
             ],
           ),
         ],

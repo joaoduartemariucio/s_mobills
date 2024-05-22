@@ -20,8 +20,11 @@ mixin _$NewTransactionState {
   String get description => throw _privateConstructorUsedError;
   bool get done => throw _privateConstructorUsedError;
   bool get showAllDateOptions => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   TransactionType get transactionType => throw _privateConstructorUsedError;
   CategoryType get categoryType => throw _privateConstructorUsedError;
+  int get bankAccountId => throw _privateConstructorUsedError;
+  String get bankAccountName => throw _privateConstructorUsedError;
   DateTime? get selectedDate => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -30,8 +33,11 @@ mixin _$NewTransactionState {
             String description,
             bool done,
             bool showAllDateOptions,
+            bool isLoading,
             TransactionType transactionType,
             CategoryType categoryType,
+            int bankAccountId,
+            String bankAccountName,
             DateTime? selectedDate)
         initial,
   }) =>
@@ -43,8 +49,11 @@ mixin _$NewTransactionState {
             String description,
             bool done,
             bool showAllDateOptions,
+            bool isLoading,
             TransactionType transactionType,
             CategoryType categoryType,
+            int bankAccountId,
+            String bankAccountName,
             DateTime? selectedDate)?
         initial,
   }) =>
@@ -56,8 +65,11 @@ mixin _$NewTransactionState {
             String description,
             bool done,
             bool showAllDateOptions,
+            bool isLoading,
             TransactionType transactionType,
             CategoryType categoryType,
+            int bankAccountId,
+            String bankAccountName,
             DateTime? selectedDate)?
         initial,
     required TResult orElse(),
@@ -96,8 +108,11 @@ abstract class $NewTransactionStateCopyWith<$Res> {
       String description,
       bool done,
       bool showAllDateOptions,
+      bool isLoading,
       TransactionType transactionType,
       CategoryType categoryType,
+      int bankAccountId,
+      String bankAccountName,
       DateTime? selectedDate});
 }
 
@@ -118,8 +133,11 @@ class _$NewTransactionStateCopyWithImpl<$Res, $Val extends NewTransactionState>
     Object? description = null,
     Object? done = null,
     Object? showAllDateOptions = null,
+    Object? isLoading = null,
     Object? transactionType = null,
     Object? categoryType = null,
+    Object? bankAccountId = null,
+    Object? bankAccountName = null,
     Object? selectedDate = freezed,
   }) {
     return _then(_value.copyWith(
@@ -139,6 +157,10 @@ class _$NewTransactionStateCopyWithImpl<$Res, $Val extends NewTransactionState>
           ? _value.showAllDateOptions
           : showAllDateOptions // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       transactionType: null == transactionType
           ? _value.transactionType
           : transactionType // ignore: cast_nullable_to_non_nullable
@@ -147,6 +169,14 @@ class _$NewTransactionStateCopyWithImpl<$Res, $Val extends NewTransactionState>
           ? _value.categoryType
           : categoryType // ignore: cast_nullable_to_non_nullable
               as CategoryType,
+      bankAccountId: null == bankAccountId
+          ? _value.bankAccountId
+          : bankAccountId // ignore: cast_nullable_to_non_nullable
+              as int,
+      bankAccountName: null == bankAccountName
+          ? _value.bankAccountName
+          : bankAccountName // ignore: cast_nullable_to_non_nullable
+              as String,
       selectedDate: freezed == selectedDate
           ? _value.selectedDate
           : selectedDate // ignore: cast_nullable_to_non_nullable
@@ -168,8 +198,11 @@ abstract class _$$InitialImplCopyWith<$Res>
       String description,
       bool done,
       bool showAllDateOptions,
+      bool isLoading,
       TransactionType transactionType,
       CategoryType categoryType,
+      int bankAccountId,
+      String bankAccountName,
       DateTime? selectedDate});
 }
 
@@ -188,8 +221,11 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? description = null,
     Object? done = null,
     Object? showAllDateOptions = null,
+    Object? isLoading = null,
     Object? transactionType = null,
     Object? categoryType = null,
+    Object? bankAccountId = null,
+    Object? bankAccountName = null,
     Object? selectedDate = freezed,
   }) {
     return _then(_$InitialImpl(
@@ -209,6 +245,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.showAllDateOptions
           : showAllDateOptions // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       transactionType: null == transactionType
           ? _value.transactionType
           : transactionType // ignore: cast_nullable_to_non_nullable
@@ -217,6 +257,14 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.categoryType
           : categoryType // ignore: cast_nullable_to_non_nullable
               as CategoryType,
+      bankAccountId: null == bankAccountId
+          ? _value.bankAccountId
+          : bankAccountId // ignore: cast_nullable_to_non_nullable
+              as int,
+      bankAccountName: null == bankAccountName
+          ? _value.bankAccountName
+          : bankAccountName // ignore: cast_nullable_to_non_nullable
+              as String,
       selectedDate: freezed == selectedDate
           ? _value.selectedDate
           : selectedDate // ignore: cast_nullable_to_non_nullable
@@ -233,8 +281,11 @@ class _$InitialImpl implements _Initial {
       this.description = '',
       this.done = false,
       this.showAllDateOptions = true,
+      this.isLoading = false,
       this.transactionType = TransactionType.income,
       this.categoryType = CategoryType.food,
+      this.bankAccountId = -1,
+      this.bankAccountName = 'Selecione a conta',
       this.selectedDate});
 
   @override
@@ -251,16 +302,25 @@ class _$InitialImpl implements _Initial {
   final bool showAllDateOptions;
   @override
   @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
   final TransactionType transactionType;
   @override
   @JsonKey()
   final CategoryType categoryType;
   @override
+  @JsonKey()
+  final int bankAccountId;
+  @override
+  @JsonKey()
+  final String bankAccountName;
+  @override
   final DateTime? selectedDate;
 
   @override
   String toString() {
-    return 'NewTransactionState.initial(transactionValue: $transactionValue, description: $description, done: $done, showAllDateOptions: $showAllDateOptions, transactionType: $transactionType, categoryType: $categoryType, selectedDate: $selectedDate)';
+    return 'NewTransactionState.initial(transactionValue: $transactionValue, description: $description, done: $done, showAllDateOptions: $showAllDateOptions, isLoading: $isLoading, transactionType: $transactionType, categoryType: $categoryType, bankAccountId: $bankAccountId, bankAccountName: $bankAccountName, selectedDate: $selectedDate)';
   }
 
   @override
@@ -275,17 +335,33 @@ class _$InitialImpl implements _Initial {
             (identical(other.done, done) || other.done == done) &&
             (identical(other.showAllDateOptions, showAllDateOptions) ||
                 other.showAllDateOptions == showAllDateOptions) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             (identical(other.transactionType, transactionType) ||
                 other.transactionType == transactionType) &&
             (identical(other.categoryType, categoryType) ||
                 other.categoryType == categoryType) &&
+            (identical(other.bankAccountId, bankAccountId) ||
+                other.bankAccountId == bankAccountId) &&
+            (identical(other.bankAccountName, bankAccountName) ||
+                other.bankAccountName == bankAccountName) &&
             (identical(other.selectedDate, selectedDate) ||
                 other.selectedDate == selectedDate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, transactionValue, description,
-      done, showAllDateOptions, transactionType, categoryType, selectedDate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      transactionValue,
+      description,
+      done,
+      showAllDateOptions,
+      isLoading,
+      transactionType,
+      categoryType,
+      bankAccountId,
+      bankAccountName,
+      selectedDate);
 
   @JsonKey(ignore: true)
   @override
@@ -301,13 +377,25 @@ class _$InitialImpl implements _Initial {
             String description,
             bool done,
             bool showAllDateOptions,
+            bool isLoading,
             TransactionType transactionType,
             CategoryType categoryType,
+            int bankAccountId,
+            String bankAccountName,
             DateTime? selectedDate)
         initial,
   }) {
-    return initial(transactionValue, description, done, showAllDateOptions,
-        transactionType, categoryType, selectedDate);
+    return initial(
+        transactionValue,
+        description,
+        done,
+        showAllDateOptions,
+        isLoading,
+        transactionType,
+        categoryType,
+        bankAccountId,
+        bankAccountName,
+        selectedDate);
   }
 
   @override
@@ -318,13 +406,25 @@ class _$InitialImpl implements _Initial {
             String description,
             bool done,
             bool showAllDateOptions,
+            bool isLoading,
             TransactionType transactionType,
             CategoryType categoryType,
+            int bankAccountId,
+            String bankAccountName,
             DateTime? selectedDate)?
         initial,
   }) {
-    return initial?.call(transactionValue, description, done,
-        showAllDateOptions, transactionType, categoryType, selectedDate);
+    return initial?.call(
+        transactionValue,
+        description,
+        done,
+        showAllDateOptions,
+        isLoading,
+        transactionType,
+        categoryType,
+        bankAccountId,
+        bankAccountName,
+        selectedDate);
   }
 
   @override
@@ -335,15 +435,27 @@ class _$InitialImpl implements _Initial {
             String description,
             bool done,
             bool showAllDateOptions,
+            bool isLoading,
             TransactionType transactionType,
             CategoryType categoryType,
+            int bankAccountId,
+            String bankAccountName,
             DateTime? selectedDate)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(transactionValue, description, done, showAllDateOptions,
-          transactionType, categoryType, selectedDate);
+      return initial(
+          transactionValue,
+          description,
+          done,
+          showAllDateOptions,
+          isLoading,
+          transactionType,
+          categoryType,
+          bankAccountId,
+          bankAccountName,
+          selectedDate);
     }
     return orElse();
   }
@@ -383,8 +495,11 @@ abstract class _Initial implements NewTransactionState {
       final String description,
       final bool done,
       final bool showAllDateOptions,
+      final bool isLoading,
       final TransactionType transactionType,
       final CategoryType categoryType,
+      final int bankAccountId,
+      final String bankAccountName,
       final DateTime? selectedDate}) = _$InitialImpl;
 
   @override
@@ -396,9 +511,15 @@ abstract class _Initial implements NewTransactionState {
   @override
   bool get showAllDateOptions;
   @override
+  bool get isLoading;
+  @override
   TransactionType get transactionType;
   @override
   CategoryType get categoryType;
+  @override
+  int get bankAccountId;
+  @override
+  String get bankAccountName;
   @override
   DateTime? get selectedDate;
   @override

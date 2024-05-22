@@ -4,15 +4,21 @@ import 'package:bloc/bloc.dart';
 import 'package:currency_textfield/currency_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:s_mobills/core/core.dart';
+import 'package:s_mobills/modules/modules.dart';
 import 'package:s_mobills/modules/transactions/domain/model/category_type.dart';
 import 'package:s_mobills/modules/transactions/domain/model/transaction_type.dart';
+import 'package:s_mobills/modules/transactions/domain/usecase/new_transaction_use_case.dart';
 import 'package:s_mobills/ui/ui.dart';
 
 part 'new_transaction_state.dart';
 part 'new_transaction_cubit.freezed.dart';
 
 class NewTransactionCubit extends Cubit<NewTransactionState> {
-  NewTransactionCubit() : super(const NewTransactionState.initial());
+  NewTransactionCubit({required this.newTransactionUseCase})
+      : super(const NewTransactionState.initial());
+
+  final NewTransactionUseCase newTransactionUseCase;
 
   final TextEditingController descriptionTextEditingController =
       TextEditingController();
@@ -74,8 +80,23 @@ class NewTransactionCubit extends Cubit<NewTransactionState> {
     emit(state.copyWith(categoryType: type));
   }
 
-  void saveTransaction() {
-    print('================================================================');
-    print(state.toString());
+  void onChangeSelectedBankAccount(BankAccount account) {
+    emit(
+      state.copyWith(
+        bankAccountId: account.id,
+        bankAccountName: account.name,
+      ),
+    );
+  }
+
+  Future<void> saveTransaction() async {
+    try {
+      emit(state.copyWith(isLoading: true));
+      await newTransactionUseCase(state: state);
+    } on SMobillsException catch (e) {
+      AppRouter.showError(message: e.message);
+    } finally {
+      emit(state.copyWith(isLoading: false));
+    }
   }
 }

@@ -21,8 +21,10 @@ class SelectCategoryCubit extends Cubit<SelectCategoryState> {
         .where((e) => e.isReceived == filterByReceived)
         .toList();
 
-    emit(state.copyWith(
-      categories: categoriesFiltered,
-    ));
+    emit(
+      state.copyWith(
+        categories: categoriesFiltered,
+      ),
+    );
   }
 }

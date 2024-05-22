@@ -29,6 +29,24 @@ void _domainDependencies() {
 }
 
 void _useCasesDependencies() {
+  GetIt.I.registerLazySingleton<GetUserBankAccountsUseCase>(
+    () => GetUserBankAccountsUseCase(
+      repository: GetIt.I<ProfileRepository>(),
+    ),
+  );
+
+  GetIt.I.registerLazySingleton<UpdateBankAccountUseCase>(
+    () => UpdateBankAccountUseCase(
+      repository: GetIt.I<ProfileRepository>(),
+    ),
+  );
+
+  GetIt.I.registerLazySingleton<DeleteBankAccountUseCase>(
+    () => DeleteBankAccountUseCase(
+      repository: GetIt.I<ProfileRepository>(),
+    ),
+  );
+
   GetIt.I.registerLazySingleton<CreateNewBankAccountUseCase>(
     () => CreateNewBankAccountUseCase(
       repository: GetIt.I<ProfileRepository>(),

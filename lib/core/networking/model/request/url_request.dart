@@ -1,5 +1,5 @@
 class URLRequest {
-  const URLRequest({
+  URLRequest({
     required this.path,
     required this.method,
     required this.requiresAuthentication,
@@ -8,4 +8,12 @@ class URLRequest {
   final String path;
   final String method;
   final bool requiresAuthentication;
+
+  URLRequest setParameter({dynamic parameter}) {
+    return URLRequest(
+      path: '$path/$parameter',
+      method: method,
+      requiresAuthentication: requiresAuthentication,
+    );
+  }
 }

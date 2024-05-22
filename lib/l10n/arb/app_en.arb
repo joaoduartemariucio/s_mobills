@@ -45,5 +45,10 @@
     "yourAccounts": "Your Accounts",
     "currentBalance": "Current Balance",
     "createAccount": "Create Account",
-    "createAccountDetails": "Fill in all fields with your account information"
+    "createAccountDetails": "Fill in all fields with your account information",
+    "emptyBankAccounts": "Empty Bank Accounts",
+    "emptyBankAccountsDetails": "You do not have any registered account",
+    "editAccount": "Edit Account",
+    "editAccountDetails": "Edit the fields you want and don't forget to save",
+    "account": "Account"
 }

@@ -16,19 +16,29 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AccountsState {
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isNewTransaction => throw _privateConstructorUsedError;
+  bool get isEmptyAccounts => throw _privateConstructorUsedError;
+  List<BankAccount> get accounts => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(bool isLoading, bool isNewTransaction,
+            bool isEmptyAccounts, List<BankAccount> accounts)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(bool isLoading, bool isNewTransaction,
+            bool isEmptyAccounts, List<BankAccount> accounts)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(bool isLoading, bool isNewTransaction,
+            bool isEmptyAccounts, List<BankAccount> accounts)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +58,10 @@ mixin _$AccountsState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AccountsStateCopyWith<AccountsState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +69,12 @@ abstract class $AccountsStateCopyWith<$Res> {
   factory $AccountsStateCopyWith(
           AccountsState value, $Res Function(AccountsState) then) =
       _$AccountsStateCopyWithImpl<$Res, AccountsState>;
+  @useResult
+  $Res call(
+      {bool isLoading,
+      bool isNewTransaction,
+      bool isEmptyAccounts,
+      List<BankAccount> accounts});
 }
 
 /// @nodoc
@@ -66,13 +86,49 @@ class _$AccountsStateCopyWithImpl<$Res, $Val extends AccountsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? isNewTransaction = null,
+    Object? isEmptyAccounts = null,
+    Object? accounts = null,
+  }) {
+    return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isNewTransaction: null == isNewTransaction
+          ? _value.isNewTransaction
+          : isNewTransaction // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEmptyAccounts: null == isEmptyAccounts
+          ? _value.isEmptyAccounts
+          : isEmptyAccounts // ignore: cast_nullable_to_non_nullable
+              as bool,
+      accounts: null == accounts
+          ? _value.accounts
+          : accounts // ignore: cast_nullable_to_non_nullable
+              as List<BankAccount>,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $AccountsStateCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {bool isLoading,
+      bool isNewTransaction,
+      bool isEmptyAccounts,
+      List<BankAccount> accounts});
 }
 
 /// @nodoc
@@ -82,51 +138,124 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? isNewTransaction = null,
+    Object? isEmptyAccounts = null,
+    Object? accounts = null,
+  }) {
+    return _then(_$InitialImpl(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isNewTransaction: null == isNewTransaction
+          ? _value.isNewTransaction
+          : isNewTransaction // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEmptyAccounts: null == isEmptyAccounts
+          ? _value.isEmptyAccounts
+          : isEmptyAccounts // ignore: cast_nullable_to_non_nullable
+              as bool,
+      accounts: null == accounts
+          ? _value._accounts
+          : accounts // ignore: cast_nullable_to_non_nullable
+              as List<BankAccount>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+  const _$InitialImpl(
+      {this.isLoading = false,
+      this.isNewTransaction = false,
+      this.isEmptyAccounts = false,
+      final List<BankAccount> accounts = const []})
+      : _accounts = accounts;
+
+  @override
+  @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isNewTransaction;
+  @override
+  @JsonKey()
+  final bool isEmptyAccounts;
+  final List<BankAccount> _accounts;
+  @override
+  @JsonKey()
+  List<BankAccount> get accounts {
+    if (_accounts is EqualUnmodifiableListView) return _accounts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_accounts);
+  }
 
   @override
   String toString() {
-    return 'AccountsState.initial()';
+    return 'AccountsState.initial(isLoading: $isLoading, isNewTransaction: $isNewTransaction, isEmptyAccounts: $isEmptyAccounts, accounts: $accounts)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$InitialImpl &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isNewTransaction, isNewTransaction) ||
+                other.isNewTransaction == isNewTransaction) &&
+            (identical(other.isEmptyAccounts, isEmptyAccounts) ||
+                other.isEmptyAccounts == isEmptyAccounts) &&
+            const DeepCollectionEquality().equals(other._accounts, _accounts));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isLoading, isNewTransaction,
+      isEmptyAccounts, const DeepCollectionEquality().hash(_accounts));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(bool isLoading, bool isNewTransaction,
+            bool isEmptyAccounts, List<BankAccount> accounts)
+        initial,
   }) {
-    return initial();
+    return initial(isLoading, isNewTransaction, isEmptyAccounts, accounts);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(bool isLoading, bool isNewTransaction,
+            bool isEmptyAccounts, List<BankAccount> accounts)?
+        initial,
   }) {
-    return initial?.call();
+    return initial?.call(
+        isLoading, isNewTransaction, isEmptyAccounts, accounts);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(bool isLoading, bool isNewTransaction,
+            bool isEmptyAccounts, List<BankAccount> accounts)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(isLoading, isNewTransaction, isEmptyAccounts, accounts);
     }
     return orElse();
   }
@@ -161,5 +290,22 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements AccountsState {
-  const factory _Initial() = _$InitialImpl;
+  const factory _Initial(
+      {final bool isLoading,
+      final bool isNewTransaction,
+      final bool isEmptyAccounts,
+      final List<BankAccount> accounts}) = _$InitialImpl;
+
+  @override
+  bool get isLoading;
+  @override
+  bool get isNewTransaction;
+  @override
+  bool get isEmptyAccounts;
+  @override
+  List<BankAccount> get accounts;
+  @override
+  @JsonKey(ignore: true)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

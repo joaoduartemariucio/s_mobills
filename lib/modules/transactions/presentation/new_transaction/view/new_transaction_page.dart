@@ -2,9 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:s_mobills/l10n/l10n.dart';
+import 'package:s_mobills/modules/modules.dart';
+import 'package:s_mobills/modules/profile/presentation/accounts/view/accounts_page.dart';
 import 'package:s_mobills/modules/transactions/domain/model/category_type.dart';
 import 'package:s_mobills/modules/transactions/domain/model/transaction_type.dart';
+import 'package:s_mobills/modules/transactions/domain/usecase/new_transaction_use_case.dart';
 import 'package:s_mobills/modules/transactions/module.dart';
 import 'package:s_mobills/modules/transactions/presentation/select_category/view/select_category_page.dart';
 import 'package:s_mobills/modules/transactions/presentation/new_transaction/cubit/new_transaction_cubit.dart';
@@ -21,8 +25,9 @@ class NewTransactionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => NewTransactionCubit()
-        ..setupTransactionType(
+      create: (_) => NewTransactionCubit(
+        newTransactionUseCase: GetIt.I<NewTransactionUseCase>(),
+      )..setupTransactionType(
           transactionType: transactionType,
         ),
       child: const NewTransactionView(),
@@ -95,6 +100,11 @@ class NewTransactionView extends StatelessWidget {
                         hintText: context.l10n.date,
                         options: _dateOptions(state, context),
                       ),
+                      InputRow.selectable(
+                        icon: Icons.money_outlined,
+                        hintText: context.l10n.account,
+                        options: _selectAccountOptions(state, context),
+                      ),
                       Visibility(
                         visible:
                             state.transactionType == TransactionType.expense,
@@ -119,6 +129,7 @@ class NewTransactionView extends StatelessWidget {
                         onPressed: () {
                           context.read<NewTransactionCubit>().saveTransaction();
                         },
+                        isLoading: state.isLoading,
                       ),
                       SMobillsSpacing.lg,
                     ],
@@ -157,6 +168,38 @@ class NewTransactionView extends StatelessWidget {
         child: Chip(
           label: Text(
             state.categoryType.displayName,
+          ),
+        ),
+      ),
+    ];
+  }
+
+  List<Widget> _selectAccountOptions(
+    NewTransactionState state,
+    BuildContext context,
+  ) {
+    return [
+      GestureDetector(
+        onTap: () async {
+          final result = await showModalBottomSheet<Map<String, dynamic>>(
+            context: context,
+            builder: (_) {
+              return const AccountsPage(
+                isNewTransaction: true,
+              );
+            },
+          );
+
+          if (result != null) {
+            final bankAccount = result['bankAccount'] as BankAccount;
+            context
+                .read<NewTransactionCubit>()
+                .onChangeSelectedBankAccount(bankAccount);
+          }
+        },
+        child: Chip(
+          label: Text(
+            state.bankAccountName,
           ),
         ),
       ),

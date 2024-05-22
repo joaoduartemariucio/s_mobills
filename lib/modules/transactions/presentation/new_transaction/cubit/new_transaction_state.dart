@@ -14,8 +14,11 @@ class NewTransactionState with _$NewTransactionState {
     @Default('') String description,
     @Default(false) bool done,
     @Default(true) bool showAllDateOptions,
+    @Default(false) bool isLoading,
     @Default(TransactionType.income) TransactionType transactionType,
     @Default(CategoryType.food) CategoryType categoryType,
+    @Default(-1) int bankAccountId,
+    @Default('Selecione a conta') String bankAccountName,
     DateTime? selectedDate,
   }) = _Initial;
 }

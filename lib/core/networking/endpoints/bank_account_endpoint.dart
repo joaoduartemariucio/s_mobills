@@ -6,12 +6,14 @@ import 'package:s_mobills/core/networking/model/request/url_request.dart';
 
 enum BankAccountEndpoint implements Endpoint {
   createAccount,
+  deleteAccount,
+  updateAccount,
   accounts;
 
   @override
   String get path {
     switch (this) {
-      case createAccount:
+      case createAccount || deleteAccount || updateAccount:
         return '/account';
       case accounts:
         return '/account/user';
@@ -23,6 +25,10 @@ enum BankAccountEndpoint implements Endpoint {
     switch (this) {
       case createAccount:
         return RequestMethod.POST;
+      case deleteAccount:
+        return RequestMethod.DELETE;
+      case updateAccount:
+        return RequestMethod.PUT;
       case accounts:
         return RequestMethod.GET;
     }

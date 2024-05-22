@@ -47,6 +47,41 @@ class NetworkService {
     }
   }
 
+  Future<Result<List<R>>> requestList<R>({
+    required URLRequest request,
+    required List<R> Function(List<dynamic>) converter,
+    QueryParams? queryParams,
+  }) async {
+    try {
+      final response = await _dio.request<List<dynamic>>(
+        request.path,
+        queryParameters: queryParams,
+        options: Options(
+          method: request.method,
+          extra: <String, Object?>{
+            'requiresAuthToken': request.requiresAuthentication,
+          },
+        ),
+      );
+
+      final result = response.data;
+
+      if (result != null) {
+        final decoded = converter(result);
+        return Success(decoded);
+      }
+
+      return Failure(
+        SMobillsException.response().copyWith(
+          statusCode: response.statusCode,
+        ),
+      );
+    } on DioError catch (e) {
+      final exception = SMobillsException.fromDioException(e);
+      return Failure(exception);
+    }
+  }
+
   Future<Result<void>> requestVoid({
     required URLRequest request,
     JSON? data,
