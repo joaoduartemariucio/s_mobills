@@ -1,8 +1,8 @@
 import 'package:s_mobills/core/core.dart';
 import 'package:s_mobills/modules/transactions/module.dart';
 
-class NewTransactionUseCase {
-  NewTransactionUseCase({required this.repository});
+class UpdateTransactionUseCase {
+  UpdateTransactionUseCase({required this.repository});
 
   final TransactionRepository repository;
 
@@ -21,8 +21,8 @@ class NewTransactionUseCase {
       );
     }
 
-    final transaction = NewTransaction.toDomain(state: state);
+    final transaction = Transaction.stateToDomain(state);
 
-    return repository.createNewTransaction(transaction: transaction);
+    return repository.updateTransaction(transaction: transaction);
   }
 }

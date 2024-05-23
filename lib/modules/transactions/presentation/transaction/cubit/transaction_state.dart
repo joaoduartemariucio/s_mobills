@@ -1,4 +1,4 @@
-part of 'new_transaction_cubit.dart';
+part of 'transaction_cubit.dart';
 
 class TransactionDate {
   static final yesterdayDate = DateTime.now().subtract(const Duration(days: 1));
@@ -8,8 +8,8 @@ class TransactionDate {
 }
 
 @freezed
-class NewTransactionState with _$NewTransactionState {
-  const factory NewTransactionState.initial({
+class TransactionState with _$TransactionState {
+  const factory TransactionState.initial({
     @Default(0.0) double transactionValue,
     @Default('') String description,
     @Default(false) bool done,
@@ -19,6 +19,7 @@ class NewTransactionState with _$NewTransactionState {
     @Default(CategoryType.food) CategoryType categoryType,
     @Default(-1) int bankAccountId,
     @Default('Selecione a conta') String bankAccountName,
+    @Default(-1) int transactionId,
     DateTime? selectedDate,
   }) = _Initial;
 }

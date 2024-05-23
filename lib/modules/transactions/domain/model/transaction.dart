@@ -26,6 +26,19 @@ class Transaction {
     );
   }
 
+  factory Transaction.stateToDomain(TransactionState state) {
+    return Transaction(
+      id: state.transactionId,
+      description: state.description,
+      value: Currency(value: state.transactionValue),
+      accountId: state.bankAccountId,
+      date: state.selectedDate ?? DateTime.now(),
+      done: state.done,
+      type: state.transactionType,
+      category: state.categoryType,
+    );
+  }
+
   final int id;
   final String description;
   final Currency value;

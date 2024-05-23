@@ -1,53 +1,28 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
+import 'package:s_mobills/core/core.dart';
 import 'package:s_mobills/l10n/l10n.dart';
-import 'package:s_mobills/modules/modules.dart';
-import 'package:s_mobills/modules/profile/presentation/accounts/view/accounts_page.dart';
-import 'package:s_mobills/core/model/category_type.dart';
-import 'package:s_mobills/core/model/transaction_type.dart';
-import 'package:s_mobills/modules/transactions/domain/usecase/new_transaction_use_case.dart';
+import 'package:s_mobills/modules/profile/module.dart';
 import 'package:s_mobills/modules/transactions/module.dart';
-import 'package:s_mobills/modules/transactions/presentation/select_category/view/select_category_page.dart';
-import 'package:s_mobills/modules/transactions/presentation/new_transaction/cubit/new_transaction_cubit.dart';
 import 'package:s_mobills/ui/ui.dart';
 
-class NewTransactionPage extends StatelessWidget {
-  const NewTransactionPage({
-    required this.transactionType,
-    super.key,
-  });
-
-  final TransactionType transactionType;
+class TransactionView extends StatelessWidget {
+  const TransactionView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => NewTransactionCubit(
-        newTransactionUseCase: GetIt.I<NewTransactionUseCase>(),
-      )..setupTransactionType(
-          transactionType: transactionType,
-        ),
-      child: const NewTransactionView(),
-    );
-  }
-}
-
-class NewTransactionView extends StatelessWidget {
-  const NewTransactionView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<NewTransactionCubit, NewTransactionState>(
+    return BlocBuilder<TransactionCubit, TransactionState>(
       builder: (context, state) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: SMobillsAppBar(
-            title: state.transactionType == TransactionType.expense
-                ? context.l10n.newExpenseTransaction
-                : context.l10n.newIncomeTransaction,
+            title: state.transactionId != -1
+                ? (state.transactionType == TransactionType.expense
+                    ? context.l10n.editExpenseTransaction
+                    : context.l10n.editIncomeTransaction)
+                : (state.transactionType == TransactionType.expense
+                    ? context.l10n.newExpenseTransaction
+                    : context.l10n.newIncomeTransaction),
             backgroundColor: context.colorScheme.primary,
             elevation: 0,
           ),
@@ -63,7 +38,7 @@ class NewTransactionView extends StatelessWidget {
               SMobillsSpacing.md,
               TransactionValue(
                 controller: context
-                    .read<NewTransactionCubit>()
+                    .read<TransactionCubit>()
                     .transactionValueCurrencyTextFieldController,
               ),
               SMobillsSpacing.sm,
@@ -86,11 +61,11 @@ class NewTransactionView extends StatelessWidget {
                                 : context.l10n.received,
                         switchOn: state.done,
                         onChanged:
-                            context.read<NewTransactionCubit>().onChangedDone,
+                            context.read<TransactionCubit>().onChangedDone,
                       ),
                       InputRow.text(
                         controller: context
-                            .read<NewTransactionCubit>()
+                            .read<TransactionCubit>()
                             .descriptionTextEditingController,
                         icon: Icons.edit_outlined,
                         hintText: context.l10n.description,
@@ -127,9 +102,27 @@ class NewTransactionView extends StatelessWidget {
                       SMobillsButton(
                         title: context.l10n.save,
                         onPressed: () {
-                          context.read<NewTransactionCubit>().saveTransaction();
+                          context.read<TransactionCubit>().saveTransaction();
                         },
                         isLoading: state.isLoading,
+                      ),
+                      SMobillsSpacing.sm,
+                      Visibility(
+                        visible: state.transactionId != -1,
+                        child: SMobillsButton(
+                          title: context.l10n.deleteAccount,
+                          onPressed: context
+                              .read<TransactionCubit>()
+                              .deleteTransaction,
+                          buttonStyle: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            elevation: 0,
+                          ),
+                          textStyle: SMobillsTextStyles.button.copyWith(
+                            fontSize: FontSize.subtitle1,
+                            color: context.colorScheme.error,
+                          ),
+                        ),
                       ),
                       SMobillsSpacing.lg,
                     ],
@@ -144,7 +137,7 @@ class NewTransactionView extends StatelessWidget {
   }
 
   List<Widget> _categoriesOptions(
-    NewTransactionState state,
+    TransactionState state,
     BuildContext context,
   ) {
     return [
@@ -161,7 +154,7 @@ class NewTransactionView extends StatelessWidget {
             final categoryType = result['categoryType'] as CategoryType;
 
             context
-                .read<NewTransactionCubit>()
+                .read<TransactionCubit>()
                 .onChangeSelectedCategory(categoryType);
           }
         },
@@ -175,7 +168,7 @@ class NewTransactionView extends StatelessWidget {
   }
 
   List<Widget> _selectAccountOptions(
-    NewTransactionState state,
+    TransactionState state,
     BuildContext context,
   ) {
     return [
@@ -193,7 +186,7 @@ class NewTransactionView extends StatelessWidget {
           if (result != null) {
             final bankAccount = result['bankAccount'] as BankAccount;
             context
-                .read<NewTransactionCubit>()
+                .read<TransactionCubit>()
                 .onChangeSelectedBankAccount(bankAccount);
           }
         },
@@ -206,12 +199,15 @@ class NewTransactionView extends StatelessWidget {
     ];
   }
 
-  List<Widget> _dateOptions(NewTransactionState state, BuildContext context) {
+  List<Widget> _dateOptions(
+    TransactionState state,
+    BuildContext context,
+  ) {
     return [
       Visibility(
         visible: state.showAllDateOptions,
         child: GestureDetector(
-          onTap: () => context.read<NewTransactionCubit>().onChangeSelectedDate(
+          onTap: () => context.read<TransactionCubit>().onChangeSelectedDate(
                 TransactionDate.yesterdayDate,
               ),
           child: Chip(
@@ -226,7 +222,7 @@ class NewTransactionView extends StatelessWidget {
       Visibility(
         visible: state.showAllDateOptions,
         child: GestureDetector(
-          onTap: () => context.read<NewTransactionCubit>().onChangeSelectedDate(
+          onTap: () => context.read<TransactionCubit>().onChangeSelectedDate(
                 TransactionDate.todayDate,
               ),
           child: Chip(
@@ -249,7 +245,7 @@ class NewTransactionView extends StatelessWidget {
               lastDate: TransactionDate.lastDate,
             );
 
-            context.read<NewTransactionCubit>().onChangeSelectedDate(date);
+            context.read<TransactionCubit>().onChangeSelectedDate(date);
           },
           child: Chip(
             label: Text(context.l10n.other),
@@ -267,7 +263,7 @@ class NewTransactionView extends StatelessWidget {
               lastDate: TransactionDate.lastDate,
             );
 
-            context.read<NewTransactionCubit>().onChangeSelectedDate(date);
+            context.read<TransactionCubit>().onChangeSelectedDate(date);
           },
           child: Column(
             children: [

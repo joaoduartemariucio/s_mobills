@@ -5,8 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:s_mobills/core/core.dart';
 import 'package:s_mobills/modules/modules.dart';
-import 'package:s_mobills/core/model/transaction_type.dart';
-import 'package:s_mobills/modules/transactions/presentation/new_transaction/view/new_transaction_page.dart';
 import 'package:s_mobills/ui/ui.dart';
 
 enum Routes {
@@ -21,6 +19,7 @@ enum Routes {
   profileAccountsEdit,
   transactions,
   newTransaction,
+  editTransaction,
   categories
 }
 
@@ -49,6 +48,8 @@ extension RoutesExtension on Routes {
         return '/transactions';
       case Routes.newTransaction:
         return 'new_transaction';
+      case Routes.editTransaction:
+        return 'edit_transaction';
       case Routes.categories:
         return '/categories';
     }
@@ -78,6 +79,8 @@ extension RoutesExtension on Routes {
         return 'Transactions';
       case Routes.newTransaction:
         return 'New Transaction';
+      case Routes.editTransaction:
+        return 'Edit Transaction';
       case Routes.categories:
         return 'Categories';
     }
@@ -129,6 +132,14 @@ class AppRouter {
                   final extras = state.extra! as Map<String, dynamic>;
                   final transactionType = extras['type'] as TransactionType;
                   return NewTransactionPage(transactionType: transactionType);
+                },
+              ),
+              GoRoute(
+                name: Routes.editTransaction.name,
+                path: Routes.editTransaction.path,
+                builder: (context, state) {
+                  final transaction = state.extra! as Transaction;
+                  return EditTransactionPage(transaction: transaction);
                 },
               ),
             ],

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'new_transaction_request.dart';
+part of 'transaction_request.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$NewTransactionRequest {
+mixin _$TransactionRequest {
   double get value => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
@@ -24,15 +24,15 @@ mixin _$NewTransactionRequest {
   String get category => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $NewTransactionRequestCopyWith<NewTransactionRequest> get copyWith =>
+  $TransactionRequestCopyWith<TransactionRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NewTransactionRequestCopyWith<$Res> {
-  factory $NewTransactionRequestCopyWith(NewTransactionRequest value,
-          $Res Function(NewTransactionRequest) then) =
-      _$NewTransactionRequestCopyWithImpl<$Res, NewTransactionRequest>;
+abstract class $TransactionRequestCopyWith<$Res> {
+  factory $TransactionRequestCopyWith(
+          TransactionRequest value, $Res Function(TransactionRequest) then) =
+      _$TransactionRequestCopyWithImpl<$Res, TransactionRequest>;
   @useResult
   $Res call(
       {double value,
@@ -44,10 +44,9 @@ abstract class $NewTransactionRequestCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewTransactionRequestCopyWithImpl<$Res,
-        $Val extends NewTransactionRequest>
-    implements $NewTransactionRequestCopyWith<$Res> {
-  _$NewTransactionRequestCopyWithImpl(this._value, this._then);
+class _$TransactionRequestCopyWithImpl<$Res, $Val extends TransactionRequest>
+    implements $TransactionRequestCopyWith<$Res> {
+  _$TransactionRequestCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -94,12 +93,11 @@ class _$NewTransactionRequestCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$NewTransactionRequestImplCopyWith<$Res>
-    implements $NewTransactionRequestCopyWith<$Res> {
-  factory _$$NewTransactionRequestImplCopyWith(
-          _$NewTransactionRequestImpl value,
-          $Res Function(_$NewTransactionRequestImpl) then) =
-      __$$NewTransactionRequestImplCopyWithImpl<$Res>;
+abstract class _$$TransactionRequestImplCopyWith<$Res>
+    implements $TransactionRequestCopyWith<$Res> {
+  factory _$$TransactionRequestImplCopyWith(_$TransactionRequestImpl value,
+          $Res Function(_$TransactionRequestImpl) then) =
+      __$$TransactionRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -112,12 +110,11 @@ abstract class _$$NewTransactionRequestImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$NewTransactionRequestImplCopyWithImpl<$Res>
-    extends _$NewTransactionRequestCopyWithImpl<$Res,
-        _$NewTransactionRequestImpl>
-    implements _$$NewTransactionRequestImplCopyWith<$Res> {
-  __$$NewTransactionRequestImplCopyWithImpl(_$NewTransactionRequestImpl _value,
-      $Res Function(_$NewTransactionRequestImpl) _then)
+class __$$TransactionRequestImplCopyWithImpl<$Res>
+    extends _$TransactionRequestCopyWithImpl<$Res, _$TransactionRequestImpl>
+    implements _$$TransactionRequestImplCopyWith<$Res> {
+  __$$TransactionRequestImplCopyWithImpl(_$TransactionRequestImpl _value,
+      $Res Function(_$TransactionRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,7 +127,7 @@ class __$$NewTransactionRequestImplCopyWithImpl<$Res>
     Object? type = null,
     Object? category = null,
   }) {
-    return _then(_$NewTransactionRequestImpl(
+    return _then(_$TransactionRequestImpl(
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -161,8 +158,8 @@ class __$$NewTransactionRequestImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NewTransactionRequestImpl extends _NewTransactionRequest {
-  _$NewTransactionRequestImpl(
+class _$TransactionRequestImpl extends _TransactionRequest {
+  _$TransactionRequestImpl(
       {required this.value,
       required this.description,
       required this.date,
@@ -186,14 +183,14 @@ class _$NewTransactionRequestImpl extends _NewTransactionRequest {
 
   @override
   String toString() {
-    return 'NewTransactionRequest(value: $value, description: $description, date: $date, done: $done, type: $type, category: $category)';
+    return 'TransactionRequest(value: $value, description: $description, date: $date, done: $done, type: $type, category: $category)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NewTransactionRequestImpl &&
+            other is _$TransactionRequestImpl &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -211,20 +208,20 @@ class _$NewTransactionRequestImpl extends _NewTransactionRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewTransactionRequestImplCopyWith<_$NewTransactionRequestImpl>
-      get copyWith => __$$NewTransactionRequestImplCopyWithImpl<
-          _$NewTransactionRequestImpl>(this, _$identity);
+  _$$TransactionRequestImplCopyWith<_$TransactionRequestImpl> get copyWith =>
+      __$$TransactionRequestImplCopyWithImpl<_$TransactionRequestImpl>(
+          this, _$identity);
 }
 
-abstract class _NewTransactionRequest extends NewTransactionRequest {
-  factory _NewTransactionRequest(
+abstract class _TransactionRequest extends TransactionRequest {
+  factory _TransactionRequest(
       {required final double value,
       required final String description,
       required final DateTime date,
       required final bool done,
       required final String type,
-      required final String category}) = _$NewTransactionRequestImpl;
-  _NewTransactionRequest._() : super._();
+      required final String category}) = _$TransactionRequestImpl;
+  _TransactionRequest._() : super._();
 
   @override
   double get value;
@@ -240,6 +237,6 @@ abstract class _NewTransactionRequest extends NewTransactionRequest {
   String get category;
   @override
   @JsonKey(ignore: true)
-  _$$NewTransactionRequestImplCopyWith<_$NewTransactionRequestImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$TransactionRequestImplCopyWith<_$TransactionRequestImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

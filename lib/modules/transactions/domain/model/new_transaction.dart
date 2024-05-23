@@ -12,7 +12,7 @@ class NewTransaction {
     required this.categoryType,
   });
 
-  factory NewTransaction.toDomain({required NewTransactionState state}) {
+  factory NewTransaction.toDomain({required TransactionState state}) {
     return NewTransaction(
       bankAccountId: state.bankAccountId,
       value: state.transactionValue,

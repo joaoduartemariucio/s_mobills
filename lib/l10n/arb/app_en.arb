@@ -35,6 +35,8 @@
     "transactionValue": "Transaction value",
     "newExpenseTransaction": "New expense",
     "newIncomeTransaction": "New income",
+    "editExpenseTransaction": "Edit expense",
+    "editIncomeTransaction": "Edit income",
     "transactionInstructions": "Detail your transaction, fill in all the fields",
     "description": "Description",
     "paidOut": "Paid out",

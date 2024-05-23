@@ -8,12 +8,39 @@ class TransactionRepositoryImpl extends TransactionRepository {
   @override
   Future<void> createNewTransaction(
       {required NewTransaction transaction}) async {
-    final data = NewTransactionRequest.toData(transaction: transaction);
+    final data = TransactionRequest.newTransaction(transaction: transaction);
 
     final result = await remote.newTransaction(
       bankAccountId: transaction.bankAccountId,
       transaction: data,
     );
+
+    if (result is Success) {
+      return;
+    }
+
+    throw result.exception!;
+  }
+
+  @override
+  Future<void> updateTransaction({required Transaction transaction}) async {
+    final data = TransactionRequest.editTransaction(transaction: transaction);
+
+    final result = await remote.updateTransaction(
+      id: transaction.id,
+      transaction: data,
+    );
+
+    if (result is Success) {
+      return;
+    }
+
+    throw result.exception!;
+  }
+
+  @override
+  Future<void> deleteTransaction({required int transactionId}) async {
+    final result = await remote.deleteTransaction(id: transactionId);
 
     if (result is Success) {
       return;

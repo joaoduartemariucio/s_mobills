@@ -6,6 +6,8 @@ import 'package:s_mobills/core/networking/model/request/url_request.dart';
 
 enum TransactionEndpoint implements Endpoint {
   newTransaction,
+  deleteTransaction,
+  updateTransaction,
   userTransactions;
 
   @override
@@ -15,6 +17,8 @@ enum TransactionEndpoint implements Endpoint {
         return '/transaction/account';
       case userTransactions:
         return '/transaction/user';
+      case deleteTransaction || updateTransaction:
+        return '/transaction';
     }
   }
 
@@ -25,6 +29,10 @@ enum TransactionEndpoint implements Endpoint {
         return RequestMethod.POST;
       case userTransactions:
         return RequestMethod.GET;
+      case deleteTransaction:
+        return RequestMethod.DELETE;
+      case updateTransaction:
+        return RequestMethod.PUT;
     }
   }
 

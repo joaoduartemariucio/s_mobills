@@ -2,29 +2,44 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:s_mobills/core/helpers/typedefs.dart';
 import 'package:s_mobills/modules/transactions/module.dart';
 
-part 'new_transaction_request.freezed.dart';
+part 'transaction_request.freezed.dart';
 
 @freezed
-class NewTransactionRequest with _$NewTransactionRequest {
-  factory NewTransactionRequest({
+class TransactionRequest with _$TransactionRequest {
+  factory TransactionRequest({
     required double value,
     required String description,
     required DateTime date,
     required bool done,
     required String type,
     required String category,
-  }) = _NewTransactionRequest;
+  }) = _TransactionRequest;
 
-  NewTransactionRequest._();
+  TransactionRequest._();
 
-  factory NewTransactionRequest.toData({required NewTransaction transaction}) {
-    return NewTransactionRequest(
+  factory TransactionRequest.newTransaction({
+    required NewTransaction transaction,
+  }) {
+    return TransactionRequest(
       value: transaction.value,
       description: transaction.description,
       date: transaction.date,
       done: transaction.done,
       type: transaction.transactionType.name,
       category: transaction.categoryType.name,
+    );
+  }
+
+  factory TransactionRequest.editTransaction({
+    required Transaction transaction,
+  }) {
+    return TransactionRequest(
+      value: transaction.value.value,
+      description: transaction.description,
+      date: transaction.date,
+      done: transaction.done,
+      type: transaction.type.name,
+      category: transaction.category.name,
     );
   }
 

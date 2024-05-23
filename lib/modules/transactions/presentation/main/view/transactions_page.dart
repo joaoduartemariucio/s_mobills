@@ -56,18 +56,18 @@ class TransactionsView extends StatelessWidget {
               return TransactionSectionTitle(title: title);
             },
             itemBuilder: (_, element) {
-              final value = element.value as Currency;
-              final isDone = element.done as bool;
-              final description = element.description as String;
-              final category = element.category as CategoryType;
-              final type = element.type as TransactionType;
-
-              return TransactionItem(
-                isExpense: type == TransactionType.expense,
-                isDone: isDone,
-                name: category.displayName,
-                description: description,
-                value: value.formatted,
+              final transaction = element as Transaction;
+              return InkWell(
+                onTap: () => context
+                    .read<TransactionsCubit>()
+                    .editTransaction(transaction: transaction),
+                child: TransactionItem(
+                  isExpense: transaction.type == TransactionType.expense,
+                  isDone: transaction.done,
+                  name: transaction.category.displayName,
+                  description: transaction.description,
+                  value: transaction.value.formatted,
+                ),
               );
             },
           ),

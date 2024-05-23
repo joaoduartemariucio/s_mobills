@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_positional_boolean_parameters
+// ignore_for_file: avoid_positional_boolean_parameters, avoid_redundant_argument_values
 
 import 'package:bloc/bloc.dart';
 import 'package:currency_textfield/currency_textfield.dart';
@@ -9,23 +9,30 @@ import 'package:s_mobills/modules/profile/module.dart';
 import 'package:s_mobills/modules/transactions/module.dart';
 import 'package:s_mobills/ui/ui.dart';
 
-part 'new_transaction_state.dart';
-part 'new_transaction_cubit.freezed.dart';
+part 'transaction_state.dart';
+part 'transaction_cubit.freezed.dart';
 
-class NewTransactionCubit extends Cubit<NewTransactionState> {
-  NewTransactionCubit({required this.newTransactionUseCase})
-      : super(const NewTransactionState.initial());
+class TransactionCubit extends Cubit<TransactionState> {
+  TransactionCubit({
+    required this.deleteTransactionUseCase,
+    required this.newTransactionUseCase,
+    required this.updateTransactionUseCase,
+  }) : super(const TransactionState.initial()) {
+    _textEditingListeners();
+  }
 
+  final DeleteTransactionUseCase deleteTransactionUseCase;
   final NewTransactionUseCase newTransactionUseCase;
+  final UpdateTransactionUseCase updateTransactionUseCase;
 
   final TextEditingController descriptionTextEditingController =
       TextEditingController();
 
   final CurrencyTextFieldController
       transactionValueCurrencyTextFieldController = CurrencyTextFieldController(
-    currencySymbol: r"R$",
-    decimalSymbol: ",",
-    thousandSymbol: ".",
+    currencySymbol: r'R$',
+    decimalSymbol: ',',
+    thousandSymbol: '.',
     initDoubleValue: 0,
   );
 
@@ -39,7 +46,26 @@ class NewTransactionCubit extends Cubit<NewTransactionState> {
       ),
     );
     onChangeSelectedDate(DateTime.now());
-    _textEditingListeners();
+  }
+
+  void setupTransaction({required Transaction transaction}) {
+    transactionValueCurrencyTextFieldController.text =
+        transaction.value.formatted;
+    descriptionTextEditingController.text = transaction.description;
+
+    emit(
+      state.copyWith(
+        transactionId: transaction.id,
+        bankAccountId: transaction.accountId,
+        bankAccountName: 'Conta origem',
+        description: transaction.description,
+        transactionValue: transaction.value.value,
+        done: transaction.done,
+        selectedDate: transaction.date,
+        transactionType: transaction.type,
+        categoryType: transaction.category,
+      ),
+    );
   }
 
   void _textEditingListeners() {
@@ -87,7 +113,40 @@ class NewTransactionCubit extends Cubit<NewTransactionState> {
     );
   }
 
+  Future<void> deleteTransaction() async {
+    try {
+      emit(state.copyWith(isLoading: true));
+      await deleteTransactionUseCase(transactionId: state.transactionId);
+      AppRouter.showSuccess(message: 'Transação deletada com sucesso');
+      AppRouter.router.pop();
+    } on SMobillsException catch (e) {
+      AppRouter.showError(message: e.message);
+    } finally {
+      emit(state.copyWith(isLoading: false));
+    }
+  }
+
   Future<void> saveTransaction() async {
+    if (state.transactionId != -1) {
+      return updateTransaction();
+    }
+    return createNewTransaction();
+  }
+
+  Future<void> updateTransaction() async {
+    try {
+      emit(state.copyWith(isLoading: true));
+      await updateTransactionUseCase(state: state);
+      AppRouter.showSuccess(message: 'Transação editada com sucesso');
+      AppRouter.router.pop();
+    } on SMobillsException catch (e) {
+      AppRouter.showError(message: e.message);
+    } finally {
+      emit(state.copyWith(isLoading: false));
+    }
+  }
+
+  Future<void> createNewTransaction() async {
     try {
       emit(state.copyWith(isLoading: true));
       await newTransactionUseCase(state: state);

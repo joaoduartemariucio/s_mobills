@@ -35,6 +35,8 @@
     "transactionValue": "Valor da transação",
     "newExpenseTransaction": "Nova despesa",
     "newIncomeTransaction": "Novo rendimento",
+    "editExpenseTransaction": "Editar despesa",
+    "editIncomeTransaction": "Editar rendimento",
     "transactionInstructions": "Detalhe sua transação, preencha todos os campo",
     "description": "Descrição",
     "paidOut": "Pago",

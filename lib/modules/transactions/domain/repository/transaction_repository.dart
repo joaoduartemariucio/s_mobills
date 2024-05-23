@@ -8,5 +8,13 @@ abstract class TransactionRepository {
     required NewTransaction transaction,
   });
 
+  Future<void> updateTransaction({
+    required Transaction transaction,
+  });
+
+  Future<void> deleteTransaction({
+    required int transactionId,
+  });
+
   Future<List<Transaction>> getAllTransactions();
 }

@@ -9,13 +9,35 @@ final class TransactionRemoteDataSourceImpl
   @override
   Future<Result<void>> newTransaction({
     required int bankAccountId,
-    required NewTransactionRequest transaction,
+    required TransactionRequest transaction,
   }) {
     return http.requestVoid(
       request: TransactionEndpoint.newTransaction
           .asRequest()
           .setParameter(parameter: bankAccountId),
       data: transaction.toJson(),
+    );
+  }
+
+  @override
+  Future<Result<void>> updateTransaction({
+    required int id,
+    required TransactionRequest transaction,
+  }) {
+    return http.requestVoid(
+      request: TransactionEndpoint.updateTransaction
+          .asRequest()
+          .setParameter(parameter: id),
+      data: transaction.toJson(),
+    );
+  }
+
+  @override
+  Future<Result<void>> deleteTransaction({required int id}) {
+    return http.requestVoid(
+      request: TransactionEndpoint.deleteTransaction
+          .asRequest()
+          .setParameter(parameter: id),
     );
   }
 

@@ -40,6 +40,15 @@ class TransactionsCubit extends Cubit<TransactionsState> {
     await _loadTransactions();
   }
 
+  Future<void> editTransaction({required Transaction transaction}) async {
+    await AppRouter.router.pushNamed(
+      Routes.editTransaction.name,
+      extra: transaction,
+    );
+
+    await _loadTransactions();
+  }
+
   void _floatingButtonToggle() {
     final state = floatingButtonKey.currentState;
     if (state != null) {

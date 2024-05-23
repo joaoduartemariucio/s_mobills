@@ -33,6 +33,18 @@ void _useCasesDependencies() {
     ),
   );
 
+  GetIt.I.registerLazySingleton<UpdateTransactionUseCase>(
+    () => UpdateTransactionUseCase(
+      repository: GetIt.I<TransactionRepository>(),
+    ),
+  );
+
+  GetIt.I.registerLazySingleton<DeleteTransactionUseCase>(
+    () => DeleteTransactionUseCase(
+      repository: GetIt.I<TransactionRepository>(),
+    ),
+  );
+
   GetIt.I.registerLazySingleton<GetAllUserTransactionsUseCase>(
     () => GetAllUserTransactionsUseCase(
       repository: GetIt.I<TransactionRepository>(),

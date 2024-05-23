@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'new_transaction_cubit.dart';
+part of 'transaction_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$NewTransactionState {
+mixin _$TransactionState {
   double get transactionValue => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   bool get done => throw _privateConstructorUsedError;
@@ -25,6 +25,7 @@ mixin _$NewTransactionState {
   CategoryType get categoryType => throw _privateConstructorUsedError;
   int get bankAccountId => throw _privateConstructorUsedError;
   String get bankAccountName => throw _privateConstructorUsedError;
+  int get transactionId => throw _privateConstructorUsedError;
   DateTime? get selectedDate => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -38,6 +39,7 @@ mixin _$NewTransactionState {
             CategoryType categoryType,
             int bankAccountId,
             String bankAccountName,
+            int transactionId,
             DateTime? selectedDate)
         initial,
   }) =>
@@ -54,6 +56,7 @@ mixin _$NewTransactionState {
             CategoryType categoryType,
             int bankAccountId,
             String bankAccountName,
+            int transactionId,
             DateTime? selectedDate)?
         initial,
   }) =>
@@ -70,6 +73,7 @@ mixin _$NewTransactionState {
             CategoryType categoryType,
             int bankAccountId,
             String bankAccountName,
+            int transactionId,
             DateTime? selectedDate)?
         initial,
     required TResult orElse(),
@@ -93,15 +97,15 @@ mixin _$NewTransactionState {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $NewTransactionStateCopyWith<NewTransactionState> get copyWith =>
+  $TransactionStateCopyWith<TransactionState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NewTransactionStateCopyWith<$Res> {
-  factory $NewTransactionStateCopyWith(
-          NewTransactionState value, $Res Function(NewTransactionState) then) =
-      _$NewTransactionStateCopyWithImpl<$Res, NewTransactionState>;
+abstract class $TransactionStateCopyWith<$Res> {
+  factory $TransactionStateCopyWith(
+          TransactionState value, $Res Function(TransactionState) then) =
+      _$TransactionStateCopyWithImpl<$Res, TransactionState>;
   @useResult
   $Res call(
       {double transactionValue,
@@ -113,13 +117,14 @@ abstract class $NewTransactionStateCopyWith<$Res> {
       CategoryType categoryType,
       int bankAccountId,
       String bankAccountName,
+      int transactionId,
       DateTime? selectedDate});
 }
 
 /// @nodoc
-class _$NewTransactionStateCopyWithImpl<$Res, $Val extends NewTransactionState>
-    implements $NewTransactionStateCopyWith<$Res> {
-  _$NewTransactionStateCopyWithImpl(this._value, this._then);
+class _$TransactionStateCopyWithImpl<$Res, $Val extends TransactionState>
+    implements $TransactionStateCopyWith<$Res> {
+  _$TransactionStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -138,6 +143,7 @@ class _$NewTransactionStateCopyWithImpl<$Res, $Val extends NewTransactionState>
     Object? categoryType = null,
     Object? bankAccountId = null,
     Object? bankAccountName = null,
+    Object? transactionId = null,
     Object? selectedDate = freezed,
   }) {
     return _then(_value.copyWith(
@@ -177,6 +183,10 @@ class _$NewTransactionStateCopyWithImpl<$Res, $Val extends NewTransactionState>
           ? _value.bankAccountName
           : bankAccountName // ignore: cast_nullable_to_non_nullable
               as String,
+      transactionId: null == transactionId
+          ? _value.transactionId
+          : transactionId // ignore: cast_nullable_to_non_nullable
+              as int,
       selectedDate: freezed == selectedDate
           ? _value.selectedDate
           : selectedDate // ignore: cast_nullable_to_non_nullable
@@ -187,7 +197,7 @@ class _$NewTransactionStateCopyWithImpl<$Res, $Val extends NewTransactionState>
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res>
-    implements $NewTransactionStateCopyWith<$Res> {
+    implements $TransactionStateCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
@@ -203,12 +213,13 @@ abstract class _$$InitialImplCopyWith<$Res>
       CategoryType categoryType,
       int bankAccountId,
       String bankAccountName,
+      int transactionId,
       DateTime? selectedDate});
 }
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$NewTransactionStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$TransactionStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -226,6 +237,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? categoryType = null,
     Object? bankAccountId = null,
     Object? bankAccountName = null,
+    Object? transactionId = null,
     Object? selectedDate = freezed,
   }) {
     return _then(_$InitialImpl(
@@ -265,6 +277,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.bankAccountName
           : bankAccountName // ignore: cast_nullable_to_non_nullable
               as String,
+      transactionId: null == transactionId
+          ? _value.transactionId
+          : transactionId // ignore: cast_nullable_to_non_nullable
+              as int,
       selectedDate: freezed == selectedDate
           ? _value.selectedDate
           : selectedDate // ignore: cast_nullable_to_non_nullable
@@ -286,6 +302,7 @@ class _$InitialImpl implements _Initial {
       this.categoryType = CategoryType.food,
       this.bankAccountId = -1,
       this.bankAccountName = 'Selecione a conta',
+      this.transactionId = -1,
       this.selectedDate});
 
   @override
@@ -316,11 +333,14 @@ class _$InitialImpl implements _Initial {
   @JsonKey()
   final String bankAccountName;
   @override
+  @JsonKey()
+  final int transactionId;
+  @override
   final DateTime? selectedDate;
 
   @override
   String toString() {
-    return 'NewTransactionState.initial(transactionValue: $transactionValue, description: $description, done: $done, showAllDateOptions: $showAllDateOptions, isLoading: $isLoading, transactionType: $transactionType, categoryType: $categoryType, bankAccountId: $bankAccountId, bankAccountName: $bankAccountName, selectedDate: $selectedDate)';
+    return 'TransactionState.initial(transactionValue: $transactionValue, description: $description, done: $done, showAllDateOptions: $showAllDateOptions, isLoading: $isLoading, transactionType: $transactionType, categoryType: $categoryType, bankAccountId: $bankAccountId, bankAccountName: $bankAccountName, transactionId: $transactionId, selectedDate: $selectedDate)';
   }
 
   @override
@@ -345,6 +365,8 @@ class _$InitialImpl implements _Initial {
                 other.bankAccountId == bankAccountId) &&
             (identical(other.bankAccountName, bankAccountName) ||
                 other.bankAccountName == bankAccountName) &&
+            (identical(other.transactionId, transactionId) ||
+                other.transactionId == transactionId) &&
             (identical(other.selectedDate, selectedDate) ||
                 other.selectedDate == selectedDate));
   }
@@ -361,6 +383,7 @@ class _$InitialImpl implements _Initial {
       categoryType,
       bankAccountId,
       bankAccountName,
+      transactionId,
       selectedDate);
 
   @JsonKey(ignore: true)
@@ -382,6 +405,7 @@ class _$InitialImpl implements _Initial {
             CategoryType categoryType,
             int bankAccountId,
             String bankAccountName,
+            int transactionId,
             DateTime? selectedDate)
         initial,
   }) {
@@ -395,6 +419,7 @@ class _$InitialImpl implements _Initial {
         categoryType,
         bankAccountId,
         bankAccountName,
+        transactionId,
         selectedDate);
   }
 
@@ -411,6 +436,7 @@ class _$InitialImpl implements _Initial {
             CategoryType categoryType,
             int bankAccountId,
             String bankAccountName,
+            int transactionId,
             DateTime? selectedDate)?
         initial,
   }) {
@@ -424,6 +450,7 @@ class _$InitialImpl implements _Initial {
         categoryType,
         bankAccountId,
         bankAccountName,
+        transactionId,
         selectedDate);
   }
 
@@ -440,6 +467,7 @@ class _$InitialImpl implements _Initial {
             CategoryType categoryType,
             int bankAccountId,
             String bankAccountName,
+            int transactionId,
             DateTime? selectedDate)?
         initial,
     required TResult orElse(),
@@ -455,6 +483,7 @@ class _$InitialImpl implements _Initial {
           categoryType,
           bankAccountId,
           bankAccountName,
+          transactionId,
           selectedDate);
     }
     return orElse();
@@ -489,7 +518,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements NewTransactionState {
+abstract class _Initial implements TransactionState {
   const factory _Initial(
       {final double transactionValue,
       final String description,
@@ -500,6 +529,7 @@ abstract class _Initial implements NewTransactionState {
       final CategoryType categoryType,
       final int bankAccountId,
       final String bankAccountName,
+      final int transactionId,
       final DateTime? selectedDate}) = _$InitialImpl;
 
   @override
@@ -520,6 +550,8 @@ abstract class _Initial implements NewTransactionState {
   int get bankAccountId;
   @override
   String get bankAccountName;
+  @override
+  int get transactionId;
   @override
   DateTime? get selectedDate;
   @override
