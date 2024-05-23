@@ -20,7 +20,7 @@ class MonthlySelect extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          GestureDetector(
+          InkWell(
             onTap: onTapBack.call,
             child: Icon(
               Icons.keyboard_arrow_left_outlined,
@@ -37,7 +37,7 @@ class MonthlySelect extends StatelessWidget {
             ),
           ),
           SMobillsInline.custom(100),
-          GestureDetector(
+          InkWell(
             onTap: onTapNext,
             child: Icon(
               Icons.keyboard_arrow_right_outlined,

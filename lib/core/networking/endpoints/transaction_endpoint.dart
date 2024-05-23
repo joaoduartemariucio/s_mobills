@@ -8,6 +8,7 @@ enum TransactionEndpoint implements Endpoint {
   newTransaction,
   deleteTransaction,
   updateTransaction,
+  userTransactionsPeriod,
   userTransactions;
 
   @override
@@ -15,10 +16,12 @@ enum TransactionEndpoint implements Endpoint {
     switch (this) {
       case newTransaction:
         return '/transaction/account';
-      case userTransactions:
-        return '/transaction/user';
       case deleteTransaction || updateTransaction:
         return '/transaction';
+      case userTransactions:
+        return '/transaction/user';
+      case userTransactionsPeriod:
+        return '/transaction/period/user';
     }
   }
 
@@ -27,7 +30,7 @@ enum TransactionEndpoint implements Endpoint {
     switch (this) {
       case newTransaction:
         return RequestMethod.POST;
-      case userTransactions:
+      case userTransactions || userTransactionsPeriod:
         return RequestMethod.GET;
       case deleteTransaction:
         return RequestMethod.DELETE;

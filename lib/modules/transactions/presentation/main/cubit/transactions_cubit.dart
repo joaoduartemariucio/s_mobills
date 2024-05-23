@@ -9,19 +9,37 @@ part 'transactions_state.dart';
 part 'transactions_cubit.freezed.dart';
 
 class TransactionsCubit extends Cubit<TransactionsState> {
-  TransactionsCubit({required this.getAllUserTransactionsUseCase})
-      : super(const TransactionsState.initial()) {
+  TransactionsCubit({
+    required this.getTransactionsPeriodUseCase,
+  }) : super(const TransactionsState.initial()) {
     _loadTransactions();
   }
 
-  final GetAllUserTransactionsUseCase getAllUserTransactionsUseCase;
+  final GetTransactionsPeriodUseCase getTransactionsPeriodUseCase;
 
   final floatingButtonKey = GlobalKey<ExpandableFabState>();
 
   Future<void> _loadTransactions() async {
+    emit(
+      state.copyWith(
+        isLoading: true,
+        year: DateTime.now().year,
+        month: DateTime.now().month,
+      ),
+    );
+
+    await _getTransactions();
+  }
+
+  Future<void> _getTransactions() async {
     try {
-      emit(state.copyWith(isLoading: true));
-      final result = await getAllUserTransactionsUseCase();
+      final start = DateHelper.firstDayMonth(state.year, state.month);
+      final end = DateHelper.lastDayMonth(state.year, state.month);
+
+      final result = await getTransactionsPeriodUseCase(
+        start: start,
+        end: end,
+      );
       emit(state.copyWith(transactions: result));
     } on SMobillsException catch (e) {
       AppRouter.showError(message: e.message);
@@ -55,5 +73,23 @@ class TransactionsCubit extends Cubit<TransactionsState> {
       debugPrint('isOpen:${state.isOpen}');
       state.toggle();
     }
+  }
+
+  void nextMonth() {
+    if (state.month == 1) {
+      emit(state.copyWith(year: state.year + 1, month: 1));
+    } else {
+      emit(state.copyWith(month: state.month + 1));
+    }
+    _getTransactions();
+  }
+
+  void previousMonth() {
+    if (state.month == 12) {
+      emit(state.copyWith(year: state.year - 1, month: 12));
+    } else {
+      emit(state.copyWith(month: state.month - 1));
+    }
+    _getTransactions();
   }
 }

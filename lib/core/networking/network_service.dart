@@ -50,11 +50,13 @@ class NetworkService {
   Future<Result<List<R>>> requestList<R>({
     required URLRequest request,
     required List<R> Function(List<dynamic>) converter,
+    JSON? data,
     QueryParams? queryParams,
   }) async {
     try {
       final response = await _dio.request<List<dynamic>>(
         request.path,
+        data: data,
         queryParameters: queryParams,
         options: Options(
           method: request.method,

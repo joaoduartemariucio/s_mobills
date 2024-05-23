@@ -16,19 +16,28 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomeState {
+  List<SalesData> get lastSevenDaysExpense =>
+      throw _privateConstructorUsedError;
+  List<SalesData> get lastSevenDaysIncome => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(List<SalesData> lastSevenDaysExpense,
+            List<SalesData> lastSevenDaysIncome)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(List<SalesData> lastSevenDaysExpense,
+            List<SalesData> lastSevenDaysIncome)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(List<SalesData> lastSevenDaysExpense,
+            List<SalesData> lastSevenDaysIncome)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,12 +57,20 @@ mixin _$HomeState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $HomeStateCopyWith<HomeState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
+  @useResult
+  $Res call(
+      {List<SalesData> lastSevenDaysExpense,
+      List<SalesData> lastSevenDaysIncome});
 }
 
 /// @nodoc
@@ -65,13 +82,37 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? lastSevenDaysExpense = null,
+    Object? lastSevenDaysIncome = null,
+  }) {
+    return _then(_value.copyWith(
+      lastSevenDaysExpense: null == lastSevenDaysExpense
+          ? _value.lastSevenDaysExpense
+          : lastSevenDaysExpense // ignore: cast_nullable_to_non_nullable
+              as List<SalesData>,
+      lastSevenDaysIncome: null == lastSevenDaysIncome
+          ? _value.lastSevenDaysIncome
+          : lastSevenDaysIncome // ignore: cast_nullable_to_non_nullable
+              as List<SalesData>,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $HomeStateCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {List<SalesData> lastSevenDaysExpense,
+      List<SalesData> lastSevenDaysIncome});
 }
 
 /// @nodoc
@@ -81,51 +122,113 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? lastSevenDaysExpense = null,
+    Object? lastSevenDaysIncome = null,
+  }) {
+    return _then(_$InitialImpl(
+      lastSevenDaysExpense: null == lastSevenDaysExpense
+          ? _value._lastSevenDaysExpense
+          : lastSevenDaysExpense // ignore: cast_nullable_to_non_nullable
+              as List<SalesData>,
+      lastSevenDaysIncome: null == lastSevenDaysIncome
+          ? _value._lastSevenDaysIncome
+          : lastSevenDaysIncome // ignore: cast_nullable_to_non_nullable
+              as List<SalesData>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+  const _$InitialImpl(
+      {final List<SalesData> lastSevenDaysExpense = const [],
+      final List<SalesData> lastSevenDaysIncome = const []})
+      : _lastSevenDaysExpense = lastSevenDaysExpense,
+        _lastSevenDaysIncome = lastSevenDaysIncome;
+
+  final List<SalesData> _lastSevenDaysExpense;
+  @override
+  @JsonKey()
+  List<SalesData> get lastSevenDaysExpense {
+    if (_lastSevenDaysExpense is EqualUnmodifiableListView)
+      return _lastSevenDaysExpense;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lastSevenDaysExpense);
+  }
+
+  final List<SalesData> _lastSevenDaysIncome;
+  @override
+  @JsonKey()
+  List<SalesData> get lastSevenDaysIncome {
+    if (_lastSevenDaysIncome is EqualUnmodifiableListView)
+      return _lastSevenDaysIncome;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lastSevenDaysIncome);
+  }
 
   @override
   String toString() {
-    return 'HomeState.initial()';
+    return 'HomeState.initial(lastSevenDaysExpense: $lastSevenDaysExpense, lastSevenDaysIncome: $lastSevenDaysIncome)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$InitialImpl &&
+            const DeepCollectionEquality()
+                .equals(other._lastSevenDaysExpense, _lastSevenDaysExpense) &&
+            const DeepCollectionEquality()
+                .equals(other._lastSevenDaysIncome, _lastSevenDaysIncome));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_lastSevenDaysExpense),
+      const DeepCollectionEquality().hash(_lastSevenDaysIncome));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(List<SalesData> lastSevenDaysExpense,
+            List<SalesData> lastSevenDaysIncome)
+        initial,
   }) {
-    return initial();
+    return initial(lastSevenDaysExpense, lastSevenDaysIncome);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(List<SalesData> lastSevenDaysExpense,
+            List<SalesData> lastSevenDaysIncome)?
+        initial,
   }) {
-    return initial?.call();
+    return initial?.call(lastSevenDaysExpense, lastSevenDaysIncome);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(List<SalesData> lastSevenDaysExpense,
+            List<SalesData> lastSevenDaysIncome)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(lastSevenDaysExpense, lastSevenDaysIncome);
     }
     return orElse();
   }
@@ -160,5 +263,16 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements HomeState {
-  const factory _Initial() = _$InitialImpl;
+  const factory _Initial(
+      {final List<SalesData> lastSevenDaysExpense,
+      final List<SalesData> lastSevenDaysIncome}) = _$InitialImpl;
+
+  @override
+  List<SalesData> get lastSevenDaysExpense;
+  @override
+  List<SalesData> get lastSevenDaysIncome;
+  @override
+  @JsonKey(ignore: true)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

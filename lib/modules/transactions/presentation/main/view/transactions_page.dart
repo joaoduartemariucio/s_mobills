@@ -16,7 +16,7 @@ class TransactionsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => TransactionsCubit(
-        getAllUserTransactionsUseCase: GetIt.I<GetAllUserTransactionsUseCase>(),
+        getTransactionsPeriodUseCase: GetIt.I<GetTransactionsPeriodUseCase>(),
       ),
       child: const TransactionsView(),
     );
@@ -34,6 +34,12 @@ class TransactionsView extends StatelessWidget {
           appBar: SMobillsAppBar(
             title: context.l10n.transactions,
             elevation: 8,
+            customPreferredSize: const Size.fromHeight(100),
+            bottom: TransactionAppBarBottom(
+              title: DateHelper.formatterBy(state.year, state.month),
+              onTapBack: context.read<TransactionsCubit>().previousMonth,
+              onTapNext: context.read<TransactionsCubit>().nextMonth,
+            ),
           ),
           backgroundColor: context.colorScheme.background,
           body: GroupedListView<dynamic, String>(

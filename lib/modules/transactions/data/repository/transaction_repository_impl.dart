@@ -51,7 +51,29 @@ class TransactionRepositoryImpl extends TransactionRepository {
 
   @override
   Future<List<Transaction>> getAllTransactions() async {
-    final result = await remote.getAllUseTransactions();
+    final result = await remote.getAllTransactionsUser();
+
+    if (result is Failure) {
+      throw result.exception!;
+    }
+
+    final data = result.data;
+
+    if (data != null) {
+      return data.map(Transaction.toDomain).toList();
+    }
+
+    throw SMobillsException.response();
+  }
+
+  @override
+  Future<List<Transaction>> getTransactionsPeriod({
+    required DateTime start,
+    required DateTime end,
+  }) async {
+    final period = PeriodRequest(initialDate: start, endDate: end);
+
+    final result = await remote.getTransactionsUserPeriod(period: period);
 
     if (result is Failure) {
       throw result.exception!;

@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:s_mobills/modules/transactions/presentation/widgets/widgets.dart';
-import 'package:s_mobills/ui/ui.dart';
 
 class TransactionAppBarBottom extends StatelessWidget
     implements PreferredSizeWidget {
-  const TransactionAppBarBottom({super.key});
+  const TransactionAppBarBottom({
+    super.key,
+    required this.title,
+    required this.onTapBack,
+    required this.onTapNext,
+  });
+
+  final String title;
+  final VoidCallback onTapNext;
+  final VoidCallback onTapBack;
 
   @override
-  Size get preferredSize => const Size.fromHeight(200);
+  Size get preferredSize => const Size.fromHeight(100);
 
   @override
   Widget build(BuildContext context) {
@@ -16,18 +24,9 @@ class TransactionAppBarBottom extends StatelessWidget
       child: Column(
         children: [
           MonthlySelect(
-            title: 'Abril',
-            onTapBack: () {},
-            onTapNext: () {},
-          ),
-          const Column(
-            children: [
-              CurrentBalance(
-                currentBalance: "R\$ 25.000,00",
-                monthlyBalance: "R\$ 25.000,00",
-              ),
-              SMobillsSpacing.md,
-            ],
+            title: title,
+            onTapBack: onTapBack.call,
+            onTapNext: onTapNext.call,
           ),
         ],
       ),

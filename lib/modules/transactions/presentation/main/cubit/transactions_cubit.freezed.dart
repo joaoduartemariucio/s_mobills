@@ -17,21 +17,28 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TransactionsState {
   bool get isLoading => throw _privateConstructorUsedError;
+  int get year => throw _privateConstructorUsedError;
+  int get month => throw _privateConstructorUsedError;
   List<Transaction> get transactions => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, List<Transaction> transactions)
+    required TResult Function(
+            bool isLoading, int year, int month, List<Transaction> transactions)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading, List<Transaction> transactions)? initial,
+    TResult? Function(bool isLoading, int year, int month,
+            List<Transaction> transactions)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, List<Transaction> transactions)? initial,
+    TResult Function(bool isLoading, int year, int month,
+            List<Transaction> transactions)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +70,8 @@ abstract class $TransactionsStateCopyWith<$Res> {
           TransactionsState value, $Res Function(TransactionsState) then) =
       _$TransactionsStateCopyWithImpl<$Res, TransactionsState>;
   @useResult
-  $Res call({bool isLoading, List<Transaction> transactions});
+  $Res call(
+      {bool isLoading, int year, int month, List<Transaction> transactions});
 }
 
 /// @nodoc
@@ -80,6 +88,8 @@ class _$TransactionsStateCopyWithImpl<$Res, $Val extends TransactionsState>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? year = null,
+    Object? month = null,
     Object? transactions = null,
   }) {
     return _then(_value.copyWith(
@@ -87,6 +97,14 @@ class _$TransactionsStateCopyWithImpl<$Res, $Val extends TransactionsState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      year: null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
+      month: null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as int,
       transactions: null == transactions
           ? _value.transactions
           : transactions // ignore: cast_nullable_to_non_nullable
@@ -103,7 +121,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, List<Transaction> transactions});
+  $Res call(
+      {bool isLoading, int year, int month, List<Transaction> transactions});
 }
 
 /// @nodoc
@@ -118,6 +137,8 @@ class __$$InitialImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? year = null,
+    Object? month = null,
     Object? transactions = null,
   }) {
     return _then(_$InitialImpl(
@@ -125,6 +146,14 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      year: null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
+      month: null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as int,
       transactions: null == transactions
           ? _value._transactions
           : transactions // ignore: cast_nullable_to_non_nullable
@@ -137,12 +166,21 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 class _$InitialImpl implements _Initial {
   const _$InitialImpl(
-      {this.isLoading = false, final List<Transaction> transactions = const []})
+      {this.isLoading = false,
+      this.year = 0,
+      this.month = 0,
+      final List<Transaction> transactions = const []})
       : _transactions = transactions;
 
   @override
   @JsonKey()
   final bool isLoading;
+  @override
+  @JsonKey()
+  final int year;
+  @override
+  @JsonKey()
+  final int month;
   final List<Transaction> _transactions;
   @override
   @JsonKey()
@@ -154,7 +192,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'TransactionsState.initial(isLoading: $isLoading, transactions: $transactions)';
+    return 'TransactionsState.initial(isLoading: $isLoading, year: $year, month: $month, transactions: $transactions)';
   }
 
   @override
@@ -164,12 +202,14 @@ class _$InitialImpl implements _Initial {
             other is _$InitialImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.year, year) || other.year == year) &&
+            (identical(other.month, month) || other.month == month) &&
             const DeepCollectionEquality()
                 .equals(other._transactions, _transactions));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading,
+  int get hashCode => Object.hash(runtimeType, isLoading, year, month,
       const DeepCollectionEquality().hash(_transactions));
 
   @JsonKey(ignore: true)
@@ -181,28 +221,33 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, List<Transaction> transactions)
+    required TResult Function(
+            bool isLoading, int year, int month, List<Transaction> transactions)
         initial,
   }) {
-    return initial(isLoading, transactions);
+    return initial(isLoading, year, month, transactions);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading, List<Transaction> transactions)? initial,
+    TResult? Function(bool isLoading, int year, int month,
+            List<Transaction> transactions)?
+        initial,
   }) {
-    return initial?.call(isLoading, transactions);
+    return initial?.call(isLoading, year, month, transactions);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, List<Transaction> transactions)? initial,
+    TResult Function(bool isLoading, int year, int month,
+            List<Transaction> transactions)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(isLoading, transactions);
+      return initial(isLoading, year, month, transactions);
     }
     return orElse();
   }
@@ -239,10 +284,16 @@ class _$InitialImpl implements _Initial {
 abstract class _Initial implements TransactionsState {
   const factory _Initial(
       {final bool isLoading,
+      final int year,
+      final int month,
       final List<Transaction> transactions}) = _$InitialImpl;
 
   @override
   bool get isLoading;
+  @override
+  int get year;
+  @override
+  int get month;
   @override
   List<Transaction> get transactions;
   @override

@@ -50,4 +50,10 @@ void _useCasesDependencies() {
       repository: GetIt.I<TransactionRepository>(),
     ),
   );
+
+  GetIt.I.registerLazySingleton<GetTransactionsPeriodUseCase>(
+    () => GetTransactionsPeriodUseCase(
+      repository: GetIt.I<TransactionRepository>(),
+    ),
+  );
 }

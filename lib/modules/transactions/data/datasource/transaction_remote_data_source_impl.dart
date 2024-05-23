@@ -42,9 +42,25 @@ final class TransactionRemoteDataSourceImpl
   }
 
   @override
-  Future<Result<List<TransactionResponse>>> getAllUseTransactions() {
+  Future<Result<List<TransactionResponse>>> getAllTransactionsUser() {
     return http.requestList(
       request: TransactionEndpoint.userTransactions.asRequest(),
+      converter: (data) => data
+          .map((e) => TransactionResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
+
+  @override
+  Future<Result<List<TransactionResponse>>> getTransactionsUserPeriod({
+    required PeriodRequest period,
+  }) {
+    return http.requestList(
+      request: TransactionEndpoint.userTransactionsPeriod.asRequest(),
+      queryParams: {
+        'initialDate': period.initialDate.toIso8601String(),
+        'endDate': period.endDate.toIso8601String(),
+      },
       converter: (data) => data
           .map((e) => TransactionResponse.fromJson(e as Map<String, dynamic>))
           .toList(),

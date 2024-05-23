@@ -16,5 +16,8 @@ abstract class TransactionRemoteDataSource {
 
   Future<Result<void>> deleteTransaction({required int id});
 
-  Future<Result<List<TransactionResponse>>> getAllUseTransactions();
+  Future<Result<List<TransactionResponse>>> getAllTransactionsUser();
+  Future<Result<List<TransactionResponse>>> getTransactionsUserPeriod({
+    required PeriodRequest period,
+  });
 }

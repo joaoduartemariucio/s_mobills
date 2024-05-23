@@ -17,4 +17,9 @@ abstract class TransactionRepository {
   });
 
   Future<List<Transaction>> getAllTransactions();
+
+  Future<List<Transaction>> getTransactionsPeriod({
+    required DateTime start,
+    required DateTime end,
+  });
 }
