@@ -1,6 +1,6 @@
 name: s_mobills
 description: Control your finances
-version: 1.2.0+4
+version: 1.3.0+5
 publish_to: none
 
 environment:
@@ -9,6 +9,7 @@ environment:
 dependencies:
   animated_text_kit: ^4.2.2
   bloc: ^8.1.3
+  collection: ^1.18.0
   currency_textfield: ^4.5.0
   dio: ^4.0.6
   dio_cache_interceptor: ^3.2.7
@@ -61,5 +62,6 @@ flutter:
         - asset: lib/resources/fonts/Roboto-ThinItalic.ttf
   assets:
     - lib/resources/icons/empty_bank_accounts.png
+    - lib/resources/icons/empty_transactions.png
   uses-material-design: true
   generate: true

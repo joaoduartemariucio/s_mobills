@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:s_mobills/core/core.dart';
 import 'package:s_mobills/modules/home/presentation/main/cubit/home_cubit.dart';
+import 'package:s_mobills/modules/home/presentation/widgets/home_empty_state.dart';
 import 'package:s_mobills/ui/utils/s_mobills_styles.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class SpendingCategory extends StatelessWidget {
   const SpendingCategory({
     super.key,
-    required this.days,
+    required this.categoriesDataSource,
   });
 
-  final List<SalesData> days;
+  final List<PieByCategory> categoriesDataSource;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -24,6 +26,7 @@ class SpendingCategory extends StatelessWidget {
             style: SMobillsTextStyles.subtitle1.copyWith(
               color:
                   Theme.of(context).colorScheme.onBackground.withOpacity(0.75),
+              fontWeight: FontWeight.w600,
             ),
           ),
           SMobillsSpacing.sm,
@@ -31,24 +34,29 @@ class SpendingCategory extends StatelessWidget {
             margin: EdgeInsets.zero,
             child: Padding(
               padding: const EdgeInsets.all(8),
-              child: SfCircularChart(
-                legend: const Legend(
-                  isVisible: true,
-                  overflowMode: LegendItemOverflowMode.wrap,
-                ),
-                series: [
-                  DoughnutSeries<SalesData, String>(
-                    explode: true,
-                    dataSource: days,
-                    xValueMapper: (SalesData data, _) => data.year,
-                    yValueMapper: (SalesData data, _) => data.sales,
-                    dataLabelMapper: (SalesData data, _) => data.year,
-                    dataLabelSettings: const DataLabelSettings(isVisible: true),
-                  )
-                ],
-                tooltipBehavior:
-                    TooltipBehavior(enable: true, format: 'point.x : point.y%'),
-              ),
+              child: categoriesDataSource.isEmpty
+                  ? const HomeEmptyState()
+                  : SfCircularChart(
+                      legend: const Legend(
+                        isVisible: true,
+                        overflowMode: LegendItemOverflowMode.wrap,
+                      ),
+                      series: [
+                        DoughnutSeries<PieByCategory, String>(
+                          explode: true,
+                          dataSource: categoriesDataSource,
+                          xValueMapper: (PieByCategory data, _) =>
+                              data.categoryType.displayName,
+                          yValueMapper: (PieByCategory data, _) => data.value,
+                          dataLabelMapper: (PieByCategory data, _) =>
+                              data.categoryType.displayName,
+                        ),
+                      ],
+                      tooltipBehavior: TooltipBehavior(
+                        enable: true,
+                        format: r'point.x : R$ point.y',
+                      ),
+                    ),
             ),
           ),
         ],

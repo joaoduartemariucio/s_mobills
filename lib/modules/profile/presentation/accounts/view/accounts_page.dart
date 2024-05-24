@@ -113,14 +113,14 @@ class AccountViewEmpty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(32),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
             child: Image.asset(
               'lib/resources/icons/empty_bank_accounts.png',
-              width: 200,
+              width: 100,
             ),
           ),
           SMobillsSpacing.md,

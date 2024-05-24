@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:s_mobills/ui/ui.dart';
 
-class HomeHeader extends StatelessWidget {
+class HomeHeader extends StatelessWidget implements PreferredSizeWidget {
   const HomeHeader({
     super.key,
     required this.balance,
@@ -29,7 +29,7 @@ class HomeHeader extends StatelessWidget {
         children: [
           Text(
             'Saldo em contas',
-            style: SMobillsTextStyles.subtitle2.copyWith(
+            style: SMobillsTextStyles.subtitle1.copyWith(
               color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.75),
             ),
           ),
@@ -67,6 +67,9 @@ class HomeHeader extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  Size get preferredSize => Size.fromHeight(200);
 }
 
 class HomeBalanceItem extends StatelessWidget {

@@ -21,7 +21,7 @@ class MonthBalance extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -30,6 +30,7 @@ class MonthBalance extends StatelessWidget {
             style: SMobillsTextStyles.subtitle1.copyWith(
               color:
                   Theme.of(context).colorScheme.onBackground.withOpacity(0.75),
+              fontWeight: FontWeight.w600,
             ),
           ),
           SMobillsSpacing.sm,
